@@ -14,25 +14,22 @@ PRIMARY KEY (ID_utilisateur));
 SQL :
 
 CREATE TABLE abonne (ID_suivie INT NOT NULL, ID_suiveur INT NOT NULL,
-PRIMARY KEY (ID_suivie, ID_suiveur));
+PRIMARY KEY (ID_suivie, ID_suiveur), 
+FOREIGN KEY (ID_suivie) REFERENCES utilisateur(ID_utilisateur),
+FOREIGN KEY (ID_suiveur) REFERENCES utilisateur(ID_utilisateur));
 
 
-// créer la table blog avec les champs ID_blog, ID_utilisateur
 
-SQL :
-
-CREATE TABLE blog (ID_blog INT NOT NULL AUTO_INCREMENT, ID_utilisateur INT NOT NULL,
-PRIMARY KEY (ID_blog), FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur));
-
-
-// créer la table post avec les champs ID_post, ID_blog, ID_duo, date, distance, temps, lieu
+// créer la table post avec les champs ID_post, ID_utilisateur, ID_duo, date, distance, temps, lieu
 
 SQL :
 
-CREATE TABLE post (ID_post INT NOT NULL AUTO_INCREMENT, ID_blog INT NOT NULL,
+CREATE TABLE post (ID_post INT NOT NULL AUTO_INCREMENT, ID_utilisateur INT NOT NULL,
 ID_duo INT NOT NULL, date DATE NOT NULL, distance INT NOT NULL, temps TIME NOT NULL,
-lieu VARCHAR(50) NOT NULL, PRIMARY KEY (ID_post), FOREIGN KEY (ID_blog) REFERENCES blog(ID_blog),
-FOREIGN KEY (ID_duo) REFERENCES duo(ID_duo));
+lieu VARCHAR(50) NOT NULL, PRIMARY KEY (ID_post), FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur),
+FOREIGN KEY (ID_duo) REFERENCES utilisateur(ID_utilisateur));
+
+ALTER TABLE post ADD commentaire VARCHAR(255) AFTER lieu;
 
 
 // créer la table liker avec les champs ID_post, ID_utilisateur
@@ -40,7 +37,9 @@ FOREIGN KEY (ID_duo) REFERENCES duo(ID_duo));
 SQL :
 
 CREATE TABLE liker (ID_post INT NOT NULL, ID_utilisateur INT NOT NULL,
-PRIMARY KEY (ID_post, ID_utilisateur));
+PRIMARY KEY (ID_post, ID_utilisateur),
+FOREIGN KEY (ID_post) REFERENCES post(ID_post),
+FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur));
 
 
 // remplir les différentes tables avec des données classiques pour tester 

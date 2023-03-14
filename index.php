@@ -13,8 +13,9 @@
     require('connectionbdd.php'); 
     $connexion = connect_db();
 
-    // la question c'est est-ce qu'on peut mettre connexion dans un cookie ?
+    require('sqlfunctions.php');
 
+    
     
 
 ?>
