@@ -9,6 +9,57 @@
 
 <body>
 
+<div class="navbar">
+    <a href="./index.php">Accueil</a>
+    <a href="#">Page 2</a>
+    <a href="#">Page 3</a>
+</div>
+
+<div id="MainContainer">
+
+
+    <h1>Inscription :</h1>
+
+
+    <form action="#" method="post">
+
+        <div>
+            <label for="nom">Nom :</label>
+            <input type="text" name="nom" placeholder="Nom">
+        </div>
+
+        <div>
+            <label for="prenom">Prénom :</label>
+            <input type="text" name="prenom" placeholder="Prénom">
+        </div>
+
+        <div>
+            <label for="email">E-Mail :</label>
+            <input type="email" name="email" placeholder="email@addresse.fr">
+        </div>
+
+        <div>
+            <label for="date_naissance">Date de naissance :</label>
+            <input type="date" name="date_naissance" placeholder="JJ/MM/AAAA">
+        </div>
+
+        <div>
+            <label for="mot_de_passe">Mot de passe :</label>
+            <input type="password" name="mot_de_passe" placeholder="Mot de passe">
+        </div>
+
+        <div>
+            <button type="submit">Envoyer</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <p class="pcenter">Vous avez déjà un compte ? <a href="./login.php">Connectez-vous ici</a>.</p>
+
+<!--nom, prenom, email, mot_de_passe, date_naissance-->
+</div>
+
 </body>
 
 </html> 
