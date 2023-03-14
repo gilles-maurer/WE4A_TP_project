@@ -4,7 +4,36 @@
 
     function select_accueil_logout($connexion) {
 
-        $sql = "SELECT * FROM post ORDER BY date DESC LIMIT 20";
+        // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, nb like
+
+
+        $sql = "SELECT 
+                    utilisateur.nom as nom, 
+                    utilisateur.prenom as prenom, 
+                    post.date as date, 
+                    post.distance as distance, 
+                    post.temps as temps, 
+                    (post.distance / post.temps) as vitesse,
+                    post.commentaire as commentaire,
+                    post.lieu as lieu,
+                    COUNT(liker.id_post) as nb_like
+                FROM
+                    utilisateur
+                INNER JOIN
+                    post
+                ON
+                    utilisateur.id_utilisateur = post.id_utilisateur
+                LEFT JOIN
+                    liker
+                ON
+                    post.id_post = liker.id_post
+                GROUP BY
+                    post.id_post
+                ORDER BY
+                    post.date DESC
+                LIMIT 10";
+
+        
         $result = $connexion->query($sql);
 
         return $result;
@@ -19,7 +48,7 @@
         (nom, prenom, email, mot_de_passe, date_naissance, date_inscription) 
         VALUES 
         ('".$_POST['nom']."', '".$_POST['prenom']."', 
-        '".$_POST['email']."', '".MD5($_POST['mot_de_passe'].)"', 
+        '".$_POST['email']."', '".md5($_POST['mot_de_passe'])."', 
         '".$_POST['date_naissance']."', NOW())";
     
         $result = $connexion->query($sql);
@@ -108,7 +137,7 @@
         return $result;
     }
 
-    
+
 
 
 ?>

@@ -1,7 +1,6 @@
-// créer la table utilisateur avec les champs ID_utilisateur, nom, prénom, email, 
-// mot de passe, date de naissance, date d'inscription
+DROP DATABASE IF EXISTS runshare;
 
-SQL : 
+CREATE DATABASE runshare;
 
 CREATE TABLE utilisateur (ID_utilisateur INT NOT NULL AUTO_INCREMENT, 
 nom VARCHAR(50) NOT NULL, prenom VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, 
@@ -9,44 +8,25 @@ mot_de_passe VARCHAR(50) NOT NULL, date_naissance DATE NOT NULL, date_inscriptio
 PRIMARY KEY (ID_utilisateur));
 
 
-// créer la table abonné avec les champs ID_suivie, ID_suiveur
-
-SQL :
-
 CREATE TABLE abonne (ID_suivie INT NOT NULL, ID_suiveur INT NOT NULL,
 PRIMARY KEY (ID_suivie, ID_suiveur), 
 FOREIGN KEY (ID_suivie) REFERENCES utilisateur(ID_utilisateur),
 FOREIGN KEY (ID_suiveur) REFERENCES utilisateur(ID_utilisateur));
 
 
-
-// créer la table post avec les champs ID_post, ID_utilisateur, ID_duo, date, distance, temps, lieu
-
-SQL :
-
-CREATE TABLE post (ID_post INT NOT NULL AUTO_INCREMENT, ID_utilisateur INT NOT NULL,
-ID_duo INT NOT NULL, date DATE NOT NULL, distance INT NOT NULL, temps TIME NOT NULL,
-lieu VARCHAR(50) NOT NULL, PRIMARY KEY (ID_post), FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur),
-FOREIGN KEY (ID_duo) REFERENCES utilisateur(ID_utilisateur));
+CREATE TABLE post (ID_post INT NOT NULL AUTO_INCREMENT, ID_utilisateur INT NOT NULL, 
+date DATE NOT NULL, distance INT NOT NULL, temps TIME NOT NULL,
+lieu VARCHAR(50) NOT NULL, PRIMARY KEY (ID_post), 
+FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur));
 
 ALTER TABLE post ADD commentaire VARCHAR(255) AFTER lieu;
 
-
-// créer la table liker avec les champs ID_post, ID_utilisateur
-
-SQL :
 
 CREATE TABLE liker (ID_post INT NOT NULL, ID_utilisateur INT NOT NULL,
 PRIMARY KEY (ID_post, ID_utilisateur),
 FOREIGN KEY (ID_post) REFERENCES post(ID_post),
 FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur));
 
-
-// remplir les différentes tables avec des données classiques pour tester 
-
-// la table utilisateur
-
-SQL :
 
 INSERT INTO utilisateur (nom, prenom, email, mot_de_passe, date_naissance, date_inscription)
 VALUES
@@ -62,10 +42,6 @@ VALUES
   ('Kim', 'Ji', 'jikim@example.com', MD5('password10'), '2025-01-01', '2022-01-10');
 
 
-// la table abonné
-
-SQL :
-
 INSERT INTO abonne (ID_suivie, ID_suiveur)
 VALUES
   (1, 2),
@@ -80,45 +56,18 @@ VALUES
   (6, 1);
 
 
-// la table blog
-
-SQL :
-
-INSERT INTO blog (ID_utilisateur)
+INSERT INTO post (ID_utilisateur, date, distance, temps, lieu)
 VALUES
-  (1),
-  (2),
-  (3),
-  (4),
-  (5),
-  (6),
-  (7),
-  (8),
-  (9),
-  (10);
-
-
-// la table post
-
-SQL :
-
-INSERT INTO post (ID_blog, ID_duo, date, distance, temps, lieu)
-VALUES
-(1, NULL, '2022-01-01', 5000, '00:35:00', 'Central Park'),
-(1, NULL, '2022-01-03', 8000, '01:00:00', 'Brooklyn Bridge'),
-(1, 2, '2022-01-05', 10000, '01:15:00', 'Hudson River Park'),
-(1, NULL, '2022-01-07', 6000, '00:45:00', 'Central Park'),
-(1, NULL, '2022-01-09', 9000, '01:20:00', 'Prospect Park'),
-(2, NULL, '2022-01-01', 4000, '00:30:00', 'Coney Island'),
-(2, NULL, '2022-01-03', 7000, '00:50:00', 'Battery Park'),
-(2, NULL, '2022-01-05', 9000, '01:10:00', 'Central Park'),
-(2, 3, '2022-01-07', 6000, '00:45:00', 'Hudson River Park'),
-(2, NULL, '2022-01-09', 8000, '01:00:00', 'Brooklyn Bridge');
-
-
-// la table liker
-
-SQL :
+(1, '2022-01-01', 5000, '00:35:00', 'Central Park'),
+(1, '2022-01-03', 8000, '01:00:00', 'Brooklyn Bridge'),
+(1, '2022-01-05', 10000, '01:15:00', 'Hudson River Park'),
+(1, '2022-01-07', 6000, '00:45:00', 'Central Park'),
+(1, '2022-01-09', 9000, '01:20:00', 'Prospect Park'),
+(2, '2022-01-01', 4000, '00:30:00', 'Coney Island'),
+(2, '2022-01-03', 7000, '00:50:00', 'Battery Park'),
+(2, '2022-01-05', 9000, '01:10:00', 'Central Park'),
+(2, '2022-01-07', 6000, '00:45:00', 'Hudson River Park'),
+(2, '2022-01-09', 8000, '01:00:00', 'Brooklyn Bridge');
 
 INSERT INTO liker (ID_post, ID_utilisateur)
 VALUES 
