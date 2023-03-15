@@ -25,7 +25,7 @@
         echo "<p>".$row['prenom']."</p>";
         echo "<p>".$row['date']."</p>";
         echo "<p>".$row['distance']." km</p>";
-        echo "<p>".$row['temps']." min</p>";
+        echo "<p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>";
         echo "<p>".$row['vitesse']." km/h</p>";
         echo "<p>".$row['commentaire']."</p>";
         echo "<p>".$row['lieu']."</p>";
