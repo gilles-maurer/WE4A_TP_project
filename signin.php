@@ -9,7 +9,7 @@
 
 <body>
 
-<?php include("navbar.php");?>
+<?php include("SousPages/navbar.php");?>
 
 <div id="MainContainer">
 
@@ -46,7 +46,7 @@
 
         <div>
             <label for="confirm">Confirmer le mot de passe :</label>
-            <input type="password" name="confirm" placeholder="Mot de passe">
+            <input type="password" name="confirm" placeholder="Confirmation">
         </div>
 
         <div>
