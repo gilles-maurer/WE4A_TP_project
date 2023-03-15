@@ -9,6 +9,9 @@
 
 <body>
 
+<?php include("navbar.php");?>
+
+
 <?php 
     require('connectionbdd.php'); 
     $connexion = connect_db();
