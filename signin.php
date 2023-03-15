@@ -45,6 +45,11 @@
         </div>
 
         <div>
+            <label for="confirm">Confirmer le mot de passe :</label>
+            <input type="password" name="confirm" placeholder="Mot de passe">
+        </div>
+
+        <div>
             <button type="submit">Envoyer</button>
         </div>
     </form>
