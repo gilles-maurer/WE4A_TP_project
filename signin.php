@@ -101,7 +101,11 @@
 
         <div>
             <label for="confirm">Confirmer le mot de passe :</label>
+<<<<<<< HEAD
             <input type="password" name="confirm" placeholder="Mot de passe" required>
+=======
+            <input type="password" name="confirm" placeholder="Confirmation">
+>>>>>>> b7dd1eea618ed45595a3507ce84499067cca654b
         </div>
 
         <div>
