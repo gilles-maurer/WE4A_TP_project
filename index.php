@@ -9,14 +9,14 @@
 
 <body>
 
-<?php include("navbar.php");?>
+<?php include("SousPages/navbar.php");?>
 
 
 <?php 
-    require('connectionbdd.php'); 
+    require('SousPages/connectionbdd.php'); 
     $connexion = connect_db();
 
-    require('sqlfunctions.php');
+    require('SousPages/sqlfunctions.php');
 
     $result = select_accueil_logout($connexion);
     // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, nb like

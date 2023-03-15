@@ -9,7 +9,7 @@
 
 <body>
 
-<?php include("navbar.php");?>
+<?php include("SousPages/navbar.php");?>
 
 
 </body>
