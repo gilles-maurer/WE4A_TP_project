@@ -153,4 +153,86 @@
 
 
 
+
+    // fonctions page classement 
+
+    function classement_nb_courses($connexion) {
+
+        $sql = "SELECT 
+                    utilisateur.nom as nom,
+                    utilisateur.prenom as prenom,
+                    utilisateur.id_utilisateur as id_utilisateur,
+                    COUNT(post.id_post) as nb_courses
+                FROM
+                    utilisateur
+                INNER JOIN
+                    post
+                ON
+                    utilisateur.id_utilisateur = post.id_utilisateur
+                GROUP BY
+                    utilisateur.id_utilisateur
+                ORDER BY
+                    nb_courses DESC
+                ;"; 
+
+        $result = $connexion->query($sql);
+
+        return $result;
+    }
+
+
+    function classement_distance($connexion) {
+
+        $sql = "SELECT 
+                    utilisateur.nom as nom,
+                    utilisateur.prenom as prenom,
+                    utilisateur.id_utilisateur as id_utilisateur,
+                    SUM(post.distance) as distance
+                FROM
+                    utilisateur
+                INNER JOIN
+                    post
+                ON
+                    utilisateur.id_utilisateur = post.id_utilisateur
+                GROUP BY
+                    utilisateur.id_utilisateur
+                ORDER BY
+                    distance DESC
+                ;"; 
+
+        $result = $connexion->query($sql);
+
+        return $result;
+    }
+
+
+    function classement_temps($connexion) {
+
+        $sql = "SELECT 
+                    utilisateur.nom as nom,
+                    utilisateur.prenom as prenom,
+                    utilisateur.id_utilisateur as id_utilisateur,
+                    HOUR(SUM(post.temps)) as temps_heures,
+                    MINUTE(SUM(post.temps)) as temps_minutes,
+                    SECOND(SUM(post.temps)) as temps_secondes
+                FROM
+                    utilisateur
+                INNER JOIN
+                    post
+                ON
+                    utilisateur.id_utilisateur = post.id_utilisateur
+                GROUP BY
+                    utilisateur.id_utilisateur
+                ORDER BY
+                    temps_heures DESC,
+                    temps_minutes DESC,
+                    temps_secondes DESC
+                ;"; 
+
+        $result = $connexion->query($sql);
+
+        return $result;
+    }
+
+
 ?>
