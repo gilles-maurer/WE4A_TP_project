@@ -2,7 +2,7 @@
 <?php 
 
 // check si il y a des cookies 
-if (!isset($_COOKIE['email']) && !isset($_COOKIE['mot_de_passe'])) {
+if (!isset($_COOKIE['id_utilisateur'])) {
     // si il n'y a pas de cookies, on affiche le bandeau sans log
     ?> 
         <div class="navbar">
@@ -12,6 +12,7 @@ if (!isset($_COOKIE['email']) && !isset($_COOKIE['mot_de_passe'])) {
             <a href="./signin.php">Sign In</a>
             <a href="./login.php">Log In</a>
         </div>
+        <br><br><br>
     <?php
 } else {
     // si il y a des cookies, on affiche le bandeau avec log
@@ -24,6 +25,8 @@ if (!isset($_COOKIE['email']) && !isset($_COOKIE['mot_de_passe'])) {
             <a href="./stats.php">Profil</a>
 
         </div>
+        <br><br><br>
+
     <?php
 }
 
