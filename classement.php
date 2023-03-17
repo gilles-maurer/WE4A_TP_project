@@ -80,6 +80,8 @@
         echo "<p>".$row['nom']."</p>";
         echo "<p>".$row['prenom']."</p>";
         echo "<p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>";
+        // echo "<p>".$row['temps_heures']."h</p>";
+        // echo "<p>".$row['temps']."s</p>";
         echo "</div>";
         echo "<br>";
         echo "<br>";

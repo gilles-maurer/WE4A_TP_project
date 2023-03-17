@@ -19,7 +19,7 @@
                     ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
                     post.commentaire as commentaire,
                     post.lieu as lieu,
-                    COUNT(liker.id_post) as nb_like
+                    COUNT(*) as nb_like
                 FROM
                     utilisateur
                 INNER JOIN
@@ -31,10 +31,11 @@
                 ON
                     post.id_post = liker.id_post
                 GROUP BY
-                    post.id_post
+                    post.id_utilisateur
                 ORDER BY
                     post.date DESC
-                LIMIT 10";
+                LIMIT 10;
+                ";
 
         
         $result = $connexion->query($sql);
@@ -215,6 +216,7 @@
                     HOUR(SUM(post.temps)) as temps_heures,
                     MINUTE(SUM(post.temps)) as temps_minutes,
                     SECOND(SUM(post.temps)) as temps_secondes
+                    -- SUM(post.temps) as temps
                 FROM
                     utilisateur
                 INNER JOIN
@@ -227,6 +229,7 @@
                     temps_heures DESC,
                     temps_minutes DESC,
                     temps_secondes DESC
+                    -- temps DESC
                 ;"; 
 
         $result = $connexion->query($sql);

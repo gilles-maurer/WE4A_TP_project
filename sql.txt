@@ -67,10 +67,7 @@ VALUES
 (2, '2022-01-03', 7000, '00:50:00', 'Battery Park'),
 (2, '2022-01-05', 9000, '01:10:00', 'Central Park'),
 (2, '2022-01-07', 6000, '00:45:00', 'Hudson River Park'),
-(2, '2022-01-09', 8000, '01:00:00', 'Brooklyn Bridge');
-
-INSERT INTO post (ID_utilisateur, date, distance, temps, lieu)
-VALUES
+(2, '2022-01-09', 8000, '01:00:00', 'Brooklyn Bridge'),
 (3, '2022-02-01', 7000, '00:50:00', 'Central Park'),
 (3, '2022-02-03', 10000, '01:15:00', 'Empire State Building'),
 (3, '2022-02-05', 12000, '01:30:00', 'Statue of Liberty'),
@@ -79,6 +76,16 @@ VALUES
 (3, '2022-02-11', 6000, '00:45:00', 'Grand Central Terminal'),
 (3, '2022-02-13', 9000, '01:20:00', 'Washington Square Park');
 
+
+INSERT INTO post (ID_utilisateur, date, distance, temps, lieu)
+VALUES
+(4, '2022-02-01', 7000, '00:50:00', 'Central Park'),
+(4, '2022-02-03', 10000, '01:15:00', 'Empire State Building'),
+(4, '2022-02-05', 12000, '01:30:00', 'Statue of Liberty'),
+(4, '2022-02-07', 8000, '01:00:00', 'Times Square'),
+(4, '2022-02-09', 11000, '01:35:00', 'Brooklyn Bridge'),
+(4, '2022-02-11', 6000, '00:45:00', 'Grand Central Terminal'),
+(4, '2022-02-13', 9000, '01:20:00', 'Washington Square Park');
 
 INSERT INTO liker (ID_post, ID_utilisateur)
 VALUES 
