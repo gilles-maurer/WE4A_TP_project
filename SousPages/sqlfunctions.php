@@ -33,8 +33,6 @@
                 LIMIT 10;
                 ";
 
-
-        
         $result = $connexion->query($sql);
 
         return $result;
@@ -210,10 +208,7 @@
                     utilisateur.nom as nom,
                     utilisateur.prenom as prenom,
                     utilisateur.id_utilisateur as id_utilisateur,
-                    HOUR(SUM(post.temps)) as temps_heures,
-                    MINUTE(SUM(post.temps)) as temps_minutes,
-                    SECOND(SUM(post.temps)) as temps_secondes
-                    -- SUM(post.temps) as temps
+                    SUM(SECOND(post.temps) + MINUTE(post.temps) * 60 + HOUR(post.temps) * 3600) as temps
                 FROM
                     utilisateur
                 INNER JOIN
@@ -223,10 +218,7 @@
                 GROUP BY
                     utilisateur.id_utilisateur
                 ORDER BY
-                    temps_heures DESC,
-                    temps_minutes DESC,
-                    temps_secondes DESC
-                    -- temps DESC
+                    temps DESC
                 ;"; 
 
         $result = $connexion->query($sql);

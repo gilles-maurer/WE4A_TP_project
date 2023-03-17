@@ -75,13 +75,15 @@
 
         $i = $i + 1;
 
+        $temps_heure = floor($row['temps']/3600);
+        $temps_minute = floor(($row['temps'] - $temps_heure*3600)/60);
+        $temps_seconde = $row['temps'] - $temps_heure*3600 - $temps_minute*60;
+        
         echo "<div>";
         echo "<p>".$i."</p>";
         echo "<p>".$row['nom']."</p>";
         echo "<p>".$row['prenom']."</p>";
-        echo "<p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>";
-        // echo "<p>".$row['temps_heures']."h</p>";
-        // echo "<p>".$row['temps']."s</p>";
+        echo "<p>".$temps_heure."h".$temps_minute."min".$temps_seconde."s</p>";
         echo "</div>";
         echo "<br>";
         echo "<br>";
