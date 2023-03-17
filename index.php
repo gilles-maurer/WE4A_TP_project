@@ -23,19 +23,19 @@
 
 
     while ($row = $result->fetch()) {
-        echo "<div>";
-        echo "<p>".$row['nom']."</p>";
-        echo "<p>".$row['prenom']."</p>";
-        echo "<p>".$row['date']."</p>";
-        echo "<p>".$row['distance']." km</p>";
-        echo "<p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>";
-        echo "<p>".$row['vitesse']." km/h</p>";
-        echo "<p>".$row['commentaire']."</p>";
-        echo "<p>".$row['lieu']."</p>";
-        echo "<p>".$row['nb_like']."</p>";
-        echo "</div>";
-        echo "<br>";
-        echo "<br>";
+        echo "<div>
+        <p>".$row['nom']."</p>
+        <p>".$row['prenom']."</p>
+        <p>".$row['date']."</p>
+        <p>".$row['distance']." km</p>
+        <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>
+        <p>".$row['vitesse']." km/h</p>
+        <p>".$row['commentaire']."</p>
+        <p>".$row['lieu']."</p>
+        <p>".$row['nb_like']."</p>
+        </div>
+        <br>
+        <br>";
     }
 
 ?>

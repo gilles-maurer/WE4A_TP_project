@@ -1,15 +1,26 @@
 <?php
 
     function check_informations() {
-        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['confirm']) && isset($_POST['date_naissance'])) {
-            if ($_POST['mot_de_passe'] == $_POST['confirm']) {
-                return true;                    
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+
+        //Puisque tous les champs sont en required, isset(nom) permet de s'assurer que les champs sont remplis.
+        //Si la condition est vérifiée, dans ce cas la fonction return false
+        //  et la boucle IF dans laquelle la fonction est utilisée n'est pas traversée.
+        return !(isset($_POST['nom']) && ($_POST['mot_de_passe'] == $_POST['confirm']));
+
+    }
+
+
+    function check_existing_email(){
+        $email = $_POST["email"];
+
+        $sql = "SELECT COUNT(*) as nb_utilisateur FROM utilisateur WHERE email='$email'"
+
+        $result = $connection->query($sql);
+
+        $res = $result->fetch();
+
+        return $res["nb_utilisateur"]!=0;
+        //Si la fonction return false, ça veut dire que l'email n'est pas utilisé.
     }
 
 

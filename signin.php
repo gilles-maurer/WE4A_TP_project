@@ -14,71 +14,47 @@
 <div id="MainContainer">
 
     <?php 
+
+    //Puisque tous les champs sont en required, l'existence d'un suffit à prouver l'existence des autres.
+    $condition = (isset($_POST['nom']));
     
-        require('SousPages/check_signin.php');
+    $nom = "";
+    $prenom = "";
+    $email = "";
+    $mot_de_passe = "";
+    $confirm = "";
+    $date_naissance = "";
 
-        if(check_informations()) {
+    $verif_email = false;
+    $verif_mdp = false;
 
-            require('SousPages/connectionbdd.php');
-            $connection = connect_db();
+    if($condition){
+        $nom = $_POST["nom"];
+        $prenom = $_POST["prenom"];
+        $email = $_POST["email"];
+        $mot_de_passe = $_POST["mot_de_passe"];
+        $confirm = $_POST["confirm"];
+        $date_naissance = $_POST["date_naissance"];
+    }
 
-            save_informations($connection); 
-            set_id_session($connection);
-            header('Location: ./blog.php');
-        } else if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['mot_de_passe']) && isset($_POST['confirm']) && isset($_POST['date_naissance'])) {
-        
-            ?>  
+    require('SousPages/check_signin.php');
 
-            <h1>Inscription :</h1>
+    if (check_existing_email()) {
+        //Si l'email est déjà pris
+        $verif_email = true;
+    } else if(check_informations()) {
+        //Si mdp et confirm ne correspondent pas
+        $verif_mdp = true;
+        $mot_de_passe = "";
+        $confirm = "";
+    } else {
+        require('SousPages/connectionbdd.php');
+        $connection = connect_db();
 
-            <form action="#" method="post">
-
-            <div>
-                <label for="nom">Nom :</label>
-                <input type="text" name="nom" placeholder="Nom" value="<?php echo $_POST['nom'];?>" required>
-            </div>
-
-            <div>
-                <label for="prenom">Prénom :</label>
-                <input type="text" name="prenom" placeholder="Prénom" value="<?php echo $_POST['prenom'];?>" required>
-            </div>
-
-            <div>
-                <label for="email">E-Mail :</label>
-                <input type="email" name="email" placeholder="email@addresse.fr" value="<?php echo $_POST['email'];?>" required>
-            </div>
-
-            <div>
-                <label for="date_naissance">Date de naissance :</label>
-                <input type="date" name="date_naissance" placeholder="JJ/MM/AAAA" value="<?php echo $_POST['date_naissance'];?>" required>
-            </div>
-
-            <div>
-                <p class=error> Les mots de passe ne correspondent pas. </p>
-            </div>
-
-            <div>
-                <label for="mot_de_passe">Mot de passe :</label>
-                <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
-            </div>
-
-            <div>
-                <label for="confirm">Confirmer le mot de passe :</label>
-                <input type="password" name="confirm" placeholder="Mot de passe" required>
-            </div>
-
-            <div>
-                <button type="submit">Envoyer</button>
-            </div>
-    </form>
-
-    <hr>
-
-    <p class="pcenter">Vous avez déjà un compte ? <a href="./login.php">Connectez-vous ici</a>.</p>
-          
-    <?php
-        } else {
-    ?>
+        save_informations($connection); 
+        set_id_session($connection);
+        header('Location: ./blog.php');
+    }?>
 
     <h1>Inscription :</h1>
 
@@ -86,32 +62,48 @@
 
         <div>
             <label for="nom">Nom :</label>
-            <input type="text" name="nom" placeholder="Nom" required>
+            <input type="text" name="nom" placeholder="Nom" value="<?php echo $nom;?>" required>
         </div>
 
         <div>
             <label for="prenom">Prénom :</label>
-            <input type="text" name="prenom" placeholder="Prénom" required>
+            <input type="text" name="prenom" placeholder="Prénom" value="<?php echo $prenom;?>" required>
         </div>
+
+        <?php
+        if ($verif_email){
+            ?>
+            <p class="warning">Cet email correspond à un compte déjà existant.</p>
+            <?php
+        }
+        ?>
 
         <div>
             <label for="email">E-Mail :</label>
-            <input type="email" name="email" placeholder="email@addresse.fr" required>
+            <input type="email" name="email" placeholder="email@addresse.fr" value="<?php echo $email;?>" required>
         </div>
 
         <div>
             <label for="date_naissance">Date de naissance :</label>
-            <input type="date" name="date_naissance" placeholder="JJ/MM/AAAA" required>
+            <input type="date" name="date_naissance" placeholder="JJ/MM/AAAA" value="<?php echo $date_naissance;?>" required>
         </div>
+
+        <?php
+        if ($verif_mdp){
+            ?>
+            <p class="warning">Les deux mots de passe ne correspondent pas.</p>
+            <?php
+        }
+        ?>
 
         <div>
             <label for="mot_de_passe">Mot de passe :</label>
-            <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
+            <input type="password" name="mot_de_passe" placeholder="Mot de passe" value="<?php echo $mot_de_passe;?>" required>
         </div>
 
         <div>
             <label for="confirm">Confirmer le mot de passe :</label>
-            <input type="password" name="confirm" placeholder="Confirmation" required>
+            <input type="password" name="confirm" placeholder="Mot de passe" value="<?php echo $confirm;?>" required>
         </div>
 
         <div>
@@ -122,10 +114,9 @@
     <hr>
 
     <p class="pcenter">Vous avez déjà un compte ? <a href="./login.php">Connectez-vous ici</a>.</p>
-
-    <?php } ?>
-
-<!--nom, prenom, email, mot_de_passe, date_naissance-->
+            
+        
+    <!--nom, prenom, email, mot_de_passe, date_naissance-->
 </div>
 
 </body>
