@@ -35,25 +35,26 @@
         $mot_de_passe = $_POST["mot_de_passe"];
         $confirm = $_POST["confirm"];
         $date_naissance = $_POST["date_naissance"];
-    }
+    
 
-    require('SousPages/check_signin.php');
-
-    if (check_existing_email()) {
-        //Si l'email est déjà pris
-        $verif_email = true;
-    } else if(check_informations()) {
-        //Si mdp et confirm ne correspondent pas
-        $verif_mdp = true;
-        $mot_de_passe = "";
-        $confirm = "";
-    } else {
+        require('SousPages/check_signin.php');
         require('SousPages/connectionbdd.php');
         $connection = connect_db();
 
-        save_informations($connection); 
-        set_id_session($connection);
-        header('Location: ./blog.php');
+        if (check_existing_email($connection)) {
+            //Si l'email est déjà pris
+            $verif_email = true;
+        } else if(check_informations()) {
+            //Si mdp et confirm ne correspondent pas
+            $verif_mdp = true;
+            $mot_de_passe = "";
+            $confirm = "";
+        } else {
+            //Si tout est bon
+            save_informations($connection); 
+            set_id_session($connection);
+            header('Location: ./blog.php');
+        }
     }?>
 
     <h1>Inscription :</h1>

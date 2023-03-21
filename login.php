@@ -24,21 +24,27 @@ if (isset($_POST["email"])){
     require('SousPages/connectionbdd.php');
     $connection = connect_db();
 
-    $sql = "SELECT * FROM utilisateur WHERE email='$email'"
-    $result = $connection->query($sql);
+    require('SousPages/sqlfunctions.php');
+    $result = check_login($connection, $email);
+
     $res = $result->fetch();
 
-    //Si l'adresse mail et le mot de passe correspondent
-    if ($email = $res["email"] && $mdp_5 = $res["mot_de_passe"]){
+    if ($result->rowCount() != 0){
+        //Si l'adresse mail et le mot de passe correspondent
+        if ($email == $res["email"] && $mdp_5 == $res["mot_de_passe"]){
 
-        setcookie('id_utilisateur', $res['id_utilisateur'], time() + 24*3600);
-        header('Location: ./blog.php');
+            setcookie("id_utilisateur", $res["ID_utilisateur"], time() + 24*3600);
+            header('Location: ./blog.php');
+            
 
+        } else {
+            ?><p class="warning">Le mot de passe et l'email ne correspondent pas.</p><?php
+            $mdp = "";
+        }
     } else {
-        ?><p class="warning">Le mot de passe et l'email ne correspondent pas.</p><?php
+        ?><p class="warning">L'email n'existe pas.</p><?php
         $mdp = "";
     }
-
 }
 
 
@@ -48,12 +54,12 @@ if (isset($_POST["email"])){
 
         <div>
             <label for="email">E-Mail :</label>
-            <input type="email" name="email" placeholder="email@addresse.fr" value=<?php echo $email;?> required>
+            <input type="email" name="email" placeholder="email@addresse.fr" value="<?php echo $email;?>" required>
         </div>
 
         <div>
             <label for="mot_de_passe">Mot de passe :</label>
-            <input type="password" name="mot_de_passe" placeholder="Mot de passe" value=<?php echo $mdp;?> required>
+            <input type="password" name="mot_de_passe" placeholder="Mot de passe" value="<?php echo $mdp;?>" required>
         </div>
 
         <div>

@@ -10,10 +10,10 @@
     }
 
 
-    function check_existing_email(){
+    function check_existing_email($connection){
         $email = $_POST["email"];
 
-        $sql = "SELECT COUNT(*) as nb_utilisateur FROM utilisateur WHERE email='$email'"
+        $sql = "SELECT COUNT(*) as nb_utilisateur FROM utilisateur WHERE email='$email'";
 
         $result = $connection->query($sql);
 

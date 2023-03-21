@@ -57,20 +57,13 @@
 
     // fonctions page login
 
-    function check_email($connexion) {
+    function check_login($connection, $email) {
 
-        $sql = "SELECT * FROM utilisateur WHERE email = '".$_POST['email']."'";
-        $result = $connexion->query($sql);
+        $sql = "SELECT * FROM utilisateur WHERE email='$email'";
+        $result = $connection->query($sql);
 
-        return $result;
-    }
+        return $result; 
 
-    function check_password($connexion) {
-
-        $sql = "SELECT * FROM utilisateur WHERE mot_de_passe = '".MD5($_POST['mot_de_passe'])."'";
-        $result = $connexion->query($sql);
-
-        return $result;
     }
 
 
