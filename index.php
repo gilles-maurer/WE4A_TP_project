@@ -19,11 +19,15 @@
     require('SousPages/sqlfunctions.php');
 
     $result = select_accueil_logout($connexion);
-    // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, nb like
-
+    // nom, prenom, date, distance, temps, vitesse, commentaire, lieu
 
     while ($row = $result->fetch()) {
+
+        $count_like = count_like($connexion, $row['id_post']);
+        $count_like = $count_like->fetch();
+
         echo "<div>
+        <p>".$row['id_post']."</p>
         <p>".$row['nom']."</p>
         <p>".$row['prenom']."</p>
         <p>".$row['date']."</p>
@@ -32,7 +36,17 @@
         <p>".$row['vitesse']." km/h</p>
         <p>".$row['commentaire']."</p>
         <p>".$row['lieu']."</p>
-        <p>".$row['nb_like']."</p>
+        <p>".$count_like['nb_like']."</p>";
+
+        if (isset($_COOKIE['id_utilisateur'])) {
+            echo "<form action='SousPages/like.php' method='post'>
+            <input type='hidden' name='id_post' value='".$row['id_post']."'>
+            <input type='hidden' name='id_utilisateur' value='".$_COOKIE['id_utilisateur']."'>
+            <input type='submit' value='Liker'>
+            </form>";
+        }
+
+        echo "
         </div>
         <br>
         <br>";

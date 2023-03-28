@@ -53,7 +53,7 @@
             //Si tout est bon
             save_informations($connection); 
             set_id_session($connection);
-            header('Location: ./blog.php');
+            header('Location: ./index.php');
         }
     }?>
 

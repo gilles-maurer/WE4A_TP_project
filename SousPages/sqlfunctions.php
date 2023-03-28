@@ -9,6 +9,7 @@
         $sql = "SELECT 
                     utilisateur.nom as nom, 
                     utilisateur.prenom as prenom, 
+                    post.id_post as id_post,
                     post.date as date, 
                     ROUND(post.distance / 1000, 2) as distance, 
                     post.temps as temps, 
@@ -18,15 +19,10 @@
                     ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
                     post.commentaire as commentaire,
                     post.lieu as lieu,
-                    post.id_post as ID_post,
-                    COUNT(*) as nb_like
-                    FROM 
-                        post INNER JOIN utilisateur 
-                            on post.ID_utilisateur = utilisateur.ID_utilisateur 
-                                LEFT OUTER JOIN liker 
-                                    on liker.ID_post = post.ID_post
-                GROUP BY
-                    post.ID_post
+                    post.id_post as ID_post
+                FROM 
+                    post INNER JOIN utilisateur 
+                        on post.ID_utilisateur = utilisateur.ID_utilisateur 
                 ORDER BY
                     post.date DESC
                 LIMIT 10;
@@ -35,6 +31,15 @@
         $result = $connexion->query($sql);
 
         return $result;
+    }
+
+    function count_like($connexion, $id_post) {
+
+        $sql = "SELECT COUNT(*) as nb_like FROM liker WHERE id_post = '".$id_post."'";
+        $result = $connexion->query($sql);
+
+        return $result;
+    
     }
 
 
