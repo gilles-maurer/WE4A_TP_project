@@ -17,7 +17,7 @@
                     MINUTE(post.temps) as temps_minutes,
                     SECOND(post.temps) as temps_secondes,
                     ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
-                    post.commentaire as commentaire,
+                    post.description as description,
                     post.lieu as lieu,
                     post.id_post as ID_post
                 FROM 
@@ -25,7 +25,7 @@
                         on post.ID_utilisateur = utilisateur.ID_utilisateur 
                 ORDER BY
                     post.date DESC
-                LIMIT 10;
+                LIMIT 30;
                 ";
 
         $result = $connexion->query($sql);
@@ -40,6 +40,22 @@
 
         return $result;
     
+    }
+
+    function is_like($connexion, $id_post, $id_utilisateur) {
+
+        $sql = "SELECT COUNT(*) as nb_like FROM liker WHERE id_post = '".$id_post."' AND id_utilisateur = '".$id_utilisateur."'";
+        $result = $connexion->query($sql);
+
+        return $result;
+    }
+
+    function find_comments($connexion, $id_post) {
+
+        $sql = "SELECT * FROM commentaire WHERE id_post = '".$id_post."'";
+        $result = $connexion->query($sql);
+
+        return $result;
     }
 
 
@@ -121,7 +137,7 @@
         MINUTE(post.temps) as temps_minutes,
         SECOND(post.temps) as temps_secondes,
         ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
-        post.commentaire as commentaire,
+        post.description as description,
         post.lieu as lieu,
         post.id_post as ID_post,
         COUNT(*) as nb_like
