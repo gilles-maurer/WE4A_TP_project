@@ -6,7 +6,6 @@
 
         // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, nb like
 
-
         $sql = "SELECT 
                     utilisateur.nom as nom, 
                     utilisateur.prenom as prenom, 
@@ -57,10 +56,10 @@
 
     // fonctions page login
 
-    function check_login($connection, $email) {
+    function check_login($connexion, $email) {
 
         $sql = "SELECT * FROM utilisateur WHERE email='$email'";
-        $result = $connection->query($sql);
+        $result = $connexion->query($sql);
 
         return $result; 
 
@@ -105,25 +104,94 @@
 
     // fonctions page blog
 
-    function select_blog_10($connexion) {
+    function select_blog_limited($connexion, $id, $limit) {
 
-        $sql = "SELECT * FROM post WHERE id_utilisateur = '".$_GET['id']."' ORDER BY date DESC LIMIT 10";
+        $sql = "SELECT 
+        utilisateur.nom as nom, 
+        utilisateur.prenom as prenom, 
+        post.date as date, 
+        ROUND(post.distance / 1000, 2) as distance, 
+        post.temps as temps, 
+        HOUR(post.temps) as temps_heures,
+        MINUTE(post.temps) as temps_minutes,
+        SECOND(post.temps) as temps_secondes,
+        ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
+        post.commentaire as commentaire,
+        post.lieu as lieu,
+        post.id_post as ID_post,
+        COUNT(*) as nb_like
+        FROM 
+            post INNER JOIN utilisateur 
+                on post.ID_utilisateur = utilisateur.ID_utilisateur 
+                    LEFT OUTER JOIN liker 
+                        on liker.ID_post = post.ID_post
+        WHERE 
+            post.ID_utilisateur = '".$id."'
+        GROUP BY
+            post.ID_post
+        ORDER BY
+            post.date DESC
+        LIMIT ".$limit.";
+        ";
+
+
         $result = $connexion->query($sql);
 
         return $result;
     }
 
-    function select_blog_20($connexion) {
+    function select_blog($connexion, $id) {
 
-        $sql = "SELECT * FROM post WHERE id_utilisateur = '".$_GET['id']."' ORDER BY date DESC LIMIT 20";
+        $sql = "SELECT 
+        utilisateur.nom as nom, 
+        utilisateur.prenom as prenom, 
+        post.date as date, 
+        ROUND(post.distance / 1000, 2) as distance, 
+        post.temps as temps, 
+        HOUR(post.temps) as temps_heures,
+        MINUTE(post.temps) as temps_minutes,
+        SECOND(post.temps) as temps_secondes,
+        ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
+        post.commentaire as commentaire,
+        post.lieu as lieu,
+        post.id_post as ID_post,
+        COUNT(*) as nb_like
+        FROM 
+            post INNER JOIN utilisateur 
+                on post.ID_utilisateur = utilisateur.ID_utilisateur 
+                    LEFT OUTER JOIN liker 
+                        on liker.ID_post = post.ID_post
+        WHERE 
+            post.ID_utilisateur = '".$id."'
+        GROUP BY
+            post.ID_post
+        ORDER BY
+            post.date DESC
+        ;";
+        
+        
         $result = $connexion->query($sql);
 
         return $result;
     }
 
-    function select_blog($connexion) {
 
-        $sql = "SELECT * FROM post WHERE id_utilisateur = '".$_GET['id']."' ORDER BY date DESC";
+    function select_recherche_blog($connexion, $recherche) {
+
+        $sql = "SELECT
+                    utilisateur.nom as nom,
+                    utilisateur.prenom as prenom,
+                    utilisateur.email as email
+                FROM
+                    utilisateur
+                WHERE
+                    utilisateur.nom LIKE '%".$recherche."%'
+                OR
+                    utilisateur.prenom LIKE '%".$recherche."%'
+                OR
+                    utilisateur.email LIKE '%".$recherche."%'
+                ;";
+
         $result = $connexion->query($sql);
 
         return $result;

@@ -128,3 +128,22 @@ VALUES
 (10, 3),
 (10, 4),
 (10, 5);
+
+
+UPDATE post SET commentaire = 'Belle journée pour courir !' WHERE ID_post = 1;
+UPDATE post SET commentaire = 'J''ai réussi à battre mon record personnel !' WHERE ID_post = 2;
+UPDATE post SET commentaire = 'Je suis épuisé, mais content de l''avoir fait.' WHERE ID_post = 3;
+UPDATE post SET commentaire = 'Superbe vue sur l''Hudson River !' WHERE ID_post = 4;
+UPDATE post SET commentaire = 'J''ai pris mon temps et j''ai vraiment apprécié cette course.' WHERE ID_post = 5;
+UPDATE post SET commentaire = 'Le vent m''a ralenti, mais j''ai quand même réussi à finir ma course.' WHERE ID_post = 6;
+UPDATE post SET commentaire = 'Il faisait chaud aujourd''hui, mais j''ai quand même réussi à faire ma course.' WHERE ID_post = 7;
+UPDATE post SET commentaire = 'Je me suis levé tôt pour courir, et j''ai vraiment apprécié la tranquillité du parc.' WHERE ID_post = 8;
+UPDATE post SET commentaire = 'Je suis content de ma course, mais je suis vraiment fatigué maintenant.' WHERE ID_post = 9;
+UPDATE post SET commentaire = 'J''ai couru avec mon ami aujourd''hui, c''était super motivant.' WHERE ID_post = 10;
+UPDATE post SET commentaire = 'Je suis heureux d''avoir fini ma course malgré la pluie.' WHERE ID_post = 11;
+UPDATE post SET commentaire = 'J''ai couru un peu plus lentement aujourd''hui, mais c''était toujours agréable.' WHERE ID_post = 12;
+UPDATE post SET commentaire = 'Je suis content d''avoir couru malgré ma mauvaise humeur ce matin.' WHERE ID_post = 13;
+UPDATE post SET commentaire = 'Les couleurs de l''automne étaient magnifiques pendant ma course aujourd''hui.' WHERE ID_post = 14;
+UPDATE post SET commentaire = 'J''ai bien couru, mais j''ai oublié d''apporter de l''eau.' WHERE ID_post = 15;
+UPDATE post SET commentaire = 'Je suis fier de moi pour avoir fini ma première course de 10 km.' WHERE ID_post = 16;
+UPDATE post SET commentaire = 'Je me suis blessé pendant ma course, mais heureusement ce n''était rien de grave.' WHERE ID_post = 17;
