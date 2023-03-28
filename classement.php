@@ -20,7 +20,7 @@
     require('SousPages/sqlfunctions.php');
 
     echo "<div>";
-    echo "<p>Classement nombre de courses</p>";
+    echo "<h2>Classement nombre de courses</h2>";
     echo "</div>";
 
     $result = classement_nb_courses($connexion);
@@ -42,7 +42,7 @@
     }
 
     echo "<div>";
-    echo "<p>Classement distance parcourue</p>";
+    echo "<h2>Classement distance parcourue</h2>";
     echo "</div>";
 
     $result = classement_distance($connexion);
@@ -64,7 +64,7 @@
     }
 
     echo "<div>";
-    echo "<p>Classement temps couru</p>";
+    echo "<h2>Classement temps couru</h2>";
     echo "</div>";
 
     $result = classement_temps($connexion);
