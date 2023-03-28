@@ -118,6 +118,10 @@
                     <p><?php echo $row['nom'];?></p>
                     <p><?php echo $row['prenom'];?></p>
                     <p><?php echo $row['email'];?></p>
+                    <form method="get" action="#">
+                        <input type="hidden" name="blog" value=" <?php echo $row['id_utilisateur'];?> ">
+                        <input type="submit" value="Voir le blog">
+                    </form>
                 </div>
                 <br>
                 <br>

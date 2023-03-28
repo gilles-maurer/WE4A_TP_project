@@ -181,7 +181,8 @@
         $sql = "SELECT
                     utilisateur.nom as nom,
                     utilisateur.prenom as prenom,
-                    utilisateur.email as email
+                    utilisateur.email as email,
+                    utilisateur.id_utilisateur as id_utilisateur            
                 FROM
                     utilisateur
                 WHERE
