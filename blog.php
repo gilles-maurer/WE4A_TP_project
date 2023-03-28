@@ -41,7 +41,7 @@
     if (isset($_GET["blog"])) { // si on a un get tout va bien
         $blog = $_GET["blog"];
 
-        echo "Tu es sur le blog de ".$blog;
+        echo "Tu es sur le blog de ".$blog; // A ENLEVER
 
     } else if (isset($_COOKIE["id_utilisateur"])) { // si pas de get mais qu'on a un cookie, on le prend et on relance la page
         $blog = $_COOKIE["id_utilisateur"];
@@ -140,18 +140,26 @@
         echo "Tu n'es sur aucun blog connecte toi pour en avoir un, ou recherche celui de quelqu'un d'autre";
     } else {
     
+
+        $titre = select_titre_blog($connexion, $blog);
+
+        $titre = $titre->fetch();
+
+        echo "<h1> Blog de ".$titre['prenom']." ".$titre['nom']."</h1>";
+
+
+
         if ($nb_post == "no_limit") {
             $result = select_blog($connexion, $blog);
         } else {
             $result = select_blog_limited($connexion, $blog, $nb_post);
         }
-    
+
         // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, nb like
-    
+
         while ($row = $result->fetch()) {
             echo "<div class='left'>
-            <p>".$row['nom']."</p>
-            <p>".$row['prenom']."</p>
+
             <p>".$row['date']."</p>
             <p>".$row['distance']." km</p>
             <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>

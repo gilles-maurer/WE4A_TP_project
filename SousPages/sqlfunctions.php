@@ -198,6 +198,24 @@
         return $result;
     }
 
+    function select_titre_blog($connexion, $blog) {
+
+        $sql = "SELECT
+                    utilisateur.nom as nom,
+                    utilisateur.prenom as prenom         
+                FROM
+                    utilisateur
+                WHERE
+                    utilisateur.id_utilisateur = '".$blog."'
+                ;";
+
+        $result = $connexion->query($sql);
+
+        return $result;
+
+
+    }
+
 
     // fonction page profil 
 
