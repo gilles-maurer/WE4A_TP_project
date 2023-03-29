@@ -26,8 +26,6 @@
         $count_like = count_like($connexion, $row['id_post']);
         $count_like = $count_like->fetch();
 
-        $is_like = is_like($connexion, $row['id_post'], $_COOKIE['id_utilisateur']);
-        $is_like = $is_like->fetch();
 
         // Affichage des posts
         echo "<div>
@@ -44,16 +42,22 @@
 
         // Formulaire like / unlike
         if (isset($_COOKIE['id_utilisateur'])) {
+
+            $is_like = is_like($connexion, $row['id_post'], $_COOKIE['id_utilisateur']);
+            $is_like = $is_like->fetch();    
+
             if ($is_like['nb_like'] == 0) {
                 echo "<form action='SousPages/like.php' method='post'>
                 <input type='hidden' name='id_post' value='".$row['id_post']."'>
                 <input type='hidden' name='id_utilisateur' value='".$_COOKIE['id_utilisateur']."'>
+                <input type='hidden' name='path' value='../index.php'>
                 <input type='submit' value='Like'>
                 </form>";
             } else {
                 echo "<form action='SousPages/like.php' method='post'>
                 <input type='hidden' name='id_post' value='".$row['id_post']."'>
                 <input type='hidden' name='id_utilisateur' value='".$_COOKIE['id_utilisateur']."'>
+                <input type='hidden' name='path' value='../index.php'>
                 <input type='submit' value='Unlike'>
                 </form>";
             }
@@ -71,6 +75,7 @@
             echo "<form action='SousPages/comment.php' method='post'>
             <input type='hidden' name='id_post' value='".$row['id_post']."'>
             <input type='hidden' name='id_utilisateur' value='".$_COOKIE['id_utilisateur']."'>
+            <input type='hidden' name='path' value='../index.php'>
             <input type='text' name='texte'>
             <input type='submit' value='Commenter'>
             </form>";

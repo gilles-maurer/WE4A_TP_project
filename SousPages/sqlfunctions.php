@@ -130,6 +130,7 @@
         $sql = "SELECT 
         utilisateur.nom as nom, 
         utilisateur.prenom as prenom, 
+        post.id_post as id_post,
         post.date as date, 
         ROUND(post.distance / 1000, 2) as distance, 
         post.temps as temps, 
@@ -166,6 +167,7 @@
         $sql = "SELECT 
         utilisateur.nom as nom, 
         utilisateur.prenom as prenom, 
+        post.id_post as id_post,
         post.date as date, 
         ROUND(post.distance / 1000, 2) as distance, 
         post.temps as temps, 

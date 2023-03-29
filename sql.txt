@@ -159,20 +159,20 @@ UPDATE post SET description = 'Je me suis blessé pendant ma course, mais heureu
 
 INSERT INTO commentaire (ID_post, ID_utilisateur, texte, date)
 VALUES
-    (1, 3, "Belle performance !", "2023-03-28"),
-    (1, 2, "Félicitations pour la performance !", "2023-03-28"),
-    (1, 5, "Incroyable performance !", "2023-03-28"),
-    (2, 1, "Superbe effort !", "2023-03-28"),
-    (2, 4, "Bravo pour la performance !", "2023-03-28"),
-    (3, 3, "Très belle performance !", "2023-03-28"),
-    (3, 1, "Impressionnant !", "2023-03-28"),
-    (4, 5, "Tu as tout donné !", "2023-03-28"),
-    (5, 2, "Une performance solide !", "2023-03-28"),
-    (5, 4, "C'est incroyable !", "2023-03-28"),
-    (6, 1, "Bravo pour cette course !", "2023-03-28"),
-    (7, 3, "Tu es un vrai champion !", "2023-03-28"),
-    (8, 2, "Une performance remarquable !", "2023-03-28"),
-    (9, 5, "C'est fantastique !", "2023-03-28"),
-    (10, 4, "Excellent travail !", "2023-03-28");
+    (1, 3, "Belle performance !", "2023-03-28 08:36:00"),
+    (1, 2, "Félicitations pour la performance !", "2023-03-28 08:36:00"),
+    (1, 5, "Incroyable performance !", "2023-03-28 08:36:00"),
+    (2, 1, "Superbe effort !", "2023-03-28 08:36:00"),
+    (2, 4, "Bravo pour la performance !", "2023-03-28 08:36:00"),
+    (3, 3, "Très belle performance !", "2023-03-28 08:36:00"),
+    (3, 1, "Impressionnant !", "2023-03-28 08:36:00"),
+    (4, 5, "Tu as tout donné !", "2023-03-28 08:36:00"),
+    (5, 2, "Une performance solide !", "2023-03-28 08:36:00"),
+    (5, 4, "C'est incroyable !", "2023-03-28 08:36:00"),
+    (6, 1, "Bravo pour cette course !", "2023-03-28 08:36:00"),
+    (7, 3, "Tu es un vrai champion !", "2023-03-28 08:36:00"),
+    (8, 2, "Une performance remarquable !", "2023-03-28 08:36:00"),
+    (9, 5, "C'est fantastique !", "2023-03-28 08:36:00"),
+    (10, 4, "Excellent travail !", "2023-03-28 08:36:00");
 
 
