@@ -15,6 +15,6 @@
     $connexion->query($sql);
 
 
-    header('Location: ../index.php')
+    header('Location: '.$_POST['path']);
 
 ?>

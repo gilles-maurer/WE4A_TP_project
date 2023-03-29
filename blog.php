@@ -172,48 +172,11 @@
             <p>".$row['lieu']."</p>
             <p>".$count_like['nb_like']."</p>";
 
+            $path = "../blog.php?blog=".$blog;
 
-            // Formulaire like / unlike
-            if (isset($_COOKIE['id_utilisateur'])) {
+            include("SousPages/like_comment.php");
 
-                $is_like = is_like($connexion, $row['id_post'], $_COOKIE['id_utilisateur']);
-                $is_like = $is_like->fetch();    
 
-                if ($is_like['nb_like'] == 0) {
-                    echo "<form action='SousPages/like.php' method='post'>
-                    <input type='hidden' name='id_post' value='".$row['id_post']."'>
-                    <input type='hidden' name='id_utilisateur' value='".$_COOKIE['id_utilisateur']."'>
-                    <input type='hidden' name='path' value='../blog.php?blog=".$blog."'>
-                    <input type='submit' value='Like'>
-                    </form>";
-                } else {
-                    echo "<form action='SousPages/like.php' method='post'>
-                    <input type='hidden' name='id_post' value='".$row['id_post']."'>
-                    <input type='hidden' name='id_utilisateur' value='".$_COOKIE['id_utilisateur']."'>
-                    <input type='hidden' name='path' value='../blog.php?blog=".$blog."'>
-                    <input type='submit' value='Unlike'>
-                    </form>";
-                }
-            }
-
-            // Commentaires
-            $comments = find_comments($connexion, $row['id_post']);
-
-            while ($comment = $comments->fetch()) {
-                echo "<p>".$comment['texte']."</p>";
-            }    
-
-            // Formulaire commentaire
-            if (isset($_COOKIE['id_utilisateur'])) {
-                echo "<form action='SousPages/comment.php' method='post'>
-                <input type='hidden' name='id_post' value='".$row['id_post']."'>
-                <input type='hidden' name='id_utilisateur' value='".$_COOKIE['id_utilisateur']."'>
-                <input type='hidden' name='path' value='../blog.php?blog=".$blog."'>
-                <input type='text' name='texte'>
-                <input type='submit' value='Commenter'>
-                </form>";
-            }
-            
             echo "</div>
             <br><hr>
             <br>";

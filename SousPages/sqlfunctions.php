@@ -52,7 +52,20 @@
 
     function find_comments($connexion, $id_post) {
 
-        $sql = "SELECT * FROM commentaire WHERE id_post = '".$id_post."'";
+        $sql = "SELECT 
+                    commentaire.id_post as id_post,
+                    commentaire.id_utilisateur as id_utilisateur,
+                    commentaire.date as date,
+                    commentaire.texte as texte,
+                    utilisateur.nom as nom,
+                    utilisateur.prenom as prenom
+                FROM 
+                    commentaire INNER JOIN utilisateur 
+                        ON commentaire.id_utilisateur = utilisateur.id_utilisateur
+                WHERE 
+                    id_post = '".$id_post."'
+                ORDER BY date DESC";
+
         $result = $connexion->query($sql);
 
         return $result;
