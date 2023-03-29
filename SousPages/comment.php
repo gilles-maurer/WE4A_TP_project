@@ -5,13 +5,13 @@
 
     $id_post = $_POST['id_post'];
     $id_utilisateur = $_POST['id_utilisateur'];
-    $date = date("Y-m-d");
+    $datetime = date("Y-m-d H:i:s");
     $texte = $_POST['texte'];
 
     $sql = "INSERT INTO 
                 commentaire (id_post, id_utilisateur, date, texte) 
             VALUES 
-                (".$id_post.", ".$id_utilisateur.", ".$date.", '".$texte."');";
+                (".$id_post.", ".$id_utilisateur.", '".$datetime."', '".$texte."');";
     $connexion->query($sql);
 
 

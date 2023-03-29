@@ -29,7 +29,7 @@ FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur));
 
 
 CREATE TABLE commentaire (ID_post INT NOT NULL, ID_utilisateur INT NOT NULL,
-date DATE NOT NULL, texte VARCHAR(255) NOT NULL, 
+date DATETIME NOT NULL, texte VARCHAR(255) NOT NULL, 
 PRIMARY KEY (ID_post, ID_utilisateur, date),
 FOREIGN KEY (ID_post) REFERENCES post(ID_post),
 FOREIGN KEY (ID_utilisateur) REFERENCES utilisateur(ID_utilisateur));
