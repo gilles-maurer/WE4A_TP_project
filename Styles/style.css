@@ -44,7 +44,7 @@ body{
 
 	margin: 50px auto auto auto;
 	padding: 30px;
-	width: 70%;
+	width: 80%;
 
 	background-color:hsl(50, 60%, 85%);
 
@@ -70,6 +70,25 @@ h1,h2,h3,h4,h5,h6{
 }
 
 h1{
+
+    font-size: 45px;
+    font-family: century gothic, sans-serif;
+    letter-spacing: 7px;
+
+    margin: 30px auto 30px -13px;
+    padding: 30px 0px 30px 0px;
+    width: 100%;
+
+    background-color: hsl(15, 50%, 60%);
+
+    border-radius: 10px;
+    border-style: groove;
+    border-width: 10px;
+    border-color: hsla(15, 50%, 40%, 80%);
+
+}
+
+h2{
 
     margin: auto;
     padding: 10px;
@@ -200,9 +219,10 @@ input{
 button{
 
     font-family: var(--font);
+    font-size: 18px;
 
     margin: 10px auto 10px auto;
-    padding: 5px;
+    padding: 12px;
 
     background-color: hsl(15, 70%, 20%);
     color:hsl(50, 60%, 85%);
@@ -261,3 +281,61 @@ button{
 /*=======================================================
 ========================= AUTRES ========================
 =======================================================*/
+
+.row{
+    display: flex;
+}
+
+/*
+On ne peut pas utiliser MainContainer pour un affichage en colonnes
+puisque le padding prend trop de place.
+On recopie donc le code CSS de MainContainer en modifiant le padding.
+*/
+.column-main{
+
+    flex: 65%;
+    padding: 0px 2% 0px 2%;
+
+    margin: 25px auto auto auto;
+	width: 90%;
+
+	background-color:hsl(50, 60%, 85%);
+
+	border-width: 6px 6px; 
+	border-style: groove; 
+	border-color: hsla(25, 70%, 25%, 50%);
+    border-radius: 60px;
+
+}
+
+/*
+Ceci est utilisé aux côtés de column-main pour afficher des informations supplémentaires.
+*/
+.column-second{
+
+    flex: 35%;
+    padding: 0px 2% 0px 2%;
+
+    margin: 45px auto auto auto;
+
+}
+
+/*
+Ceci est utilisé dans blog.php pour un affichage en 3 colonnes.
+*/
+.column-third{
+
+    flex: 28%;
+    padding: 1%;
+
+    margin: 25px 1% auto 2%;
+	width: 85%;
+
+	background-color:hsl(50, 60%, 85%);
+
+	border-width: 6px 6px; 
+	border-style: groove; 
+	border-color: hsla(25, 70%, 25%, 50%);
+    border-radius: 60px;
+
+}

@@ -11,50 +11,52 @@
 
 <?php include("SousPages/navbar.php");?>
 
+<div id="MainContainer">
 
-<h1>RunShare</h1>
-
-
-<?php 
-    require('SousPages/connectionbdd.php'); 
-    $connexion = connect_db();
-
-    require('SousPages/sqlfunctions.php');
-
-    $result = select_accueil_logout($connexion);
-    // nom, prenom, date, distance, temps, vitesse, commentaire, lieu
-
-    while ($row = $result->fetch()) {
-
-        $count_like = count_like($connexion, $row['id_post']);
-        $count_like = $count_like->fetch();
+    <h1>RunShare</h1>
 
 
-        // Affichage des posts 
-        // A FAIRE : enlever id_post
-        echo "<div>
-        <p>".$row['id_post']."</p> 
-        <p>".$row['nom']." ".$row['prenom']."</p>
-        <p>".$row['date']."</p>
-        <p>".$row['distance']." km</p>
-        <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>
-        <p>".$row['vitesse']." km/h</p>
-        <p>".$row['description']."</p>
-        <p>".$row['lieu']."</p>
-        <p>".$count_like['nb_like']."</p>";
+    <?php 
+        require('SousPages/connectionbdd.php'); 
+        $connexion = connect_db();
 
-        $path = "../index.php";
+        require('SousPages/sqlfunctions.php');
 
-        include("SousPages/like_comment.php");
+        $result = select_accueil_logout($connexion);
+        // nom, prenom, date, distance, temps, vitesse, commentaire, lieu
 
-        echo "
-        </div>
-        <br> <hr>
-        <br>";
-    }
+        while ($row = $result->fetch()) {
 
-?>
+            $count_like = count_like($connexion, $row['id_post']);
+            $count_like = $count_like->fetch();
 
+
+            // Affichage des posts 
+            // A FAIRE : enlever id_post
+            echo "<div>
+            <p>".$row['id_post']."</p> 
+            <form action='#'><button type='submit'>".$row['nom']." ".$row['prenom']."</button></form>
+            <p>".$row['date']."</p>
+            <p>".$row['distance']." km</p>
+            <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>
+            <p>".$row['vitesse']." km/h</p>
+            <p>".$row['description']."</p>
+            <p>".$row['lieu']."</p>
+            <p>".$count_like['nb_like']."</p>";
+
+            $path = "../index.php";
+
+            include("SousPages/like_comment.php");
+
+            echo "
+            </div>
+            <br> <hr>
+            <br>";
+        }
+
+    ?>
+
+</div>
 
 </body>
 

@@ -11,7 +11,7 @@
 
 <?php include("SousPages/navbar.php");?>
 
-
+<div class="row">
 <?php
 
     require('SousPages/connectionbdd.php');
@@ -19,9 +19,8 @@
 
     require('SousPages/sqlfunctions.php');
 
-    echo "<div>";
+    echo "<div class='column-third'>";
     echo "<h2>Classement nombre de courses</h2>";
-    echo "</div>";
 
     $result = classement_nb_courses($connexion);
 
@@ -31,19 +30,15 @@
 
         $i = $i + 1;
 
-        echo "<div>";
         echo "<p>".$i."</p>";
         echo "<p>".$row['nom']."</p>";
         echo "<p>".$row['prenom']."</p>";
         echo "<p>".$row['nb_courses']."</p>";
-        echo "</div>";
-        echo "<br>";
-        echo "<br>";
+        echo "<br><br>";
     }
 
-    echo "<div>";
+    echo "</div><div class='column-third'>";
     echo "<h2>Classement distance parcourue</h2>";
-    echo "</div>";
 
     $result = classement_distance($connexion);
 
@@ -53,19 +48,16 @@
 
         $i = $i + 1;
 
-        echo "<div>";
         echo "<p>".$i."</p>";
         echo "<p>".$row['nom']."</p>";
         echo "<p>".$row['prenom']."</p>";
         echo "<p>".$row['distance']." km</p>";
-        echo "</div>";
         echo "<br>";
         echo "<br>";
     }
 
-    echo "<div>";
+    echo "</div><div class='column-third'>";
     echo "<h2>Classement temps couru</h2>";
-    echo "</div>";
 
     $result = classement_temps($connexion);
 
@@ -79,12 +71,10 @@
         $temps_minute = floor(($row['temps'] - $temps_heure*3600)/60);
         $temps_seconde = $row['temps'] - $temps_heure*3600 - $temps_minute*60;
         
-        echo "<div>";
         echo "<p>".$i."</p>";
         echo "<p>".$row['nom']."</p>";
         echo "<p>".$row['prenom']."</p>";
         echo "<p>".$temps_heure."h".$temps_minute."min".$temps_seconde."s</p>";
-        echo "</div>";
         echo "<br>";
         echo "<br>";
     }
@@ -92,6 +82,7 @@
 
 ?>
 
+</div></div>
 
 </body>
 
