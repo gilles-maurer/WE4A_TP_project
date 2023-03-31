@@ -1,6 +1,6 @@
 <?php 
     define('USER', "root");
-    define('PASSWD', "");
+    define('PASSWD', "root");
     define('SERVER', "localhost");
     define('BASE', "RunShare"); 
 
@@ -12,8 +12,13 @@
             $conn = new PDO($dsn, USER, PASSWD);
         }
         catch(PDOException $e){
-            printf("Echec de connexion : %s\n", $e->getMessage());
-            exit();
+            try{
+                $conn = new PDO($dsn, USER, "");
+            }
+            catch(PDOException $e){
+                printf("Echec de connexion : %s\n", $e->getMessage());
+                exit(); 
+            }
         }
         return $conn;
     }
