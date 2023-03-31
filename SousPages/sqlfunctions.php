@@ -299,7 +299,7 @@
                     utilisateur.nom as nom,
                     utilisateur.prenom as prenom,
                     utilisateur.id_utilisateur as id_utilisateur,
-                    SUM(post.distance) as distance
+                    ROUND(SUM(post.distance) / 1000, 2) as distance
                 FROM
                     utilisateur
                 INNER JOIN
