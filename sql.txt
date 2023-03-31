@@ -46,9 +46,9 @@ VALUES
   ('Garcia', 'Juan', 'juangarcia@example.com', MD5('password7'), '2010-01-01', '2022-01-07'),
   ('Garcia', 'Maria', 'mariagarcia@example.com', MD5('password8'), '2015-01-01', '2022-01-08'),
   ('Kim', 'Sung', 'sungkim@example.com', MD5('password9'), '2020-01-01', '2022-01-09'),
-  ('Kim', 'Ji', 'jikim@example.com', MD5('password10'), '2025-01-01', '2022-01-10');
-  ('Brichet', 'Clément', 'clement.brichet@utbm.fr', MD5('clement'), '2003-03-07', '2023-03-31')
-  ('Maurer', 'Gilles', 'gilles.maurer@utbm.fr', MD5('gilles'), '2003-03-26', '2023-03-31')
+  ('Kim', 'Ji', 'jikim@example.com', MD5('password10'), '2025-01-01', '2022-01-10'),
+  ('Brichet', 'Clément', 'clement.brichet@utbm.fr', MD5('clement'), '2003-03-07', '2023-03-31'),
+  ('Maurer', 'Gilles', 'gilles.maurer@utbm.fr', MD5('gilles'), '2003-03-26', '2023-03-31');
 
 
 INSERT INTO abonne (ID_suivie, ID_suiveur)
