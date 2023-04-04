@@ -152,7 +152,7 @@
 
         
 
-        <div class="right"> 
+        <!-- <div class="right"> 
 
             <form method="get" action="#">
                 <input type="hidden" name="blog" value="<?php echo $blog;?>">
@@ -194,6 +194,12 @@
                 }
             }
         ?>
+
+    </div> -->
+
+    <div class='right'> 
+
+       <?php include("AJAX/recherche_blog.php"); ?> 
 
     </div>
 
