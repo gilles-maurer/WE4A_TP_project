@@ -183,7 +183,7 @@
 
     </div>
 
-    <div class="column-second">
+    <div class="column-side">
 
     <?php
 

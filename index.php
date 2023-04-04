@@ -33,21 +33,55 @@
 
             // Affichage des posts 
             // A FAIRE : enlever id_post
-            echo "<div>
-            <p>".$row['id_post']."</p> 
+            echo "
+            <div>
+                <p>".$row['id_post']."</p> 
 
-            <form action='blog.php'>
-                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-            </form>
+                <form action='blog.php'>
+                    <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                    <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+                </form>
 
-            <p>".$row['date']."</p>
-            <p>".$row['distance']." km</p>
-            <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>
-            <p>".$row['vitesse']." km/h</p>
-            <p>".$row['description']."</p>
-            <p>".$row['lieu']."</p>
+                <p>".$row['date']."</p>
+                <p>".$row['lieu']."</p>
+                
+                <p>".$row['description']."</p>
+
+                <div class='box'>
+                    <div class='boximage'>
+                        <img src='./Icones/distance.png'>
+                    </div>
+                    <div class='boxtext'>
+                        <p>".$row['distance']." km</p>
+                    </div>
+                </div>
+
+                <div class='box'>
+                    <div class='boximage'>
+                        <img src='./Icones/duree.png'>
+                    </div>
+                    <div class='boxtext'>
+                    <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>
+                    </div>
+                </div>
+
+                <div class='box'>
+                    <div class='boximage'>
+                        <img src='./Icones/vitesse.png'>
+                    </div>
+                    <div class='boxtext'>
+                        <p>".$row['vitesse']." km/h</p>
+                    </div>
+                </div>
+            
+            </div>
+            
             <p>".$count_like['nb_like']."</p>";
+
+            //Nom, date, lieu
+            //Description
+            //Distance, temps, vitesse
+            //Likes, commentaires
 
             $path = "../index.php";
 

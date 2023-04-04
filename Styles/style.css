@@ -129,6 +129,40 @@ p{
     color: hsl(15, 60%, 60%);
 }
 
+.box{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: hsla(0, 0%, 100%, 80%);
+
+    border-radius: 5px;
+    border-style: solid;
+    border-color: hsl(50, 50%, 90%);
+    border-width: 3px;
+
+}
+
+.boximage{
+
+    flex-basis: 40%;
+
+}
+
+.boxtext{
+
+    padding-left: 20px;
+    font-size: 24px;
+
+}
+
+img{
+
+    max-width: 100%;
+
+}
+
 /*=======================================================
 =================== HEADER, FOOTER, HR ==================
 =======================================================*/
@@ -169,7 +203,7 @@ a:visited {
 
 a:hover{
 
-	color:hsl(150, 50%, 30%);;
+	color:hsl(50, 50%, 30%);;
 
 }
 
@@ -311,7 +345,7 @@ On recopie donc le code CSS de MainContainer en modifiant le padding.
 /*
 Ceci est utilisé aux côtés de column-main pour afficher des informations supplémentaires.
 */
-.column-second{
+.column-side{
 
     flex: 35%;
     padding: 0px 2% 0px 2%;
