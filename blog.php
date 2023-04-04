@@ -116,7 +116,7 @@
                         </form>";
                     } else {
 
-                        $result = get_abonnement($connexion, $blog, $_COOKIE["id_utilisateur"]);
+                        $result = get_nb_abonnement($connexion, $blog, $_COOKIE["id_utilisateur"]);
                         $result = $result->fetch();
 
                         if ($result["nb_abonnement"] == 0) {

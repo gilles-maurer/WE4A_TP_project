@@ -28,6 +28,8 @@
     require ("SousPages/sqlfunctions.php");
 
     $id = $_COOKIE['id_utilisateur'];
+    
+    echo "<h2> Mes informations </h2>";
 
     $result = get_informations($connection, $id);
 
@@ -47,17 +49,46 @@
     echo "<p> Date d'inscription : ".$row['date_inscription']."</p>";
 
 
+    echo "<h2> Mes abonnements </h2>";
+
+    $result = get_abonnement($connection, $id);
+
+    while($row = $result->fetch()) {
+        $id_suivie = $row['id_suivie'];
+        $result2 = get_informations($connection, $id_suivie);
+        $row2 = $result2->fetch();
+        echo "<p> Nom : ".$row2['nom']."</p>";
+        echo "<p> Prénom : ".$row2['prenom']."</p>";
+        echo "<p> Email : ".$row2['email']."</p>";
+        echo "<p> Date de naissance : ".$row2['date_naissance']."</p>";
+        echo "<p> Date d'inscription : ".$row2['date_inscription']."</p>";
+    }
+
+
+    echo "<h2> Mes abonnés </h2>";
+
+    $result = get_abonne($connection, $id);
+
+    while($row = $result->fetch()) {
+        $id_suiveur = $row['id_suiveur'];
+        $result2 = get_informations($connection, $id_suiveur);
+        $row2 = $result2->fetch();
+        echo "<p> Nom : ".$row2['nom']."</p>";
+        echo "<p> Prénom : ".$row2['prenom']."</p>";
+        echo "<p> Email : ".$row2['email']."</p>";
+        echo "<p> Date de naissance : ".$row2['date_naissance']."</p>";
+        echo "<p> Date d'inscription : ".$row2['date_inscription']."</p>";
+    }
 
 
     ?>
 
-    <!-- T'en fait ce que tu veux de ce form mdr  -->
-    <div>
+    <!-- bouton déconnexion -->
 
+    <div>
         <form action='#' method='post'>
             
             <div>
-                <!-- Caché -->
                 <input type="hidden" name="id_utilisateur" value="<?php echo $id; ?>">
             </div>
             <div>

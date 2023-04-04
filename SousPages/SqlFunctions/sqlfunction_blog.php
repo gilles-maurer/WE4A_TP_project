@@ -137,7 +137,7 @@ function get_stats_blog($connexion, $id_utilisateur) {
 }
 
 
-function get_abonnement($connexion, $id_suivie, $id_suiveur) {
+function get_nb_abonnement($connexion, $id_suivie, $id_suiveur) {
 
     $sql = "SELECT COUNT(*) as nb_abonnement FROM abonne WHERE id_suivie = '".$id_suivie."' AND id_suiveur = '".$id_suiveur."';";
     $result = $connexion->query($sql);
