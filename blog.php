@@ -43,9 +43,8 @@
             */
 
             if (isset($_GET["blog"])) { // si on a un get tout va bien
-                $blog = $_GET["blog"];
 
-                echo "Tu es sur le blog de ".$blog; // A ENLEVER
+                $blog = $_GET["blog"];
 
             } else if (isset($_COOKIE["id_utilisateur"])) { // si pas de get mais qu'on a un cookie, on le prend et on relance la page
                 $blog = $_COOKIE["id_utilisateur"];
@@ -198,31 +197,31 @@
 
     <div class="column-side">
 
-    <?php
+        <?php
 
-        if(isset($_COOKIE["id_utilisateur"]) && $_COOKIE["id_utilisateur"] != $blog) {
+            if(isset($_COOKIE["id_utilisateur"]) && $_COOKIE["id_utilisateur"] != $blog) {
 
-            echo "
-            <form action='blog.php'>
-                    <input type='hidden' name='blog' value='".$_COOKIE['id_utilisateur']."'>
-                    <button type='submit'>Retourner sur mon blog</button>
-            </form>"; 
-            
-            
-
-
-        }
-
-    ?>
+                echo "
+                <form action='blog.php'>
+                        <input type='hidden' name='blog' value='".$_COOKIE['id_utilisateur']."'>
+                        <button type='submit'>Retourner sur mon blog</button>
+                </form>"; 
+                
+                
 
 
-    <div> 
+            }
 
-       <?php include("AJAX/recherche_blog.php"); ?> 
+        ?>
+
+
+        <div> 
+
+        <?php include("AJAX/recherche_blog.php"); ?> 
+
+        </div>
 
     </div>
-
-</div>
 
 </body>
 

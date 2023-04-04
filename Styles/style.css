@@ -129,18 +129,33 @@ p{
     color: hsl(15, 60%, 60%);
 }
 
+/*
+Utilisé pour le flex
+*/
 .box{
 
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    padding: 1%;
 
-    background-color: hsla(0, 0%, 100%, 80%);
+    background-color: hsla(0, 0%, 100%, 60%);
 
     border-radius: 5px;
     border-style: solid;
-    border-color: hsl(50, 50%, 90%);
+    border-color: hsla(15, 40%, 60%, 60%);
     border-width: 3px;
+
+}
+
+.box-invisible{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 1%;
 
 }
 
@@ -153,7 +168,7 @@ p{
 .boxtext{
 
     padding-left: 20px;
-    font-size: 24px;
+    font-size: 16px;
 
 }
 
@@ -238,9 +253,9 @@ input{
 
     font-family: var(--font);
 
-    margin: 10px auto 10px auto;
-    padding: 10px;
-    width: 20%;
+    margin: 10px;
+    padding: 15px;
+    /*width: 20%;*/
 
     background-color: var(--white);;
 
@@ -355,7 +370,7 @@ Ceci est utilisé aux côtés de column-main pour afficher des informations supp
 }
 
 /*
-Ceci est utilisé dans blog.php pour un affichage en 3 colonnes.
+Ceci est utilisé dans blog.php pour un affichage en 3 colonnes, basé sur main container
 */
 .column-third{
 
@@ -371,5 +386,16 @@ Ceci est utilisé dans blog.php pour un affichage en 3 colonnes.
 	border-style: groove; 
 	border-color: hsla(25, 70%, 25%, 50%);
     border-radius: 60px;
+
+}
+
+/*
+Comme column-third, mais sans le fond de main container (pour un affichage dans un container)
+*/
+
+.column-third-no-bg{
+
+    flex: 28%;
+    padding: 1%;
 
 }
