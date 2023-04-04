@@ -115,10 +115,23 @@
                             <input type='submit' value='Ajouter un post'>
                         </form>";
                     } else {
-                        echo "<form method='post' action='SousPages/abonnement.php'>
-                            <input type='hidden' name='blog' value='".$blog."'>
-                            <input type='submit' value='Suivre'>
-                            </form>";
+
+                        $result = get_abonnement($connexion, $blog, $_COOKIE["id_utilisateur"]);
+                        $result = $result->fetch();
+
+                        if ($result["nb_abonnement"] == 0) {
+                            echo "<form method='post' action='SousPages/abonnement.php'>
+                                <input type='hidden' name='id_suivie' value='".$blog."'>
+                                <input type='hidden' name='id_suiveur' value='".$_COOKIE["id_utilisateur"]."'>
+                                <input type='submit' value='Suivre'>
+                                </form>";
+                        } else {
+                            echo "<form method='post' action='SousPages/abonnement.php'>
+                                <input type='hidden' name='id_suivie' value='".$blog."'>
+                                <input type='hidden' name='id_suiveur' value='".$_COOKIE["id_utilisateur"]."'>
+                                <input type='submit' value='Ne plus suivre'>
+                                </form>";
+                        }
 
                         $result = get_stats_blog($connexion, $blog); 
 
