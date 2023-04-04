@@ -107,6 +107,41 @@
 
                 echo "<h1> Blog de ".$titre['prenom']." ".$titre['nom']."</h1>";
 
+                echo "<hr>"; 
+
+                if (isset($_COOKIE["id_utilisateur"])) {
+                    if ($_COOKIE["id_utilisateur"] == $blog) {
+                        echo "<form method='post' action='SousPages/ajout_post.php'>
+                            <input type='submit' value='Ajouter un post'>
+                        </form>";
+                    } else {
+                        echo "<form method='post' action='SousPages/abonnement.php'>
+                            <input type='hidden' name='blog' value='".$blog."'>
+                            <input type='submit' value='Suivre'>
+                            </form>";
+
+                        $result = get_stats_blog($connexion, $blog); 
+
+                        $result = $result->fetch(); 
+
+                        $temps_heure = floor($result['temps']/3600);
+                        $temps_minute = floor(($result['temps'] - $temps_heure*3600)/60);
+                        $temps_seconde = $result['temps'] - $temps_heure*3600 - $temps_minute*60;
+
+                        echo "<p>Distance parcourue : ".$result["distance"]." km</p>";
+                        
+                        echo "<p>Temps couru : ".$temps_heure." h ".$temps_minute." min ".$temps_seconde." s</p>";
+                        echo "<p>Nombre de courses : ".$result["nb_courses"]."</p>";
+
+
+
+
+                    }
+                }
+
+
+                echo "<hr>";
+
 
 
                 if ($nb_post == "no_limit") {
@@ -150,54 +185,25 @@
 
     <div class="column-second">
 
-        
+    <?php
 
-        <!-- <div class="right"> 
+        if(isset($_COOKIE["id_utilisateur"]) && $_COOKIE["id_utilisateur"] != $blog) {
 
-            <form method="get" action="#">
-                <input type="hidden" name="blog" value="<?php echo $blog;?>">
-                <input type="hidden" name="nb_post" value="<?php echo $nb_post;?>">
-                
-                <input type="text" name="recherche" placeholder="Recherche">
-
-                <input type="submit" value="Rechercher">
-            </form>
-
-        </div>
+            echo "
+            <form action='blog.php'>
+                    <input type='hidden' name='blog' value='".$_COOKIE['id_utilisateur']."'>
+                    <button type='submit'>Retourner sur mon blog</button>
+            </form>"; 
+            
+            
 
 
-        <?php 
+        }
 
-            if ($recherche != "") {
+    ?>
 
-                $result = select_recherche_blog($connexion, $recherche);
 
-                // nom, prenom, email
-                while ($row = $result->fetch()) {
-
-                ?>
-                        
-                        <div class="left">
-                            <p><?php echo $row['nom'];?></p>
-                            <p><?php echo $row['prenom'];?></p>
-                            <p><?php echo $row['email'];?></p>
-                            <form method="get" action="#">
-                                <input type="hidden" name="blog" value=" <?php echo $row['id_utilisateur'];?> ">
-                                <input type="submit" value="Voir le blog">
-                            </form>
-                        </div>
-                        <br>
-                        <br>
-
-                <?php
-
-                }
-            }
-        ?>
-
-    </div> -->
-
-    <div class='right'> 
+    <div> 
 
        <?php include("AJAX/recherche_blog.php"); ?> 
 

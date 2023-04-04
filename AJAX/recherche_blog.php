@@ -6,8 +6,8 @@ timer = 0;
 
 //Timer qui boucle toutes les secondes pour changer la variable globale
 function TimerIncrease() {
-  timer+=1000;
-  setTimeout('TimerIncrease()',1000);
+  timer+=500;
+  setTimeout('TimerIncrease()',500);
 }
 TimerIncrease();
 
@@ -27,9 +27,6 @@ function suggestNamesFromInput(currentText) {
   
 }
 
-function autoFillName(nametext){
-  document.getElementById("suggestField").value = nametext;
-}
 
 </script>
 <hr>

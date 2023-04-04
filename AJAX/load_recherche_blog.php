@@ -33,7 +33,7 @@
             }
         }
         else {
-            echo '(pas de suggestion pour le texte actuel)';
+            echo 'pas de résultats !';
         }
     }
     else{

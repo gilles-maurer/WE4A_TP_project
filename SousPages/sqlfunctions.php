@@ -253,6 +253,28 @@
 
     }
 
+    
+    function get_stats_blog($connexion, $id_utilisateur) {
+
+        $sql = "SELECT 
+                    COUNT(post.id_post) as nb_courses,
+                    ROUND(SUM(post.distance) / 1000, 2) as distance,
+                    SUM(SECOND(post.temps) + MINUTE(post.temps) * 60 + HOUR(post.temps) * 3600) as temps
+                FROM                     
+                    utilisateur
+                INNER JOIN
+                    post
+                ON
+                    utilisateur.id_utilisateur = post.id_utilisateur
+                WHERE 
+                    utilisateur.id_utilisateur = ".$id_utilisateur.";"; 
+
+        $result = $connexion->query($sql); 
+
+        return $result; 
+
+    }
+
 
     // fonction page profil 
 
