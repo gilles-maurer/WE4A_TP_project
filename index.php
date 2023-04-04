@@ -35,7 +35,12 @@
             // A FAIRE : enlever id_post
             echo "<div>
             <p>".$row['id_post']."</p> 
-            <form action='#'><button type='submit'>".$row['nom']." ".$row['prenom']."</button></form>
+
+            <form action='blog.php'>
+                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+            </form>
+
             <p>".$row['date']."</p>
             <p>".$row['distance']." km</p>
             <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>

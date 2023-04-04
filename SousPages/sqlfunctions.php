@@ -7,6 +7,7 @@
         // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, nb like
 
         $sql = "SELECT 
+                    utilisateur.id_utilisateur as id_utilisateur,
                     utilisateur.nom as nom, 
                     utilisateur.prenom as prenom, 
                     post.id_post as id_post,
