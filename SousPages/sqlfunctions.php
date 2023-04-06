@@ -19,6 +19,10 @@
 
     include("SqlFunctions/sqlfunction_blog.php");
 
+    // fonctions page post 
+
+    include("SqlFunctions/sqlfunction_post.php");
+
 
     // fonction page profil 
 

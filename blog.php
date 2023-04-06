@@ -7,6 +7,33 @@
 <link rel="stylesheet" href="./Styles/style.css"> 
 </head>
 
+<script> 
+
+function notification() {
+
+    if (confirm("Are you sure you want to proceed?")) {
+        alert("You clicked OK!")
+    } else {
+        alert("You clicked Cancel!")
+    }
+}
+
+
+</script>
+
+<?php
+
+    if(isset($_POST["delete"])) {
+        
+        ?>
+        <script>
+        notification();
+        </script>
+        <?php
+    }
+
+?>
+
 <body>
 
 <?php include("SousPages/navbar.php");?>
@@ -110,7 +137,7 @@
 
                 if (isset($_COOKIE["id_utilisateur"])) {
                     if ($_COOKIE["id_utilisateur"] == $blog) {
-                        echo "<form method='post' action='SousPages/ajout_post.php'>
+                        echo "<form method='post' action='post.php'>
                             <input type='submit' value='Ajouter un post'>
                         </form>";
                     } else {
@@ -183,6 +210,22 @@
 
                     include("SousPages/like_comment.php");
 
+                    if (isset($_COOKIE["id_utilisateur"])) {
+                        if ($_COOKIE["id_utilisateur"] == $blog) {
+                            echo "<form method='post' action='#'>
+                                <input type='hidden' name='id_post' value='".$row['id_post']."'>
+                                <input type='hidden' name='delete' id='delete' value='1'>
+                                <input type='submit' value='Supprimer'>
+                                </form>";
+
+                            
+                            
+                            echo "<form method='post' action='post.php'>
+                                <input type='hidden' name='id_post_modif' value='".$row['id_post']."'>
+                                <input type='submit' value='Modifier'>
+                                </form>";
+                        }
+                    }
 
                     echo "</div>
                     <br><hr>
