@@ -19,7 +19,7 @@
 
     include("SqlFunctions/sqlfunction_blog.php");
 
-    // fonctions page post 
+    // fonctions page post + delete post
 
     include("SqlFunctions/sqlfunction_post.php");
 

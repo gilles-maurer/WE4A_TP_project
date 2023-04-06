@@ -7,36 +7,37 @@
 <link rel="stylesheet" href="./Styles/style.css"> 
 </head>
 
-<script> 
+<!-- <script> 
 
-function notification() {
+function notification($id_post) {
 
-    if (confirm("Are you sure you want to proceed?")) {
-        alert("You clicked OK!")
-    } else {
-        alert("You clicked Cancel!")
+    if (confirm("Voulez vous vraiment supprimer ce post ?")) { 
+
+        window.location.href = "deletepost.php?post="+$id_post;
+
     }
 }
 
-
-</script>
+</script> -->
 
 <?php
 
-    if(isset($_POST["delete"])) {
+    // if(isset($_POST["delete"])) {
         
         ?>
         <script>
-        notification();
+    //         notification();
         </script>
         <?php
-    }
+    // }
 
-?>
+?> 
+
 
 <body>
 
 <?php include("SousPages/navbar.php");?>
+
 
 <?php 
 
@@ -212,18 +213,18 @@ function notification() {
 
                     if (isset($_COOKIE["id_utilisateur"])) {
                         if ($_COOKIE["id_utilisateur"] == $blog) {
-                            echo "<form method='post' action='#'>
-                                <input type='hidden' name='id_post' value='".$row['id_post']."'>
-                                <input type='hidden' name='delete' id='delete' value='1'>
+                            
+                            ?>
+                            <form action="SousPages/delete_post.php" onsubmit="return confirm('Etes vous sur de vouloir effacer?')" method='post'>
+                                <input type='hidden' name='id_post' value='<?php echo $row['id_post'];?>'>
                                 <input type='submit' value='Supprimer'>
-                                </form>";
+                            </form>
 
-                            
-                            
-                            echo "<form method='post' action='post.php'>
-                                <input type='hidden' name='id_post_modif' value='".$row['id_post']."'>
+                            <form method='post' action='post.php'>
+                                <input type='hidden' name='id_post_modif' value='<?php echo $row['id_post'];?>'>
                                 <input type='submit' value='Modifier'>
-                                </form>";
+                                </form>
+                            <?php
                         }
                     }
 
@@ -267,5 +268,6 @@ function notification() {
     </div>
 
 </body>
+
 
 </html> 

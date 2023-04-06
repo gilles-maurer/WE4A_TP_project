@@ -42,4 +42,12 @@ function insert_post($connexion, $id_utilisateur, $date, $distance, $temps, $lie
 }
 
 
+function delete_post($connexion, $id_post) {
+
+    $sql = "DELETE FROM post WHERE id_post = '".$id_post."';";
+
+    $connexion->query($sql);
+
+}
+
 ?>

@@ -67,7 +67,7 @@
         </div>
         <div>
         <label for="distance">Distance (en m) : </label>
-        <input type="number" name="distance" id="distance" value="<?php echo $distance; ?>" step="1000" required>
+        <input type="number" name="distance" id="distance" value="<?php echo $distance; ?>" required>
         </div>
         <div>
         <label for="temps">Durée : </label>
