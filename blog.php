@@ -124,7 +124,7 @@ function notification($id_post) {
 
 
             if ($blog == 0) {
-                echo "Tu n'es sur aucun blog connecte toi pour en avoir un, ou recherche celui de quelqu'un d'autre";
+                echo "<p>Tu n'es sur aucun blog. Connecte toi pour en avoir un, ou recherche celui de quelqu'un d'autre !<p>";
             } else {
             
 

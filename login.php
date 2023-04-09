@@ -9,9 +9,12 @@
 
 <body>
 
-<?php include("SousPages/navbar.php");
+<?php include("SousPages/navbar.php");?>
 
-$email = "";
+<div id="MainContainer">
+<h1>Connexion :</h1>
+
+<?php $email = "";
 $mdp = "";
 
 if (isset($_POST["email"])){
@@ -67,7 +70,7 @@ if (isset($_POST["email"])){
         </div>
         
     </form>
-
+</div>
 </body>
 
 </html> 

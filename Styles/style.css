@@ -23,6 +23,7 @@ throughout the document, such as colours, fonts, etc
 
     --font: verdana, sans-serif;
     --white: hsl(50, 60%, 92%);
+    --red-white: hsl(15, 30%, 92%);
 
 }
 
@@ -140,11 +141,11 @@ Utilisé pour le flex
     
     padding: 1%;
 
-    background-color: hsla(0, 0%, 100%, 60%);
+    background-color: var(--white);
 
     border-radius: 5px;
     border-style: solid;
-    border-color: hsla(15, 40%, 60%, 60%);
+    border-color: hsla(50, 40%, 60%, 40%);
     border-width: 3px;
 
 }
@@ -175,6 +176,34 @@ Utilisé pour le flex
 img{
 
     max-width: 100%;
+
+}
+
+/*
+Utilisés pour les commentaires
+*/
+.commentuser{
+
+    margin: auto;
+    padding: 8px;
+    width: 12em;
+
+    background-color: var(--red-white);
+    
+    border-width: 3px;
+    border-color: hsla(15, 30%, 80%, 40%);
+    border-style: groove;
+    border-radius: 5px;
+
+}
+
+.commenttext{
+
+    margin: auto;
+    padding: 8px;
+    width: 12em;
+
+    background-color: var(--white);
 
 }
 
@@ -326,6 +355,77 @@ button{
     color: hsl(15, 80%, 10%);
 
 }
+
+
+/*=======================================================
+======================= CLASSEMENT ======================
+=======================================================*/
+
+.firstplace{
+
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    width: 1em;
+
+    background-color: hsl(50, 60%, 60%);
+    
+    border-color: hsl(50, 60%, 40%);
+    border-style: groove;
+    border-width: 5px;
+    border-radius: 5px;
+
+}
+
+.secondplace{
+
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    width: 1em;
+
+    background-color: hsl(200, 10%, 80%);
+    
+    border-color: hsl(200, 10%, 40%);
+    border-style: groove;
+    border-width: 5px;
+    border-radius: 5px;
+
+}
+
+.thirdplace{
+
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    width: 1em;
+
+    background-color: hsl(15, 30%, 60%);
+    
+    border-color: hsl(15, 30%, 40%);
+    border-style: groove;
+    border-width: 5px;
+    border-radius: 5px;
+
+}
+
+.otherplaces{
+
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    width: 1em;
+
+    background-color: hsl(200, 10%, 60%);
+    
+    border-color: hsl(200, 10%, 40%);
+    border-style: groove;
+    border-width: 5px;
+    border-radius: 5px;
+
+}
+
+
 
 /*=======================================================
 ========================= AUTRES ========================

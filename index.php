@@ -32,10 +32,8 @@
 
 
             // Affichage des posts 
-            // A FAIRE : enlever id_post
             echo "
             <div>
-                <p>".$row['id_post']."</p> 
 
                 <form action='blog.php'>
                     <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
@@ -43,11 +41,13 @@
                 </form>
 
                 <p>".$row['date']."</p>
-                <p>".$row['lieu']."</p>
-                
-                <p class='box'>".$row['description']."</p>
+                <p>".$row['lieu']."</p>";
 
-                <div class='row'>
+                if(!($row['description']=="")){
+                    echo "<p class='box'>".$row['description']."</p>";
+                }
+
+                echo "<div class='row'>
 
                     <div class='column-third-no-bg'>
                         <div class='box'>
@@ -88,15 +88,15 @@
             <div class='row'>
                 <div class='column-third-no-bg'>
                     <div class='box-invisible'>
-                    <div class='boxtext'>
-                        <p>".$count_like['nb_like']." encouragements au compteur !</p>
-                    </div>
+                        <div class='boxtext'>
+                            <p>".$count_like['nb_like']." encouragements au compteur !</p>
+                        </div>
                         <div class='boximage'>";
 
-                        $path = "../index.php";
+                            $path = "../index.php";
 
-                        include("SousPages/like_comment.php");
-                        //Les </div> nécessaires sont dans ce include
+                            include("SousPages/like_comment.php");
+                            //Les </div> nécessaires sont dans ce include
 
                 echo "
             </div>

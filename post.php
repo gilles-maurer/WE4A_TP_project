@@ -41,7 +41,7 @@
             $lieu = $result["lieu"];
             $description = $result["description"];
 
-            echo "<h2> Modification d'un post </h2>";
+            echo "<h1> Modification d'un post </h1>";
             
         } else {
             $id_post = "";
@@ -52,7 +52,7 @@
             $lieu = "";
             $description = "";
 
-            echo "<h2> Création d'un post </h2>";
+            echo "<h1> Création d'un post </h1>";
         }
     
     ?> 
