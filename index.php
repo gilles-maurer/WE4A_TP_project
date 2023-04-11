@@ -65,9 +65,15 @@
                             <div class='boximage'>
                                 <img src='./Icones/duree.png'>
                             </div>
-                            <div class='boxtext'>
-                            <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>
-                            </div>
+                            <div class='boxtext'>"; 
+
+                            if ($row['temps_heures'] == 0) {
+                                echo "<p>".$row['temps_minutes']."min</p>";
+                            } else {
+                                echo "<p>".$row['temps_heures']."h".$row['temps_minutes']."min</p>";
+                            }
+
+                        echo "</div>
                         </div>
                     </div>
 

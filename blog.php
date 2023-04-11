@@ -170,7 +170,12 @@ function notification($id_post) {
 
                         echo "<p>Distance parcourue : ".$result["distance"]." km</p>";
                         
-                        echo "<p>Temps couru : ".$temps_heure." h ".$temps_minute." min ".$temps_seconde." s</p>";
+                        if ($temps_heure == 0) {
+                            echo "<p>A couru pendant ".$temps_minute." min !</p>";
+                        } else {
+                            echo "<p>A couru pendant ".$temps_heure." h et ".$temps_minute." min !</p>";
+                        }
+
                         echo "<p>Nombre de courses : ".$result["nb_courses"]."</p>";
 
 
@@ -200,9 +205,15 @@ function notification($id_post) {
                     echo "<div class='left'>
 
                     <p>".$row['date']."</p>
-                    <p>".$row['distance']." km</p>
-                    <p>".$row['temps_heures']."h".$row['temps_minutes']."min".$row['temps_secondes']."s</p>
-                    <p>".$row['vitesse']." km/h</p>
+                    <p>".$row['distance']." km</p>";
+
+                    if ($row["temps_heures"] == 0) {
+                        echo "<p>".$row["temps_minutes"]." min</p>";
+                    } else {
+                        echo "<p>".$row["temps_heures"]." h ".$row["temps_minutes"]." min</p>";
+                    }
+
+                    echo "<p>".$row['vitesse']." km/h</p>
                     <p>".$row['description']."</p>
                     <p>".$row['lieu']."</p>
                     <p>".$count_like['nb_like']."</p>";

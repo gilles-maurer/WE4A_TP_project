@@ -94,7 +94,12 @@
             echo "<p class='otherplaces'>".$i."</p>";
         }
         echo "<p>".$row['nom']." ".$row['prenom']."</p>";
-        echo "<p>A couru pendant ".$temps_heure."h".$temps_minute."min".$temps_seconde."s !</p>";
+
+        if ($temps_heure == 0) {
+            echo "<p>A couru pendant ".$temps_minute." min !</p>";
+        } else {
+            echo "<p>A couru pendant ".$temps_heure." h et ".$temps_minute." min !</p>";
+        }
         echo "<br>";
         echo "<br>";
     }
