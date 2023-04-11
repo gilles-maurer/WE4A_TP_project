@@ -36,7 +36,7 @@
             $id_post = $result["ID_post"];
             $id_utilisateur = $result["ID_utilisateur"];
             $date = $result["date"];
-            $distance = $result["distance"];
+            $distance = $result["distance"] / 1000;
             $temps = $result["temps"];
             $lieu = $result["lieu"];
             $description = $result["description"];
@@ -66,11 +66,11 @@
         <input type="date" name="date" id="date" value="<?php echo $date; ?>" required>
         </div>
         <div>
-        <label for="distance">Distance (en m) : </label>
-        <input type="number" name="distance" id="distance" value="<?php echo $distance; ?>" required>
+        <label for="distance">Distance (en km) : </label>
+        <input type="number" name="distance" id="distance" step="0.1" value="<?php echo $distance; ?>" required>
         </div>
         <div>
-        <label for="temps">Durée : </label>
+        <label for="temps">Durée (hh:mm) : </label>
         <input type="time" name="temps" id="temps" value="<?php echo $temps; ?>" required>
         </div>
         <div>

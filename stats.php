@@ -55,14 +55,11 @@
         $result = get_abonnement($connection, $id);
 
         while($row = $result->fetch()) {
-            $id_suivie = $row['id_suivie'];
+            $id_suivie = $row['ID_suivie'];
             $result2 = get_informations($connection, $id_suivie);
             $row2 = $result2->fetch();
-            echo "<p> Nom : ".$row2['nom']."</p>";
-            echo "<p> Prénom : ".$row2['prenom']."</p>";
-            echo "<p> Email : ".$row2['email']."</p>";
-            echo "<p> Date de naissance : ".$row2['date_naissance']."</p>";
-            echo "<p> Date d'inscription : ".$row2['date_inscription']."</p>";
+
+            echo "<p> ".$row2['nom']." ".$row2['prenom']."</p>";
         }
 
 
@@ -71,14 +68,11 @@
         $result = get_abonne($connection, $id);
 
         while($row = $result->fetch()) {
-            $id_suiveur = $row['id_suiveur'];
+            $id_suiveur = $row['ID_suiveur'];
             $result2 = get_informations($connection, $id_suiveur);
             $row2 = $result2->fetch();
-            echo "<p> Nom : ".$row2['nom']."</p>";
-            echo "<p> Prénom : ".$row2['prenom']."</p>";
-            echo "<p> Email : ".$row2['email']."</p>";
-            echo "<p> Date de naissance : ".$row2['date_naissance']."</p>";
-            echo "<p> Date d'inscription : ".$row2['date_inscription']."</p>";
+
+            echo "<p> ".$row2['nom']." ".$row2['prenom']."</p>";
         }
 
 
