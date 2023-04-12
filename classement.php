@@ -39,7 +39,12 @@
         } else {
             echo "<p class='otherplaces'>".$i."</p>";
         }
-        echo "<p>".$row['nom']." ".$row['prenom']."</p>";
+        
+        echo "<form action='blog.php'>
+                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+        </form>";          
+        
         echo "<p>A couru ".$row['nb_courses']." fois !</p>";
         echo "<br><br>";
     }
@@ -64,7 +69,12 @@
         } else {
             echo "<p class='otherplaces'>".$i."</p>";
         }
-        echo "<p>".$row['nom']." ".$row['prenom']."</p>";
+        
+        echo "<form action='blog.php'>
+                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+        </form>";  
+            
         echo "<p>A parcouru ".$row['distance']."km !</p>";
         echo "<br><br>";
     }
@@ -93,7 +103,11 @@
         } else {
             echo "<p class='otherplaces'>".$i."</p>";
         }
-        echo "<p>".$row['nom']." ".$row['prenom']."</p>";
+
+        echo "<form action='blog.php'>
+                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+            </form>";  
 
         if ($temps_heure == 0) {
             echo "<p>A couru pendant ".$temps_minute." min !</p>";

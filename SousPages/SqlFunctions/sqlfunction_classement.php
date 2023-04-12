@@ -17,6 +17,7 @@ function classement_nb_courses($connexion) {
                 utilisateur.id_utilisateur
             ORDER BY
                 nb_courses DESC
+            LIMIT 10
             ;"; 
 
     $result = $connexion->query($sql);
@@ -42,6 +43,7 @@ function classement_distance($connexion) {
                 utilisateur.id_utilisateur
             ORDER BY
                 distance DESC
+            LIMIT 10
             ;"; 
 
     $result = $connexion->query($sql);
@@ -67,6 +69,7 @@ function classement_temps($connexion) {
                 utilisateur.id_utilisateur
             ORDER BY
                 temps DESC
+            LIMIT 10
             ;"; 
 
     $result = $connexion->query($sql);
