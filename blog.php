@@ -183,33 +183,10 @@
                     $count_like = count_like($connexion, $row['id_post']);
                     $count_like = $count_like->fetch();
 
-                    echo "
-
-                    <p>".$row['date']."</p>
-                    <p>".$row['distance']." km</p>";
-
-                    if ($row["temps_heures"] == 0) {
-                        echo "<p>".$row["temps_minutes"]." min</p>";
-                    } else {
-                        echo "<p>".$row["temps_heures"]." h ".$row["temps_minutes"]." min</p>";
-                    }
-
-                    echo "<p>".$row['vitesse']." km/h</p>
-                    <p>".$row['description']."</p>
-                    <p>".$row['lieu']."</p>
-                    <p>".$count_like['nb_like']."</p>";
-
-                    // Mêmes divs que sur index.php (pas dans un include car le path n'est pas le même)
-                    echo "<div class='row'>
-                            <div class='column-third-no-bg'>
-                                <div class='box-invisible'>
-                                    <div class='boxtext'>
-                                        <p>".$count_like['nb_like']." encouragements au compteur !</p>
-                                    </div>
-                                    <div class='boximage'>";
-                                        $path = "../blog.php?blog=".$blog;
-                                        include("SousPages/like_comment.php");
-                                        //</div>s inclus dans ce include
+                    include("SousPages/contenu_blog.php");
+                    $path = "../blog.php?blog=".$blog;
+                    include("SousPages/like_comment.php");
+                    //</div>s inclus dans ce include
 
                     // Si on regarde des posts de notre propre blog, on a l'option de les supprimer ou de les modifier
                     if (isset($_COOKIE["id_utilisateur"])) {
