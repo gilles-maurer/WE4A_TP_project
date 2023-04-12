@@ -27,9 +27,18 @@
 
         require('SousPages/sqlfunctions.php');
 
-        $result = select_accueil_logout($connexion);
-        // nom, prenom, date, distance, temps, vitesse, commentaire, lieu
+        if (isset($_COOKIE["id_utilisateur"])) {
+            $result = select_accueil_login($connexion, $_COOKIE["id_utilisateur"]);
+            // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, description
+            // n'affiche pas les posts de l'utilisateur
+            // met en premier les posts des personnes qu'il suit
 
+
+        } else {
+            $result = select_accueil_logout($connexion);
+            // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, description
+        }
+        
         while ($row = $result->fetch()) {
 
             $count_like = count_like($connexion, $row['id_post']);
