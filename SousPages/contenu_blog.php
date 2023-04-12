@@ -1,3 +1,4 @@
+<?php 
 echo "
 <p>".$row['date']."</p>
 <p>".$row['lieu']."</p>";
@@ -57,3 +58,4 @@ echo "<div class='row'>
         <p>".$count_like['nb_like']." encouragements au compteur !</p>
     </div>
     <div class='boximage'>";
+    ?>

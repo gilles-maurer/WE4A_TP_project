@@ -46,25 +46,23 @@
 
 
             // Affichage des posts 
-            echo "
-            <div>
-
-                <form action='blog.php'>
-                    <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                    <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-                </form>";
+            echo "<div>
+                    <form action='blog.php'>
+                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+                    </form>";?>
 
                 
-                include("SousPages/contenu_blog.php");
-                $path = "../index.php";
+            <?php
+            include("SousPages/contenu_blog.php");
+            $path = "../index.php";
 
-                include("SousPages/like_comment.php");
-                //Les </div> nécessaires sont dans ce include
+            include("SousPages/like_comment.php");
+            //Les </div> nécessaires sont dans ce include
 
-                echo "
-            </div>
-            <br> <hr>
-            <br>";
+            echo "</div>
+                <br> <hr>
+                <br>";
         }
 
     ?>
