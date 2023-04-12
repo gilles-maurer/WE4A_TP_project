@@ -54,6 +54,8 @@
 
         $result = get_abonnement($connection, $id);
 
+        echo "<div class='box-invisible'>";
+
         while($row = $result->fetch()) {
             $id_suivie = $row['ID_suivie'];
             $result2 = get_informations($connection, $id_suivie);
@@ -66,10 +68,14 @@
         
         }
 
+        echo "</div>";
+
         echo "<hr>";
         echo "<h2> Mes abonnés </h2>";
 
         $result = get_abonne($connection, $id);
+
+        echo "<div class='box-invisible'>";
 
         while($row = $result->fetch()) {
             $id_suiveur = $row['ID_suiveur'];
@@ -82,6 +88,8 @@
                 </form>";          
             
             }
+
+        echo "</div>";
 
 
         ?>
