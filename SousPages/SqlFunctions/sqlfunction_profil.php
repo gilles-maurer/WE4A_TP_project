@@ -1,5 +1,7 @@
 <?php
 
+// renvoie les informations d'un utilisateur en fonction de son id
+
 function get_informations($connexion, $id) {
 
     $sql = "SELECT 
@@ -19,6 +21,7 @@ function get_informations($connexion, $id) {
     return $result;
 }
 
+// renvoie les id des utilisateurs qui suivent l'utilisateur en fonction de son id
 
 function get_abonne($connexion, $id) {
 
@@ -28,6 +31,7 @@ function get_abonne($connexion, $id) {
     return $result;
 }
 
+// renvoie les id des utilisateurs que l'utilisateur suit en fonction de son id
 
 function get_abonnement($connexion, $id) {
 

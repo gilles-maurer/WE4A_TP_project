@@ -1,5 +1,7 @@
 <?php
 
+// crée un nouvel utilisateur dans la base de données
+
 function sign_in($connexion) {
 
     $sql = "INSERT INTO utilisateur 

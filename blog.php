@@ -124,7 +124,7 @@
                         // S'il est sur le blog de quelqu'un d'autre :
                     } else {
 
-                        $result = get_nb_abonnement($connexion, $blog, $_COOKIE["id_utilisateur"]);
+                        $result = is_follow_by($connexion, $blog, $_COOKIE["id_utilisateur"]);
                         $result = $result->fetch();
 
                         // Si l'utilisateur n'est pas ou est abonné (le dernier input change en fonction)

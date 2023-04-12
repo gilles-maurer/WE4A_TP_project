@@ -1,5 +1,10 @@
 <?php
 
+
+// renvoie les posts les plus récents de la base de donnée (prends une limité à 10)
+// est appelé dans la page d'accueil si l'utilisateur n'est pas connecté
+// ordonnés par date décroissante
+
 function select_accueil_logout($connexion) {
 
     // nom, prenom, date, distance, temps, vitesse, commentaire, lieu
@@ -31,6 +36,13 @@ function select_accueil_logout($connexion) {
 
     return $result;
 }
+
+
+// est appelé dans la page d'accueil si l'utilisateur n'est pas connecté
+// renvoie les posts des utilisateurs que l'utilisateur connecté suit jusqu'à 10 jours 
+// renvoie ensuite les posts les plus récents d'autres utilisateurs 
+// limite à 10 posts
+// ne renvoie pas les posts de l'utilisateur connecté
 
 function select_accueil_login($connexion, $id_utilisateur) {
 
@@ -74,6 +86,9 @@ function select_accueil_login($connexion, $id_utilisateur) {
 
 }
 
+
+// compte le nombre de like d'un post
+
 function count_like($connexion, $id_post) {
 
     $sql = "SELECT COUNT(*) as nb_like FROM liker WHERE id_post = '".$id_post."'";
@@ -83,6 +98,9 @@ function count_like($connexion, $id_post) {
 
 }
 
+
+// renvoie 1 si l'utilisateur connecté a liké le post, 0 sinon
+
 function is_like($connexion, $id_post, $id_utilisateur) {
 
     $sql = "SELECT COUNT(*) as nb_like FROM liker WHERE id_post = '".$id_post."' AND id_utilisateur = '".$id_utilisateur."'";
@@ -90,6 +108,9 @@ function is_like($connexion, $id_post, $id_utilisateur) {
 
     return $result;
 }
+
+
+// renvoie les commentaires d'un post ainsi que les informations de l'utilisateur qui a commenté
 
 function find_comments($connexion, $id_post) {
 

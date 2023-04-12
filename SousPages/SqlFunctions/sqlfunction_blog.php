@@ -1,5 +1,8 @@
 <?php
 
+// renvoie les posts d'un utilisateur en fonction de son id (prends une limite de nombre de posts)
+// ordonnés par date décroissante
+
 function select_blog_limited($connexion, $id, $limit) {
 
     $sql = "SELECT 
@@ -8,24 +11,18 @@ function select_blog_limited($connexion, $id, $limit) {
     post.id_post as id_post,
     post.date as date, 
     ROUND(post.distance / 1000, 2) as distance, 
-    post.temps as temps, 
     HOUR(post.temps) as temps_heures,
     MINUTE(post.temps) as temps_minutes,
     SECOND(post.temps) as temps_secondes,
     ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
     post.description as description,
     post.lieu as lieu,
-    post.id_post as ID_post,
-    COUNT(*) as nb_like
+    post.id_post as ID_post
     FROM 
         post INNER JOIN utilisateur 
-            on post.ID_utilisateur = utilisateur.ID_utilisateur 
-                LEFT OUTER JOIN liker 
-                    on liker.ID_post = post.ID_post
+            ON post.ID_utilisateur = utilisateur.ID_utilisateur 
     WHERE 
         post.ID_utilisateur = '".$id."'
-    GROUP BY
-        post.ID_post
     ORDER BY
         post.date DESC
     LIMIT ".$limit.";
@@ -37,6 +34,10 @@ function select_blog_limited($connexion, $id, $limit) {
     return $result;
 }
 
+
+// renvoie les posts d'un utilisateur en fonction de son id (sans limite de nombre de posts)
+// ordonnés par date décroissante
+
 function select_blog($connexion, $id) {
 
     $sql = "SELECT 
@@ -45,24 +46,18 @@ function select_blog($connexion, $id) {
     post.id_post as id_post,
     post.date as date, 
     ROUND(post.distance / 1000, 2) as distance, 
-    post.temps as temps, 
     HOUR(post.temps) as temps_heures,
     MINUTE(post.temps) as temps_minutes,
     SECOND(post.temps) as temps_secondes,
     ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
     post.commentaire as commentaire,
     post.lieu as lieu,
-    post.id_post as ID_post,
-    COUNT(*) as nb_like
+    post.id_post as ID_post
     FROM 
         post INNER JOIN utilisateur 
             on post.ID_utilisateur = utilisateur.ID_utilisateur 
-                LEFT OUTER JOIN liker 
-                    on liker.ID_post = post.ID_post
     WHERE 
         post.ID_utilisateur = '".$id."'
-    GROUP BY
-        post.ID_post
     ORDER BY
         post.date DESC
     ;";
@@ -73,6 +68,8 @@ function select_blog($connexion, $id) {
     return $result;
 }
 
+
+// recherche les utilisateurs en fonction d'une chaîne de caractères (nom, prénom, email)
 
 function select_recherche_blog($connexion, $recherche) {
 
@@ -96,6 +93,8 @@ function select_recherche_blog($connexion, $recherche) {
     return $result;
 }
 
+// renvoie le nom et le prénom d'un utilisateur en fonction de son id
+
 function select_titre_blog($connexion, $blog) {
 
     $sql = "SELECT
@@ -114,6 +113,8 @@ function select_titre_blog($connexion, $blog) {
 
 }
 
+
+// renvoie les statistiques d'un utilisateur en fonction de son id
 
 function get_stats_blog($connexion, $id_utilisateur) {
 
@@ -137,7 +138,9 @@ function get_stats_blog($connexion, $id_utilisateur) {
 }
 
 
-function get_nb_abonnement($connexion, $id_suivie, $id_suiveur) {
+// renvoie 1 si l'utilisateur est abonné à l'utilisateur dont l'id est $id_suivie, 0 sinon
+
+function is_follow_by($connexion, $id_suivie, $id_suiveur) {
 
     $sql = "SELECT COUNT(*) as nb_abonnement FROM abonne WHERE id_suivie = '".$id_suivie."' AND id_suiveur = '".$id_suiveur."';";
     $result = $connexion->query($sql);

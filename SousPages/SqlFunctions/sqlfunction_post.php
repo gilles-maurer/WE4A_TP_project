@@ -1,5 +1,6 @@
 <?php
 
+// renvoie les informations d'un post en fonction de son id
 
 function get_post($connexion, $id_post) {
     
@@ -10,6 +11,8 @@ function get_post($connexion, $id_post) {
     return $result;
 }
 
+
+// modifie les informations d'un post en fonction de son id
 
 function update_post($connexion, $id_post, $id_utilisateur, $date, $distance, $temps, $lieu, $description) {
 
@@ -29,6 +32,7 @@ function update_post($connexion, $id_post, $id_utilisateur, $date, $distance, $t
 
 }
 
+// ajoute un post dans la base de données
 
 function insert_post($connexion, $id_utilisateur, $date, $distance, $temps, $lieu, $description) {
 
@@ -41,6 +45,8 @@ function insert_post($connexion, $id_utilisateur, $date, $distance, $temps, $lie
 
 }
 
+
+// supprime un post en fonction de son id
 
 function delete_post($connexion, $id_post) {
 

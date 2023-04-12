@@ -1,5 +1,7 @@
 <?php
 
+// renvoie le classement des 10 utilisateurs qui ont fait le plus de courses
+
 function classement_nb_courses($connexion) {
 
     $sql = "SELECT 
@@ -26,6 +28,8 @@ function classement_nb_courses($connexion) {
 }
 
 
+// renvoie le classement des 10 utilisateurs qui ont parcouru le plus de distance
+
 function classement_distance($connexion) {
 
     $sql = "SELECT 
@@ -51,6 +55,8 @@ function classement_distance($connexion) {
     return $result;
 }
 
+
+// renvoie le classement des 10 utilisateurs qui ont couru le plus de temps
 
 function classement_temps($connexion) {
 
