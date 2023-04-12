@@ -186,22 +186,23 @@
                     include("SousPages/contenu_blog.php");
                     $path = "../blog.php?blog=".$blog;
                     include("SousPages/like_comment.php");
-                    //</div>s inclus dans ce include
 
                     // Si on regarde des posts de notre propre blog, on a l'option de les supprimer ou de les modifier
                     if (isset($_COOKIE["id_utilisateur"])) {
                         if ($_COOKIE["id_utilisateur"] == $blog) {
                             
                             ?>
-                            <form action="SousPages/delete_post.php" onsubmit="return confirm('Etes-vous sur de vouloir effacer?')" method='post'>
-                                <input type='hidden' name='id_post' value='<?php echo $row['id_post'];?>'>
-                                <input type='submit' value='Supprimer'>
-                            </form>
-
-                            <form method='post' action='post.php'>
-                                <input type='hidden' name='id_post_modif' value='<?php echo $row['id_post'];?>'>
-                                <input type='submit' value='Modifier'>
+                            <div class='left'>
+                                <form action="SousPages/delete_post.php" onsubmit="return confirm('Etes-vous sur de vouloir effacer?')" method='post'>
+                                    <input type='hidden' name='id_post' value='<?php echo $row['id_post'];?>'>
+                                    <input type='submit' value='Supprimer'>
                                 </form>
+
+                                <form method='post' action='post.php'>
+                                    <input type='hidden' name='id_post_modif' value='<?php echo $row['id_post'];?>'>
+                                    <input type='submit' value='Modifier'>
+                                </form>
+                            </div>
                             <?php
                         }
                     }
