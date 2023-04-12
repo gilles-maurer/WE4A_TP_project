@@ -7,6 +7,24 @@
 <link rel="stylesheet" href="./Styles/style.css"> 
 </head>
 
+<script> 
+
+    function ShowHidePassword(icone){
+		var field = document.getElementById("mot_de_passe");
+		
+        if (field.type == "password"){ // Si le type est password, on change en text
+			icone.src="./Icones/password_show.png";
+			field.type="text";
+		}
+		else { // Sinon, on change en password
+			icone.src="./Icones/password_hide.png";
+			field.type="password";
+		}
+
+	}
+
+</script>
+
 <body>
 
 <?php include("SousPages/navbar.php");?>
@@ -57,12 +75,16 @@ if (isset($_POST["email"])){
 
         <div>
             <label for="email">E-Mail :</label>
-            <input type="email" name="email" placeholder="email@addresse.fr" value="<?php echo $email;?>" required>
+            <input type="email" name="email" id="email" placeholder="email@addresse.fr" value="<?php echo $email;?>" required>
         </div>
 
         <div>
             <label for="mot_de_passe">Mot de passe :</label>
-            <input type="password" name="mot_de_passe" placeholder="Mot de passe" value="<?php echo $mdp;?>" required>
+            <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Mot de passe" value="<?php echo $mdp;?>" required>
+
+			<img id="passHide" onclick="ShowHidePassword(this)"
+				src="./Icones/password_hide.png" alt="Hide/Show password">
+
         </div>
 
         <div>
