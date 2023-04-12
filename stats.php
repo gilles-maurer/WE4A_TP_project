@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Statistiques</title>
+<title>Profil</title>
 <link rel="stylesheet" href="./Styles/style.css"> 
 </head>
 
@@ -49,7 +49,7 @@
         echo "<p> Age : ".$age->y."</p>";
         echo "<p> Date d'inscription : ".$row['date_inscription']."</p>";
 
-
+        echo "<hr>";
         echo "<h2> Mes abonnements </h2>";
 
         $result = get_abonnement($connection, $id);
@@ -59,10 +59,14 @@
             $result2 = get_informations($connection, $id_suivie);
             $row2 = $result2->fetch();
 
-            echo "<p> ".$row2['nom']." ".$row2['prenom']."</p>";
+            echo "<form action='blog.php'>
+                    <input type='hidden' name='blog' value='".$row['ID_suivie']."'>
+                    <button type='submit'>".$row2['nom']." ".$row2['prenom']."</button>
+                </form>";  
+        
         }
 
-
+        echo "<hr>";
         echo "<h2> Mes abonnés </h2>";
 
         $result = get_abonne($connection, $id);
@@ -72,13 +76,19 @@
             $result2 = get_informations($connection, $id_suiveur);
             $row2 = $result2->fetch();
 
-            echo "<p> ".$row2['nom']." ".$row2['prenom']."</p>";
-        }
+            echo "<form action='blog.php'>
+                    <input type='hidden' name='blog' value='".$row['ID_suiveur']."'>
+                    <button type='submit'>".$row2['nom']." ".$row2['prenom']."</button>
+                </form>";          
+            
+            }
 
 
         ?>
 
         <!-- bouton déconnexion -->
+
+        <hr>
 
         <div>
             <form action='#' method='post'>

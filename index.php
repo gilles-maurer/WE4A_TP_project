@@ -17,6 +17,11 @@
 
 
     <?php 
+
+        if (isset($_COOKIE["id_utilisateur"])) { // si l'utilisateur est connecté on renouvelle le cookie
+            setcookie("id_utilisateur", $_COOKIE["id_utilisateur"], time() + 24*3600);
+        }
+        
         require('SousPages/connectionbdd.php'); 
         $connexion = connect_db();
 
