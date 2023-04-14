@@ -53,7 +53,11 @@
             //Si tout est bon
             save_informations($connexion); 
             set_id_session($connexion);
+
+            setcookie("creation_compte", "true", time() + 24*3600); // on crée un cookie pour afficher une notification
+
             header('Location: ./index.php');
+        
         }
     }?>
 

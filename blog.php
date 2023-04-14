@@ -149,7 +149,6 @@
                     
                 }
 
-
                 echo "<hr>";
 
                 // On vérifie le nombre de posts à afficher

@@ -7,6 +7,14 @@
 <link rel="stylesheet" href="./Styles/style.css"> 
 </head>
 
+<script>
+
+    function notification_creation_compte() {
+        alert("Votre compte a bien été créé !"); // affiche une notification pour dire que le compte a bien été créé
+    }
+
+</script>
+
 <body>
 
 <?php include("SousPages/navbar.php");?>
@@ -15,8 +23,16 @@
 
     <h1>RunShare</h1>
 
+    <script>
+        <?php if(isset($_COOKIE["creation_compte"]) && $_COOKIE["creation_compte"] == "true") { ?>
+            notification_creation_compte(); // si on vient de créer un compte, on affiche la notification
+        <?php 
+            setcookie("creation_compte", "false"); // on supprime le cookie pour ne pas afficher la notification à chaque fois
+        } ?>
+    </script>
 
     <?php 
+
 
         if (isset($_COOKIE["id_utilisateur"])) { // si l'utilisateur est connecté on renouvelle le cookie
             setcookie("id_utilisateur", $_COOKIE["id_utilisateur"], time() + 24*3600);

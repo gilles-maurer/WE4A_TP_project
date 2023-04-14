@@ -12,7 +12,6 @@
         $sql = "SELECT id_utilisateur, nom, prenom FROM utilisateur WHERE LOWER(nom) LIKE LOWER('$text%') OR LOWER(prenom) LIKE('$text%');";
         $result = $connexion->query($sql);
 
-
         // $nb_result = $row["nb_result"];
 
         $nb_result = $result->rowCount();
