@@ -8,10 +8,13 @@
     $datetime = date("Y-m-d H:i:s");
     $texte = $_POST['texte'];
 
+    $texte = str_replace("'", "\'", $texte);
+
     $sql = "INSERT INTO 
                 commentaire (id_post, id_utilisateur, date, texte) 
             VALUES 
                 (".$id_post.", ".$id_utilisateur.", '".$datetime."', '".$texte."');";
+
     $connexion->query($sql);
 
 

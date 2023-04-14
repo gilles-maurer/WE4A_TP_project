@@ -12,6 +12,7 @@
 
     function check_existing_email($connection){
         $email = $_POST["email"];
+        $email = str_replace("'", "\'", $email);
 
         $sql = "SELECT COUNT(*) as nb_utilisateur FROM utilisateur WHERE email='$email'";
 
@@ -27,9 +28,16 @@
     function save_informations($connection) { 
 
         $nom = $_POST['nom'];
+        $nom = str_replace("'", "\'", $nom);
+
         $prenom = $_POST['prenom'];
+        $prenom = str_replace("'", "\'", $prenom);
+
         $email = $_POST['email'];
-        $mot_de_passe = md5($_POST['mot_de_passe']);
+        $email = str_replace("'", "\'", $email);
+
+        $mot_de_passe = md5($_POST['mot_de_passe']); // md5 ne renvoir pas de ' donc pas besoin de str_replace
+
         $date_naissance = $_POST['date_naissance'];
         $date_inscription = date("Y-m-d");
 
@@ -46,8 +54,13 @@
     function set_id_session($connection) {
 
         $nom = $_POST['nom'];
+        $nom = str_replace("'", "\'", $nom);
+
         $prenom = $_POST['prenom'];
+        $prenom = str_replace("'", "\'", $prenom);
+
         $email = $_POST['email'];
+        $email = str_replace("'", "\'", $email);
         
         $sql = "SELECT id_utilisateur FROM utilisateur WHERE nom = '$nom' AND prenom = '$prenom' AND email = '$email'";
 

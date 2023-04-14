@@ -3,7 +3,8 @@
     include("../SousPages/connectionbdd.php");
     $connexion = connect_db();
 
-    $text = $_GET["var"]; 
+    $text = $_GET["var"]; // récupère la variable envoyée par AJAX
+    $text = str_replace("'", "\'", $text);
 
     echo '<i>';
 

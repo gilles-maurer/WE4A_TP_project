@@ -38,6 +38,9 @@ $mdp = "";
 if (isset($_POST["email"])){
 
     $email = $_POST["email"];
+    $email = str_replace("'", "\'", $email); 
+
+
     $mdp = $_POST["mot_de_passe"];
     $mdp_5 = md5($_POST["mot_de_passe"]);
     //mdp est utilisé pour le form, mdp_5 est utilisé pour la connexion.
