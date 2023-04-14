@@ -90,14 +90,6 @@
                 $nb_post = 10;
             }
 
-            if (isset($_GET["recherche"])) {
-                $recherche = $_GET["recherche"];
-            } else {
-                $recherche = "";
-            }
-
-
-
 
             if ($blog == 0) {
 
@@ -192,6 +184,15 @@
                     <br>";
                 }
 
+                if ($nb_post != "no_limit" && $nombre_total_de_courses > 10) {
+                    ?>
+                    <form method='get' action='blog.php'>
+                        <input type='hidden' name='blog' value='<?php echo $blog;?>'>
+                        <input type='hidden' name='nb_post' value='no_limit'>
+                        <input type='submit' value='Voir tous les posts'>
+                    </form>
+                    <?php
+                }
             }
 
         ?>

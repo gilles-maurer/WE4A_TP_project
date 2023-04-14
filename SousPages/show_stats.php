@@ -7,6 +7,8 @@
 
     $result = $result->fetch(); 
 
+    $nombre_total_de_courses = $result["nb_courses"]; // utilisé pour afficher le bouton "Voir toutes les courses" sur blog
+
     $temps_heure = floor($result['temps']/3600);
     $temps_minute = floor(($result['temps'] - $temps_heure*3600)/60);
     $temps_seconde = $result['temps'] - $temps_heure*3600 - $temps_minute*60;

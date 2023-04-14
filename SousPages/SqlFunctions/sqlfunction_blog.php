@@ -50,12 +50,12 @@ function select_blog($connexion, $id) {
     MINUTE(post.temps) as temps_minutes,
     SECOND(post.temps) as temps_secondes,
     ROUND((post.distance / 1000) /((HOUR(post.temps) * 3600 + MINUTE(post.temps) * 60 + SECOND(post.temps)) / 3600), 2) as vitesse,
-    post.commentaire as commentaire,
+    post.description as description,
     post.lieu as lieu,
     post.id_post as ID_post
     FROM 
         post INNER JOIN utilisateur 
-            on post.ID_utilisateur = utilisateur.ID_utilisateur 
+            ON post.ID_utilisateur = utilisateur.ID_utilisateur 
     WHERE 
         post.ID_utilisateur = '".$id."'
     ORDER BY

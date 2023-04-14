@@ -24,7 +24,7 @@
     include("SqlFunctions/sqlfunction_post.php");
 
 
-    // fonction page profil 
+    // fonction page profil + delete profil
 
     include("SqlFunctions/sqlfunction_profil.php");
 

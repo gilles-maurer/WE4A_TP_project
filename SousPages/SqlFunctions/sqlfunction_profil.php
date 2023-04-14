@@ -42,4 +42,12 @@ function get_abonnement($connexion, $id) {
 }
 
 
+function delete_account($connexion, $id) {
+
+    $sql = "DELETE FROM utilisateur WHERE id_utilisateur = '".$id."';";
+
+    $connexion->query($sql);
+}
+
+
 ?>
