@@ -25,10 +25,10 @@
 
     <script>
         <?php if(isset($_COOKIE["creation_compte"]) && $_COOKIE["creation_compte"] == "true") { ?>
-            notification_creation_compte(); // si on vient de créer un compte, on affiche la notification
+                notification_creation_compte(); // si on vient de créer un compte, on affiche la notification
         <?php 
-            setcookie("creation_compte", "false"); // on supprime le cookie pour ne pas afficher la notification à chaque fois
-        } ?>
+                setcookie("creation_compte", "false"); // on supprime le cookie pour ne pas afficher la notification à chaque fois
+            } ?>
     </script>
 
     <?php 
