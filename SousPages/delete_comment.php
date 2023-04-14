@@ -1,6 +1,6 @@
 <?php
 
-    require('connectionbdd.php');
+    require('connexionbdd.php');
     $connexion = connect_db();
 
     $id_post = $_POST['id_post'];

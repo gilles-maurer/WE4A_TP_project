@@ -22,8 +22,8 @@
         <h1> Mon profil </h1>
 
         <?php
-        require("SousPages/connectionbdd.php");
-        $connection = connect_db(); 
+        require("SousPages/connexionbdd.php");
+        $connexion = connect_db(); 
 
         require ("SousPages/sqlfunctions.php");
 
@@ -31,7 +31,7 @@
         
         echo "<h2> Mes informations </h2>";
 
-        $result = get_informations($connection, $id);
+        $result = get_informations($connexion, $id);
 
         $row = $result->fetch();
 
@@ -39,7 +39,6 @@
         $date = new DateTime($row['date_naissance']);
         $date_actuelle = new DateTime();
         $age = $date->diff($date_actuelle);
-
 
 
         /* =============================================================
@@ -53,18 +52,25 @@
             <p> Date d'inscription : ".$row['date_inscription']."</p>";
 
 
+
+        echo "<br>";
+        $id_stats = $id; 
+        include("SousPages/show_stats.php");
+    
+
+
         /* =============================================================
         ========================== Abonnements =========================
         ============================================================= */
         echo "<hr>";
         echo "<h2> Mes abonnements </h2>";
 
-        $result = get_abonnement($connection, $id);
+        $result = get_abonnement($connexion, $id);
 
 
         while($row = $result->fetch()) {
             $id_suivie = $row['ID_suivie'];
-            $result2 = get_informations($connection, $id_suivie);
+            $result2 = get_informations($connexion, $id_suivie);
             $row2 = $result2->fetch();
 
             echo "<div class='box-invisible'>
@@ -85,13 +91,13 @@
         echo "<hr>";
         echo "<h2> Mes abonnés </h2>";
 
-        $result = get_abonne($connection, $id);
+        $result = get_abonne($connexion, $id);
 
         echo "";
 
         while($row = $result->fetch()) {
             $id_suiveur = $row['ID_suiveur'];
-            $result2 = get_informations($connection, $id_suiveur);
+            $result2 = get_informations($connexion, $id_suiveur);
             $row2 = $result2->fetch();
 
             echo "<div class='box-invisible'>

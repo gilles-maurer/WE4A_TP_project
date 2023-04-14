@@ -1,6 +1,6 @@
 <?php
 
-    include("../SousPages/connectionbdd.php");
+    include("../SousPages/connexionbdd.php");
     $connexion = connect_db();
 
     $text = $_GET["var"]; // récupère la variable envoyée par AJAX

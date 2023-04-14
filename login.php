@@ -45,11 +45,11 @@ if (isset($_POST["email"])){
     $mdp_5 = md5($_POST["mot_de_passe"]);
     //mdp est utilisé pour le form, mdp_5 est utilisé pour la connexion.
 
-    require('SousPages/connectionbdd.php');
-    $connection = connect_db();
+    require('SousPages/connexionbdd.php');
+    $connexion = connect_db();
 
     require('SousPages/sqlfunctions.php');
-    $result = check_login($connection, $email);
+    $result = check_login($connexion, $email);
 
     $res = $result->fetch();
 

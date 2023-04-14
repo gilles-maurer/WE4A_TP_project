@@ -14,7 +14,7 @@
 <div class="row">
 <?php
 
-    require('SousPages/connectionbdd.php');
+    require('SousPages/connexionbdd.php');
     $connexion = connect_db();
 
     require('SousPages/sqlfunctions.php');

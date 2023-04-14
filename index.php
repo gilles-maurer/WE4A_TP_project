@@ -22,7 +22,7 @@
             setcookie("id_utilisateur", $_COOKIE["id_utilisateur"], time() + 24*3600);
         }
         
-        require('SousPages/connectionbdd.php'); 
+        require('SousPages/connexionbdd.php'); 
         $connexion = connect_db();
 
         require('SousPages/sqlfunctions.php');

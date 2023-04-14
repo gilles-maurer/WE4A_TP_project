@@ -10,13 +10,13 @@
     }
 
 
-    function check_existing_email($connection){
+    function check_existing_email($connexion){
         $email = $_POST["email"];
         $email = str_replace("'", "\'", $email);
 
         $sql = "SELECT COUNT(*) as nb_utilisateur FROM utilisateur WHERE email='$email'";
 
-        $result = $connection->query($sql);
+        $result = $connexion->query($sql);
 
         $res = $result->fetch();
 
@@ -25,7 +25,7 @@
     }
 
 
-    function save_informations($connection) { 
+    function save_informations($connexion) { 
 
         $nom = $_POST['nom'];
         $nom = str_replace("'", "\'", $nom);
@@ -46,12 +46,12 @@
                 VALUES 
                         ('$nom', '$prenom', '$email', '$mot_de_passe', '$date_naissance', '$date_inscription')";
     
-        $result = $connection->query($sql);
+        $result = $connexion->query($sql);
 
         return $result;
     }
 
-    function set_id_session($connection) {
+    function set_id_session($connexion) {
 
         $nom = $_POST['nom'];
         $nom = str_replace("'", "\'", $nom);
@@ -64,7 +64,7 @@
         
         $sql = "SELECT id_utilisateur FROM utilisateur WHERE nom = '$nom' AND prenom = '$prenom' AND email = '$email'";
 
-        $result = $connection->query($sql);
+        $result = $connexion->query($sql);
 
         $row = $result->fetch();
 

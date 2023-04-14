@@ -38,10 +38,10 @@
     
 
         require('SousPages/check_signin.php');
-        require('SousPages/connectionbdd.php');
-        $connection = connect_db();
+        require('SousPages/connexionbdd.php');
+        $connexion = connect_db();
 
-        if (check_existing_email($connection)) {
+        if (check_existing_email($connexion)) {
             //Si l'email est déjà pris
             $verif_email = true;
         } else if(check_informations()) {
@@ -51,8 +51,8 @@
             $confirm = "";
         } else {
             //Si tout est bon
-            save_informations($connection); 
-            set_id_session($connection);
+            save_informations($connexion); 
+            set_id_session($connexion);
             header('Location: ./index.php');
         }
     }?>

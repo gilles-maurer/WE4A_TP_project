@@ -16,8 +16,8 @@
 
     <?php 
 
-        require('SousPages/connectionbdd.php');
-        $connection = connect_db();
+        require('SousPages/connexionbdd.php');
+        $connexion = connect_db();
 
         if (isset($_POST["id_post_modif"])) {
             $modif = true; // on vient pour modifier un post
@@ -29,7 +29,7 @@
             
             require('SousPages/sqlfunctions.php');
 
-            $result  = get_post($connection, $_POST["id_post_modif"]);
+            $result  = get_post($connexion, $_POST["id_post_modif"]);
 
             $result = $result->fetch();
 

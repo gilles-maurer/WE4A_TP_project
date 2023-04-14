@@ -2,7 +2,7 @@
 
 
     require('sqlfunctions.php');
-    require('connectionbdd.php');
+    require('connexionbdd.php');
     $connexion = connect_db();
 
     $modif = $_POST["modif"];
