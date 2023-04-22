@@ -160,6 +160,11 @@ Utilisé pour le flex
 
 }
 
+.box-left{
+
+    display: flex;
+}
+
 .boximage{
 
     flex-basis: 40%;
@@ -506,3 +511,4 @@ Comme column-third, mais sans le fond de main container (pour un affichage dans 
     padding: 1%;
 
 }
+

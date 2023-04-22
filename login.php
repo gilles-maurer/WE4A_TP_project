@@ -76,23 +76,28 @@ if (isset($_POST["email"])){
 
     <form action="#" method="post">
 
-        <div>
-            <label for="email">E-Mail :</label>
-            <input type="email" name="email" id="email" placeholder="email@addresse.fr" value="<?php echo $email;?>" required>
+        <!-- Afin de centrer l'icône pour cacher le mot de passe,
+        il faut ajouter ces divisions. Comme ça, tout est au même niveau. -->
+        <div class='box-left'>
+            <div class='boxtext'>
+                <label for="email">E-Mail :</label>
+                <input type="email" name="email" id="email" placeholder="email@addresse.fr" value="<?php echo $email;?>" required>
+            </div>
+        </div>
+        <div class='box-left'>
+            <div class='boxtext'>
+                <label for="mot_de_passe">Mot de passe :</label>
+                <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Mot de passe" value="<?php echo $mdp;?>" required>
+            </div>
+            <div class='boximage'>
+                <img id="passHide" onclick="ShowHidePassword(this)"
+                    src="./Icones/password_hide.png" alt="Hide/Show password">
+            </div>
         </div>
 
-        <div>
-            <label for="mot_de_passe">Mot de passe :</label>
-            <input type="password" name="mot_de_passe" id="mot_de_passe" placeholder="Mot de passe" value="<?php echo $mdp;?>" required>
-
-			<img id="passHide" onclick="ShowHidePassword(this)"
-				src="./Icones/password_hide.png" alt="Hide/Show password">
-
-        </div>
-
-        <div>
+        <div class='box-left'><div class='boxtext'>
             <button type="submit">Envoyer</button>
-        </div>
+        </div></div>
         
     </form>
 </div>
