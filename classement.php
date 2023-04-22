@@ -19,8 +19,19 @@
 
     require('SousPages/sqlfunctions.php');
 
-    echo "<div class='column-third'>";
-    echo "<h2>Classement par nombre de courses</h2>";
+
+    /*==============================================================================
+    =================== Première colonne : par nombre de courses ===================
+    ==============================================================================*/
+
+    /** Le fonctionnement est le même pour les trois colonnes.
+     * Cependant, vu que les champs sont toujours légèrement différents,
+     * on ne peut pas faire de include.
+     * (Seule cette colonne sera commentée puisque les deux autres sont similaires.)
+     */
+
+    echo "<div class='column-third'>"; //Pour l'affichage en trois cadres côte à côte
+    echo "<h2>Classement par nombre de courses</h2><br>";
 
     $result = classement_nb_courses($connexion);
 
@@ -29,6 +40,7 @@
     while($row = $result->fetch()) {
 
         $i = $i + 1;
+        echo "<hr><div class='box-invisible'>";
 
         if($i==1){
             echo "<p class='firstplace'>".$i."</p>";
@@ -40,17 +52,30 @@
             echo "<p class='otherplaces'>".$i."</p>";
         }
         
-        echo "<form action='blog.php'>
-                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-        </form>";          
-        
-        echo "<p>A couru ".$row['nb_courses']." fois !</p>";
-        echo "<br><br>";
+        echo "
+        </div>
+        <div class='box-invisible'>
+            <div class='boxtext'>
+                <form action='blog.php'>
+                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+                </form>
+            </div>
+            <div class='boxtext'>
+                <p>a couru ".$row['nb_courses']." fois !</p>
+            </div>
+        </div><br><br>";
+        //Ajout des divs pour pouvoir aligner bouton et texte et ne faire qu'une phrase
     }
 
+
+
+    /*==============================================================================
+    ======================== Deuxième colonne : par distance =======================
+    ==============================================================================*/
+
     echo "</div><div class='column-third'>";
-    echo "<h2>Classement par distance parcourue</h2>";
+    echo "<h2>Classement par distance parcourue</h2><br>";
 
     $result = classement_distance($connexion);
 
@@ -59,28 +84,43 @@
     while($row = $result->fetch()) {
 
         $i = $i + 1;
-
-        if($i==1){
-            echo "<p class='firstplace'>".$i."</p>";
-        } elseif ($i==2) {
-            echo "<p class='secondplace'>".$i."</p>";
-        } elseif ($i==3) {
-            echo "<p class='thirdplace'>".$i."</p>";
-        } else {
-            echo "<p class='otherplaces'>".$i."</p>";
-        }
+        echo "<hr><div class='box-invisible'>";
+            if($i==1){
+                echo "<p class='firstplace'>".$i."</p>";
+            } elseif ($i==2) {
+                echo "<p class='secondplace'>".$i."</p>";
+            } elseif ($i==3) {
+                echo "<p class='thirdplace'>".$i."</p>";
+            } else {
+                echo "<p class='otherplaces'>".$i."</p>";
+            }
         
-        echo "<form action='blog.php'>
-                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-        </form>";  
-            
-        echo "<p>A parcouru ".$row['distance']."km !</p>";
-        echo "<br><br>";
+        echo "
+        </div>
+        <div class='box-invisible'>
+            <div class='boxtext'>
+                <form action='blog.php'>
+                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+                </form>
+            </div>
+            <div class='boxtext'>
+                <p>a parcouru ".$row['distance']."km !</p>
+            </div>
+        </div><br><br>";
+        //Ajout des divs pour pouvoir aligner bouton et texte et ne faire qu'une phrase
     }
 
+
+
+
+
+    /*==============================================================================
+    ========================= Troisième colonne : par temps ========================
+    ==============================================================================*/
+
     echo "</div><div class='column-third'>";
-    echo "<h2>Classement par temps couru</h2>";
+    echo "<h2>Classement par temps de course total</h2><br>";
 
     $result = classement_temps($connexion);
 
@@ -89,6 +129,7 @@
     while($row = $result->fetch()) {
 
         $i = $i + 1;
+        echo "<hr><div class='box-invisible'>";
 
         $temps_heure = floor($row['temps']/3600);
         $temps_minute = floor(($row['temps'] - $temps_heure*3600)/60);
@@ -103,19 +144,23 @@
         } else {
             echo "<p class='otherplaces'>".$i."</p>";
         }
-
-        echo "<form action='blog.php'>
-                <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-            </form>";  
-
-        if ($temps_heure == 0) {
-            echo "<p>A couru pendant ".$temps_minute." min !</p>";
-        } else {
-            echo "<p>A couru pendant ".$temps_heure." h et ".$temps_minute." min !</p>";
-        }
-        echo "<br>";
-        echo "<br>";
+        echo "
+        </div>
+        <div class='box-invisible'>
+            <div class='boxtext'>
+                <form action='blog.php'>
+                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
+                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
+                </form>
+            </div>
+            <div class='boxtext'>";
+                if ($temps_heure == 0) {
+                    echo "<p>a couru pendant ".$temps_minute." min !</p>";
+                } else {
+                    echo "<p>a couru pendant ".$temps_heure." h et ".$temps_minute." min !</p>";
+                }
+            echo "</div>
+        </div><br><br>";
     }
     
 
