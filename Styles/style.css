@@ -126,13 +126,69 @@ p{
 
 .warning{
 
-    font-style: bold;
+    font-weight: bold;
     color: hsl(15, 60%, 60%);
 }
 
 /*
-Utilisé pour le flex
+Dans les posts, pour date + lieu
 */
+.location{
+
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    
+    color: hsl(15, 30%, 45%);
+
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    
+    border-radius: 5px;
+    border-style: dashed;
+    border-width: 4px;
+    border-color: hsla(15, 70%, 15%, 20%);
+
+    background-color: var(--red-white);
+;
+
+}
+
+
+/*
+Utilisés pour les commentaires
+*/
+.commentuser{
+
+    margin: auto;
+    padding: 8px;
+    width: 12em;
+
+    background-color: var(--red-white);
+    
+    border-width: 3px;
+    border-color: hsla(15, 30%, 80%, 40%);
+    border-style: groove;
+    border-radius: 5px;
+
+}
+
+.commenttext{
+
+    margin: auto;
+    padding: 8px;
+    width: 12em;
+
+    background-color: var(--white);
+
+}
+
+
+/*=======================================================
+========================== FLEX =========================
+=======================================================*/
+
 .box{
 
     display: flex;
@@ -141,11 +197,11 @@ Utilisé pour le flex
     
     padding: 1%;
 
-    background-color: var(--white);
+    background-color: hsla(50, 60%, 92%, 30%);
 
     border-radius: 5px;
     border-style: solid;
-    border-color: hsla(50, 40%, 60%, 40%);
+    border-color: hsla(50, 40%, 60%, 50%);
     border-width: 3px;
 
 }
@@ -191,31 +247,9 @@ img{
 
 }
 
-/*
-Utilisés pour les commentaires
-*/
-.commentuser{
+.inline{
 
-    margin: auto;
-    padding: 8px;
-    width: 12em;
-
-    background-color: var(--red-white);
-    
-    border-width: 3px;
-    border-color: hsla(15, 30%, 80%, 40%);
-    border-style: groove;
-    border-radius: 5px;
-
-}
-
-.commenttext{
-
-    margin: auto;
-    padding: 8px;
-    width: 12em;
-
-    background-color: var(--white);
+    display: inline;
 
 }
 

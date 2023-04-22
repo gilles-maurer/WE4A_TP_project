@@ -13,15 +13,15 @@
     $temps_minute = floor(($result['temps'] - $temps_heure*3600)/60);
     $temps_seconde = $result['temps'] - $temps_heure*3600 - $temps_minute*60;
 
-    echo "<p>Distance parcourue : ".$result["distance"]." km</p>";
+    echo "<br><p><label>Distance parcourue :</label> ".$result["distance"]." km</p><br>";
 
     if ($temps_heure == 0) {
-        echo "<p>A couru pendant : ".$temps_minute." min</p>";
+        echo "<p><label>A couru pendant :</label> ".$temps_minute." min</p><br>";
     } else {
-        echo "<p>A couru pendant : ".$temps_heure." h et ".$temps_minute." min</p>";
+        echo "<p><label>A couru pendant :</label> ".$temps_heure." h et ".$temps_minute." min</p><br>";
     }
 
-    echo "<p>Nombre de courses : ".$result["nb_courses"]."</p>";
+    echo "<p><label for='nombre'>Nombre de courses :</label> ".$result["nb_courses"]."</p><br>";
 
 
 ?>

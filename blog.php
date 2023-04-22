@@ -83,7 +83,7 @@
 
             
 
-
+            //Spécification du nombre de posts à afficher par pages
             if (isset($_GET["nb_post"])) {
                 $nb_post = $_GET["nb_post"];
             } else {
@@ -91,6 +91,7 @@
             }
 
 
+            //Si on est sur aucun blog (déconnecté + pas de blog en lecture)
             if ($blog == 0) {
 
                 echo "<p>Tu n'es sur aucun blog. Connecte toi pour en avoir un, ou recherche celui de quelqu'un d'autre.<p>";
@@ -101,7 +102,7 @@
 
                 $titre = $titre->fetch();
 
-                echo "<h1> Blog de ".$titre['prenom']." ".$titre['nom']."</h1><hr>";
+                echo "<h1> Blog de ".$titre['prenom']." ".$titre['nom']."</h1>";
 
                 // Si l'utilisateur est connecté :
                 if (isset($_COOKIE["id_utilisateur"])) {
@@ -109,11 +110,11 @@
                     //Si l'utilisateur est sur son propre blog :
                     if ($_COOKIE["id_utilisateur"] == $blog) {
 
-                        echo "<form method='post' action='post.php'>
+                        echo "<hr><form method='post' action='post.php'>
                             <input type='submit' value='Ajouter un post'>
                         </form>";
 
-                        // S'il est sur le blog de quelqu'un d'autre :
+                    // S'il est sur le blog de quelqu'un d'autre :
                     } else {
 
                         $result = is_follow_by($connexion, $blog, $_COOKIE["id_utilisateur"]);
@@ -121,13 +122,13 @@
 
                         // Si l'utilisateur n'est pas ou est abonné (le dernier input change en fonction)
                         if ($result["nb_abonnement"] == 0) {
-                            echo "<form method='post' action='SousPages/abonnement.php'>
+                            echo "<hr><form method='post' action='SousPages/abonnement.php'>
                                     <input type='hidden' name='id_suivie' value='".$blog."'>
                                     <input type='hidden' name='id_suiveur' value='".$_COOKIE["id_utilisateur"]."'>
                                     <input type='submit' value='Suivre'>
                                 </form>";
                         } else {
-                            echo "<form method='post' action='SousPages/abonnement.php'>
+                            echo "<hr><form method='post' action='SousPages/abonnement.php'>
                                     <input type='hidden' name='id_suivie' value='".$blog."'>
                                     <input type='hidden' name='id_suiveur' value='".$_COOKIE["id_utilisateur"]."'>
                                     <input type='submit' value='Ne plus suivre'>

@@ -1,6 +1,9 @@
 <?php
 
-    // Formulaire like / unlike
+    /*========================================================================
+    ================================== Liker =================================
+    ========================================================================*/
+
     if (isset($_COOKIE['id_utilisateur'])) {
 
         $is_like = is_like($connexion, $row['id_post'], $_COOKIE['id_utilisateur']);
@@ -28,7 +31,14 @@
     } else {
         echo "</div></div></div></div>";
     }
-    // Formulaire commentaire
+
+
+
+
+    /*========================================================================
+    ========================= Envoyer un commentaire =========================
+    ========================================================================*/
+
     if (isset($_COOKIE['id_utilisateur'])) {
         echo "
                 <form action='SousPages/comment.php' method='post'>
@@ -37,21 +47,27 @@
                 <input type='hidden' name='path' value='".$path."'>
                 <input type='text' name='texte' placeholder='Un petit commentaire ?'>
                 <br>
-                <input type='image' src='./Icones/chat.png' height='32px' width='32px'  alt='Commenter' title='Envoyer le commentaire'>
+                <input type='image' src='./Icones/chat.png' height='32px' width='32px'  alt='Envoyer le commentaire' title='Envoyer le commentaire'>
                 </form>
             </div>
-        <div class='column-third-no-bg'></div>
+            <div class='boxtext'></div>
+        </div>
         </div>";
     }
 
-    // Commentaires
+    
+    
+    /*========================================================================
+    ========================= Lister les commentaires ========================
+    ========================================================================*/
+
     $comments = find_comments($connexion, $row['id_post']);
 
     while ($comment = $comments->fetch()) {
 
         echo "
-        <div class='row'><div class='column-third-no-bg'>
-            <br>
+        <br><br>
+        <div class='box-invisible'><div class='boxtext'>
             <p class='commentuser'>".$comment['prenom']." ".$comment['nom']."</p>
             <p class='commenttext'>".$comment['texte']."</p>";
         
@@ -69,7 +85,7 @@
                 </form>";
             }
         }
-        echo "</div><div class='column-third-no-bg'></div><div class='column-third-no-bg'></div></div>";
+        echo "</div><div class='boximage'></div><div class='boximage'></div></div><br>";
 
     }    
 

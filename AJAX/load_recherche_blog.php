@@ -33,11 +33,11 @@
             }
         }
         else {
-            echo 'pas de résultats !';
+            echo 'Pas de résultats !';
         }
     }
     else{
-        echo 'rechercher des blogs !';
+        echo 'Recherchez des blogs !';
     }
 
     echo '</i>';
