@@ -40,7 +40,7 @@
     while($row = $result->fetch()) {
 
         $i = $i + 1;
-        echo "<hr><div class='box-invisible'>";
+        echo "<hr><div class='box-invisible'>"; //Division pour pouvoir centrer la position
 
         if($i==1){
             echo "<p class='firstplace'>".$i."</p>";
@@ -50,7 +50,7 @@
             echo "<p class='thirdplace'>".$i."</p>";
         } else {
             echo "<p class='otherplaces'>".$i."</p>";
-        }
+        } //Pour pouvoir changer la couleur du cadre
         
         echo "
         </div>
