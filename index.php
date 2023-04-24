@@ -2,9 +2,10 @@
 <html lang="fr">
 
 <head>
-<meta charset="UTF-8">
-<title>Accueil</title>
-<link rel="stylesheet" href="./Styles/style.css"> 
+
+<?php include("SousPages/header.php");?>
+
+<title>RunShare</title>
 </head>
 
 <script>
