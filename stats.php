@@ -130,7 +130,7 @@
                     onsubmit="return confirm('Etes-vous sur de vouloir supprimer votre compte (cette action est définitive) ?')" 
                     method='post'>
                 <input type='hidden' name='id_utilisateur' value='<?php echo $id;?>'>
-                <input type='submit' value='Supprimer'>
+                <input type='submit' value='Supprimer mon compte'>
             </form>
 
         <div>
