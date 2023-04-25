@@ -134,12 +134,13 @@
                                 </form>";
                         }
                     }
-                        
-                    $id_stats = $blog;
-                    include('SousPages/show_stats.php');
-
                     
                 }
+
+                // Affichage des stats du blog que l'on soit connecté ou non
+
+                $id_stats = $blog;
+                include('SousPages/show_stats.php');
 
                 echo "<hr>";
 

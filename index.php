@@ -56,15 +56,39 @@
 
         require('SousPages/sqlfunctions.php');
 
+
+        // on récupère le nombre de posts à afficher
+
+        $nb_total_post = count_post($connexion); // on compte le nombre de posts total
+
+
+       // nombre de posts maximum à afficher 
+       //(utilisé pour enlever le bouton "afficher plus de posts" si on a plus de 40 posts à afficher)
+       $nb_max_post = 28; 
+
+        if (isset($_POST["nb_post"])) { // si on a un nombre de post à afficher, on le prend        
+            
+            $nb_post = $_POST["nb_post"];
+
+            if ($nb_post > $nb_total_post) { // si on a plus de posts à afficher que de posts total
+                $nb_post = $nb_total_post;
+                $nb_max_post = $nb_total_post;
+            }
+
+        } else { // sinon on prend la valeur par défaut
+            $nb_post = 10;
+        }
+
+
         if (isset($_COOKIE["id_utilisateur"])) {
-            $result = select_accueil_login($connexion, $_COOKIE["id_utilisateur"]);
+            $result = select_accueil_login($connexion, $_COOKIE["id_utilisateur"], $nb_post);
             // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, description
             // n'affiche pas les posts de l'utilisateur
             // met en premier les posts des personnes qu'il suit
 
 
         } else {
-            $result = select_accueil_logout($connexion);
+            $result = select_accueil_logout($connexion, $nb_post);
             // nom, prenom, date, distance, temps, vitesse, commentaire, lieu, description
         }
         
@@ -92,6 +116,13 @@
             echo "</div>
                 <br> <hr>
                 <br>";
+        }
+
+        if ($nb_post < $nb_max_post) { // on affiche le bouton pour afficher plus de posts que si on a moins de 40 posts affichés
+            echo "<form action='index.php' method='post'>
+                    <input type='hidden' name='nb_post' value='".($nb_post + 10)."'>
+                    <button type='submit'>Afficher plus de posts</button>
+                </form>";
         }
 
     ?>

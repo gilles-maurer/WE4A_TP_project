@@ -1,11 +1,26 @@
 <?php
 
 
+// compte le nombre de post total dans la base de donnée
+
+function count_post($connexion) {
+
+    $sql = "SELECT COUNT(*) as nb_post FROM post";
+
+    $result = $connexion->query($sql);
+
+    $result = $result->fetch();
+
+    return $result["nb_post"];
+}
+
+
+
 // renvoie les posts les plus récents de la base de donnée (prends une limité à 10)
 // est appelé dans la page d'accueil si l'utilisateur n'est pas connecté
 // ordonnés par date décroissante
 
-function select_accueil_logout($connexion) {
+function select_accueil_logout($connexion, $limit) {
 
     // nom, prenom, date, distance, temps, vitesse, commentaire, lieu
 
@@ -29,7 +44,7 @@ function select_accueil_logout($connexion) {
                     on post.ID_utilisateur = utilisateur.ID_utilisateur 
             ORDER BY
                 post.date DESC
-            LIMIT 10;
+            LIMIT ".$limit.";
             ";
 
     $result = $connexion->query($sql);
@@ -44,7 +59,7 @@ function select_accueil_logout($connexion) {
 // limite à 10 posts
 // ne renvoie pas les posts de l'utilisateur connecté
 
-function select_accueil_login($connexion, $id_utilisateur) {
+function select_accueil_login($connexion, $id_utilisateur, $limit) {
 
     $sql = "SELECT 
                 utilisateur.id_utilisateur as id_utilisateur,
@@ -77,7 +92,7 @@ function select_accueil_login($connexion, $id_utilisateur) {
                                 AND 
                                     post.date > DATE_SUB(NOW(), INTERVAL 10 DAY)) DESC,
                 post.date DESC
-            LIMIT 10
+            LIMIT ".$limit."
             ;";
             
     $result = $connexion->query($sql);
