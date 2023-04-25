@@ -359,6 +359,8 @@ button{
     border-style: groove;
     border-width: 3px;
 
+    align-items: center;
+
 }
 
 
