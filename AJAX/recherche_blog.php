@@ -33,6 +33,6 @@ function suggestNamesFromInput(currentText) {
 <div id="demo2" class="center">
 
   <input id="suggestField" type="text" onkeyup="suggestNamesFromInput(this.value)">
-  <p id="suggestions"><i>rechercher des blogs !</i></p>
+  <p id="suggestions"><i>Recherchez des blogs !</i></p>
 
 </div>

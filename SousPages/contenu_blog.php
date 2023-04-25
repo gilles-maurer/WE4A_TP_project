@@ -1,32 +1,31 @@
 <?php 
 echo "
-<div>
-    <p class='location'>Le ".$row['date'].", à ".$row['lieu']."</p><br><br>";
+<p class='location'>Le ".$row['date'].", à ".$row['lieu']."</p><br><br>";
 
-    if(!($row['description']=="")){
+if(!($row['description']=="")){
     echo "<p class='box'>".$row['description']."</p>";
-    }
+}
 
-    echo "
-    <div class='row'>
+echo "
+<div class='row'>
 
-        <div class='column-third-no-bg'>
-            <div class='box'>
-                <div class='boximage'>
-                    <img src='./Icones/distance.png'>
-                </div>
-                <div class='boxtext'>
-                    <p>".$row['distance']." km</p>
-                </div>
+    <div class='column-third-no-bg'>
+        <div class='box'>
+            <div class='boximage'>
+                <img src='./Icones/distance.png'>
+            </div>
+            <div class='boxtext'>
+                <p>".$row['distance']." km</p>
             </div>
         </div>
+    </div>
 
-        <div class='column-third-no-bg'>
-            <div class='box'>
-                <div class='boximage'>
-                    <img src='./Icones/duree.png'>
-                </div>
-                <div class='boxtext'>"; 
+    <div class='column-third-no-bg'>
+        <div class='box'>
+            <div class='boximage'>
+                <img src='./Icones/duree.png'>
+            </div>
+            <div class='boxtext'>"; 
 
                 if ($row['temps_heures'] == 0) {
                     echo "<p>".$row['temps_minutes']."min</p>";
@@ -34,29 +33,29 @@ echo "
                     echo "<p>".$row['temps_heures']."h".$row['temps_minutes']."min</p>";
                 }
 
-            echo "</div>
-            </div>
+        echo "</div>
         </div>
-
-        <div class='column-third-no-bg'>
-            <div class='box'>
-                <div class='boximage'>
-                    <img src='./Icones/vitesse.png'>
-                </div>
-                <div class='boxtext'>
-                    <p>".$row['vitesse']." km/h</p>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <div class='column-third-no-bg'>
+        <div class='box'>
+            <div class='boximage'>
+                <img src='./Icones/vitesse.png'>
+            </div>
+            <div class='boxtext'>
+                <p>".$row['vitesse']." km/h</p>
+            </div>
+        </div>
+    </div>
 
-    <div class='row'>
-        <div class='column-third-no-bg'>
-            <div class='box-invisible'>
-                <div class='boxtext'>
-                    <p>".$count_like['nb_like']." encouragements au compteur !</p>
-                </div>
-                <div class='boximage'>";
+</div>
+
+
+<div class='row'>
+    <div class='column-third-no-bg'>
+        <div class='box-invisible'>
+            <div class='boxtext'>
+                <p>".$count_like['nb_like']." encouragements au compteur !</p>
+            </div>
+            <div class='boximage'>";
 ?>

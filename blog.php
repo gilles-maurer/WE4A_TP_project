@@ -28,13 +28,13 @@
         <?php 
 
             /*  
-            Soit on arrive depuis le bandeau :
-                -> Si on est connecté, on a un Cookie
-                -> Sinon, on a pas de Cookie, pas de Get et pas de Post
+                Soit on arrive depuis le bandeau :
+                    -> Si on est connecté, on a un Cookie
+                    -> Sinon, on a pas de Cookie, pas de Get et pas de Post
 
-            Soit on arrive depuis le login : on a un Cookie
-                                            
-            Soit on arrive depuis un lien, un bouton ou la recherche : on a un Get 
+                Soit on arrive depuis le login : on a un Cookie
+                                                
+                Soit on arrive depuis un lien, un bouton ou la recherche : on a un Get 
             */
 
             if (isset($_GET["blog"])) {
@@ -106,7 +106,7 @@
                 // Si l'utilisateur est connecté :
                 if (isset($_COOKIE["id_utilisateur"])) {
 
-                    //Si l'utilisateur est sur son propre blog :
+                    //Si l'utilisateur est sur son propre blog, il peut créer un post.
                     if ($_COOKIE["id_utilisateur"] == $blog) {
 
                         echo "<hr><form method='post' action='post.php'>
@@ -121,13 +121,15 @@
 
                         // Si l'utilisateur n'est pas ou est abonné (le dernier input change en fonction)
                         if ($result["nb_abonnement"] == 0) {
-                            echo "<hr><form method='post' action='SousPages/abonnement.php'>
+                            echo "<hr>
+                                <form method='post' action='SousPages/abonnement.php'>
                                     <input type='hidden' name='id_suivie' value='".$blog."'>
                                     <input type='hidden' name='id_suiveur' value='".$_COOKIE["id_utilisateur"]."'>
                                     <input type='submit' value='Suivre'>
                                 </form>";
                         } else {
-                            echo "<hr><form method='post' action='SousPages/abonnement.php'>
+                            echo "<hr>
+                                <form method='post' action='SousPages/abonnement.php'>
                                     <input type='hidden' name='id_suivie' value='".$blog."'>
                                     <input type='hidden' name='id_suiveur' value='".$_COOKIE["id_utilisateur"]."'>
                                     <input type='submit' value='Ne plus suivre'>
@@ -160,29 +162,32 @@
                     include("SousPages/contenu_blog.php");
                     $path = "../blog.php?blog=".$blog;
                     include("SousPages/like_comment.php");
+                    /*
+                    Malgré la présence de divs dans ces includes,
+                    on revient à la hiérarchie d'origine à la fin
+                    */
 
                     // Si on regarde des posts de notre propre blog, on a l'option de les supprimer ou de les modifier
                     if (isset($_COOKIE["id_utilisateur"])) {
                         if ($_COOKIE["id_utilisateur"] == $blog) {
                             
                             ?>
-                            <div class='left'>
-                                <form action="SousPages/delete_post.php" onsubmit="return confirm('Etes-vous sur de vouloir effacer?')" method='post'>
-                                    <input type='hidden' name='id_post' value='<?php echo $row['id_post'];?>'>
-                                    <input type='submit' value='Supprimer'>
-                                </form>
-
+                            <div class='right'>
                                 <form method='post' action='post.php'>
                                     <input type='hidden' name='id_post_modif' value='<?php echo $row['id_post'];?>'>
                                     <input type='submit' value='Modifier'>
+                                </form>
+
+                                <form action="SousPages/delete_post.php" onsubmit="return confirm('Etes-vous sur de vouloir effacer?')" method='post'>
+                                    <input type='hidden' name='id_post' value='<?php echo $row['id_post'];?>'>
+                                    <input type='submit' value='Supprimer'>
                                 </form>
                             </div>
                             <?php
                         }
                     }
 
-                    echo "<br><hr>
-                    <br>";
+                    echo "<br><hr><br>";
                 }
 
                 if ($nb_post != "no_limit" && $nombre_total_de_courses > 10) {
@@ -222,6 +227,7 @@
 
     </div>
 
+</div>
 </body>
 
 

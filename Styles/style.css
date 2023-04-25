@@ -240,9 +240,10 @@ img{
 
 }
 
-.left{
+.right{
 
     position:relative;
+    z-index: 1;
     left: 80%;
 
 }
@@ -370,6 +371,7 @@ button{
     font-family: century gothic, sans-serif;
     
     position: fixed;
+    z-index: 2;
     top: 0;
     width: 130%;
     margin-left: -20px;
@@ -488,7 +490,7 @@ On recopie donc le code CSS de MainContainer en modifiant le padding.
 */
 .column-main{
 
-    flex: 65%;
+    flex: 60%;
     padding: 0px 2% 0px 2%;
 
     margin: 25px auto auto auto;
@@ -508,10 +510,10 @@ Ceci est utilisé aux côtés de column-main pour afficher des informations supp
 */
 .column-side{
 
-    flex: 35%;
+    flex: 30%;
     padding: 0px 2% 0px 2%;
 
-    margin: 45px auto auto auto;
+    margin-top: 45px;
 
 }
 
