@@ -36,8 +36,7 @@
         $confirm = $_POST["confirm"];
         $date_naissance = $_POST["date_naissance"];
 
-        $uploadSuccessful = false;
-        $errorText = "";
+
         include('SousPages/uploadImage.php');
         
 

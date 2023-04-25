@@ -126,7 +126,7 @@
 
         </div>
 
-            <form action="SousPages/delete_account.php" 
+            <form action='delete_account.php' 
                     onsubmit="return confirm('Etes-vous sur de vouloir supprimer votre compte (cette action est définitive) ?')" 
                     method='post'>
                 <input type='hidden' name='id_utilisateur' value='<?php echo $id;?>'>

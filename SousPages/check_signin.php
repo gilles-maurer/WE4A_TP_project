@@ -25,7 +25,10 @@
     }
 
 
-    function save_informations($connexion) { 
+    // Cette fonction est appelée dans le fichier signin.php
+    // Elle permet d'insérer les informations de l'utilisateur dans la base de données
+
+    function save_informations($connexion, $avatar) { 
 
         $nom = $_POST['nom'];
         $nom = str_replace("'", "\'", $nom);
@@ -42,14 +45,17 @@
         $date_inscription = date("Y-m-d");
 
         $sql = "INSERT INTO utilisateur 
-                        (nom, prenom, email, mot_de_passe, date_naissance, date_inscription) 
+                        (nom, prenom, email, mot_de_passe, date_naissance, date_inscription, avatar) 
                 VALUES 
-                        ('$nom', '$prenom', '$email', '$mot_de_passe', '$date_naissance', '$date_inscription')";
+                        ('$nom', '$prenom', '$email', '$mot_de_passe', '$date_naissance', '$date_inscription', '$avatar')";
     
         $result = $connexion->query($sql);
 
         return $result;
     }
+
+    // Cette fonction est appelée dans le fichier signin.php
+    // Elle permet de créer un cookie qui contient l'id de l'utilisateur 
 
     function set_id_session($connexion) {
 
@@ -70,7 +76,6 @@
 
         setcookie('id_utilisateur', $row['id_utilisateur'], time() + 24*3600);
 
-        return $result;
     }
 
 ?>

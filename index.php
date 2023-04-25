@@ -14,7 +14,7 @@
         alert("Votre compte a bien été créé !"); // affiche une notification pour dire que le compte a bien été créé
     }
 
-    function notification_suppresion_compte() {
+    function notification_suppression_compte() {
         alert("Votre compte a bien été supprimé..."); // affiche une notification pour dire que le compte a bien été supprimé
     }
 
@@ -34,13 +34,13 @@
                 notification_creation_compte(); // si on vient de créer un compte, on affiche la notification
         <?php 
                 setcookie("creation_compte", "false"); // on supprime le cookie pour ne pas afficher la notification à chaque fois
-            } ?>
+                } ?>
 
-        <?php if(isset($_COOKIE["suppresion_compte"]) && $_COOKIE["creation_compte"] == "true") { ?>
-                notification_suppresion_compte(); // si on vient de supprimer un compte, on affiche la notification
+        <?php if(isset($_COOKIE['suppression_compte']) && $_COOKIE['suppression_compte'] == "true") { ?>
+                notification_suppression_compte(); // si on vient de supprimer un compte, on affiche la notification
         <?php 
-                setcookie("suppresion_compte", "false"); // on supprime le cookie pour ne pas afficher la notification à chaque fois
-            } ?>
+                setcookie("suppression_compte", "false"); // on supprime le cookie pour ne pas afficher la notification à chaque fois
+                } ?>
 
     </script>
 
