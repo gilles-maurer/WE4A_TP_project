@@ -54,12 +54,9 @@
         echo "
         </div>
         <div class='box-invisible'>
-            <div class='boxtext'>
-                <form action='blog.php'>
-                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-                </form>
-            </div>
+            <div class='boxtext'>";
+                include("bouton_profil.php");
+            echo "</div>
             <div class='boxtext'>
                 <p>a couru ".$row['nb_courses']." fois !</p>
             </div>
@@ -97,12 +94,9 @@
         echo "
         </div>
         <div class='box-invisible'>
-            <div class='boxtext'>
-                <form action='blog.php'>
-                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-                </form>
-            </div>
+            <div class='boxtext'>";
+                include("bouton_profil.php");
+            echo "</div>
             <div class='boxtext'>
                 <p>a parcouru ".$row['distance']."km !</p>
             </div>
@@ -146,12 +140,9 @@
         echo "
         </div>
         <div class='box-invisible'>
-            <div class='boxtext'>
-                <form action='blog.php'>
-                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-                </form>
-            </div>
+            <div class='boxtext'>";
+                include("bouton_profil.php");
+            echo "</div>
             <div class='boxtext'>";
                 if ($temps_heure == 0) {
                     echo "<p>a couru pendant ".$temps_minute." min !</p>";

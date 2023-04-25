@@ -99,11 +99,9 @@
 
 
             // Affichage des posts 
-            echo "<div>
-                    <form action='blog.php'>
-                        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-                    </form>";?>
+            echo "<div>";
+            include("bouton_profil.php");
+            ?>
 
                 
             <?php

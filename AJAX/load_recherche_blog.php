@@ -20,11 +20,7 @@
             $i = 1;
             while($row = $result->fetch()){
             
-                echo "
-                <form action='blog.php'>
-                    <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-                    <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-                </form>";
+                include("bouton_profil.php");
 
                 if ($i < $nb_result) {
                     echo " <hr> ";
