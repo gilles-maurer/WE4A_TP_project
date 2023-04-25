@@ -30,7 +30,7 @@ classements:
     </form>
 */
 
-$max = 128;
+$max = 64;
 list($width, $height, $type, $attr) = getimagesize($row["avatar"]);
 
 if ($width > $height) {

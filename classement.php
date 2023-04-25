@@ -55,7 +55,7 @@
         </div>
         <div class='box-invisible'>
             <div class='boxtext'>";
-                include("bouton_profil.php");
+                include("SousPages/bouton_profil.php");
             echo "</div>
             <div class='boxtext'>
                 <p>a couru ".$row['nb_courses']." fois !</p>
@@ -81,21 +81,21 @@
 
         $i = $i + 1;
         echo "<hr><div class='box-invisible'>";
-            if($i==1){
-                echo "<p class='firstplace'>".$i."</p>";
-            } elseif ($i==2) {
-                echo "<p class='secondplace'>".$i."</p>";
-            } elseif ($i==3) {
-                echo "<p class='thirdplace'>".$i."</p>";
-            } else {
-                echo "<p class='otherplaces'>".$i."</p>";
-            }
-        
+        if($i==1){
+            echo "<p class='firstplace'>".$i."</p>";
+        } elseif ($i==2) {
+            echo "<p class='secondplace'>".$i."</p>";
+        } elseif ($i==3) {
+            echo "<p class='thirdplace'>".$i."</p>";
+        } else {
+            echo "<p class='otherplaces'>".$i."</p>";
+        }
+
         echo "
         </div>
         <div class='box-invisible'>
             <div class='boxtext'>";
-                include("bouton_profil.php");
+                include("SousPages/bouton_profil.php");
             echo "</div>
             <div class='boxtext'>
                 <p>a parcouru ".$row['distance']."km !</p>
@@ -137,11 +137,13 @@
         } else {
             echo "<p class='otherplaces'>".$i."</p>";
         }
+
+
         echo "
         </div>
         <div class='box-invisible'>
             <div class='boxtext'>";
-                include("bouton_profil.php");
+                include("SousPages/bouton_profil.php");
             echo "</div>
             <div class='boxtext'>";
                 if ($temps_heure == 0) {

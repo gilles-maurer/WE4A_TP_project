@@ -5,9 +5,10 @@
 function get_informations($connexion, $id) {
 
     $sql = "SELECT 
-                utilisateur.id_utilisateur as id,
+                utilisateur.id_utilisateur as id_utilisateur,
                 utilisateur.nom as nom,
                 utilisateur.prenom as prenom,
+                utilisateur.avatar as avatar,
                 utilisateur.email as email,
                 utilisateur.date_naissance as date_naissance,
                 utilisateur.date_inscription as date_inscription

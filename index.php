@@ -100,7 +100,8 @@
 
             // Affichage des posts 
             echo "<div>";
-            include("bouton_profil.php");
+
+            include("SousPages/bouton_profil.php");
             ?>
 
                 

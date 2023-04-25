@@ -7,6 +7,7 @@ function classement_nb_courses($connexion) {
     $sql = "SELECT 
                 utilisateur.nom as nom,
                 utilisateur.prenom as prenom,
+                utilisateur.avatar as avatar,
                 utilisateur.id_utilisateur as id_utilisateur,
                 COUNT(post.id_post) as nb_courses
             FROM
@@ -35,6 +36,7 @@ function classement_distance($connexion) {
     $sql = "SELECT 
                 utilisateur.nom as nom,
                 utilisateur.prenom as prenom,
+                utilisateur.avatar as avatar,
                 utilisateur.id_utilisateur as id_utilisateur,
                 ROUND(SUM(post.distance) / 1000, 2) as distance
             FROM
@@ -63,6 +65,7 @@ function classement_temps($connexion) {
     $sql = "SELECT 
                 utilisateur.nom as nom,
                 utilisateur.prenom as prenom,
+                utilisateur.avatar as avatar,
                 utilisateur.id_utilisateur as id_utilisateur,
                 SUM(SECOND(post.temps) + MINUTE(post.temps) * 60 + HOUR(post.temps) * 3600) as temps
             FROM

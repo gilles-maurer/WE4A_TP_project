@@ -67,18 +67,13 @@
         $result = get_abonnement($connexion, $id);
 
 
-        while($row = $result->fetch()) {
-            $id_suivie = $row['ID_suivie'];
+        while($row_abonnement = $result->fetch()) {
+            $id_suivie = $row_abonnement['ID_suivie'];
             $result2 = get_informations($connexion, $id_suivie);
-            $row2 = $result2->fetch();
+            $row = $result2->fetch();
 
-            echo "<div class='box-invisible'>
-                    <form action='blog.php'>
-                        <input type='hidden' name='blog' value='".$row['ID_suivie']."'>
-                        <button type='submit'>".$row2['nom']." ".$row2['prenom']."</button>
-                    </form>
-                </div>";  
-               //On ajoute un div à chaque itération pour être sûr que chaque bouton est séparé du précédent
+            include("SousPages/bouton_profil.php");
+
         }
 
 
@@ -94,17 +89,12 @@
 
         echo "";
 
-        while($row = $result->fetch()) {
-            $id_suiveur = $row['ID_suiveur'];
+        while($row_abonne = $result->fetch()) {
+            $id_suiveur = $row_abonne['ID_suiveur'];
             $result2 = get_informations($connexion, $id_suiveur);
-            $row2 = $result2->fetch();
+            $row = $result2->fetch();
 
-            echo "<div class='box-invisible'>
-                    <form action='blog.php'>
-                        <input type='hidden' name='blog' value='".$row['ID_suiveur']."'>
-                        <button type='submit'>".$row2['nom']." ".$row2['prenom']."</button>
-                    </form><br>
-                </div>";          
+            include("SousPages/bouton_profil.php");       
             
             }
         ?>

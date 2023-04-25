@@ -71,12 +71,13 @@ function select_blog($connexion, $id) {
 
 // recherche les utilisateurs en fonction d'une chaîne de caractères (nom, prénom, email)
 
-function select_recherche_blog($connexion, $recherche) {
+function  get_recherche_blog($connexion, $recherche) {
 
     $sql = "SELECT
                 utilisateur.nom as nom,
                 utilisateur.prenom as prenom,
                 utilisateur.email as email,
+                utilisateur.avatar as avatar,
                 utilisateur.id_utilisateur as id_utilisateur            
             FROM
                 utilisateur
