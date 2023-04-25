@@ -26,6 +26,7 @@
 
     $verif_email = false;
     $verif_mdp = false;
+    $verif_image = false;
 
     if($condition){
         $nom = $_POST["nom"];
@@ -34,7 +35,11 @@
         $mot_de_passe = $_POST["mot_de_passe"];
         $confirm = $_POST["confirm"];
         $date_naissance = $_POST["date_naissance"];
-    
+
+        $uploadSuccessful = false;
+        $errorText = "";
+        include('SousPages/uploadImage.php');
+        
 
         require('SousPages/check_signin.php');
         require('SousPages/connexionbdd.php');
@@ -43,6 +48,9 @@
         if (check_existing_email($connexion)) {
             //Si l'email est déjà pris
             $verif_email = true;
+        } else if (!$uploadSuccessful) {
+            //Si l'image n'est pas valide
+            $verif_image = true;
         } else if(check_informations()) {
             //Si mdp et confirm ne correspondent pas
             $verif_mdp = true;
@@ -62,7 +70,7 @@
 
     <h1>Inscription :</h1>
 
-    <form action="#" method="post">
+    <form action="#" method="post" enctype="multipart/form-data">
 
         <div>
             <label for="nom">Nom :</label>
@@ -90,6 +98,20 @@
         <div>
             <label for="date_naissance">Date de naissance :</label>
             <input type="date" name="date_naissance" placeholder="JJ/MM/AAAA" value="<?php echo $date_naissance;?>" required>
+        </div>
+
+        <?php
+        if ($verif_image){
+            ?>
+            <p class="warning"><?php echo $errorText ?></p>
+            <?php
+        }
+        ?>
+
+        <div>
+            <input type="hidden" name="MAX_FILE_SIZE" value="5242880"/>
+            <label for="img" >Ajouter une photo de profil: </label>
+            <input type="file" name="img">
         </div>
 
         <?php
