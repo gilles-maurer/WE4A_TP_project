@@ -39,8 +39,14 @@ echo "
     <form action='blog.php'>
         <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
         <button type='submit'>
-            <img src='".$row["avatar"]."' height='".$height."' width='".$width."' class='avatar'>
-            ".$row['nom']." ".$row['prenom']."
+            <div class='box-invisible'>
+                <div class='boximage'>
+                    <img src='".$row["avatar"]."' height='".$height."' width='".$width."' class='avatar'>
+                </div>
+                <div class='boxtext'>
+                    ".$row['nom']." ".$row['prenom']."
+                </div>
+            </div>
         </button>
     </form>
 ";
