@@ -13,18 +13,11 @@
     $temps = $_POST["temps"];
     $lieu = $_POST["lieu"];
     $description = $_POST["description"];
-    
-    echo $modif."<br>";
-    echo $id_post."<br>";
-    echo $id_utilisateur."<br>";
-    echo $date."<br>";
-    echo $distance."<br>";
-    echo $temps."<br>";
-    echo $lieu."<br>";
-    echo $description."<br>";
 
+     $lieu = str_replace("'", "\'", $lieu);
+     $description = str_replace("'", "\'", $description);
 
-
+     
    if($modif) {
 
         update_post($connexion, $id_post, $id_utilisateur, $date, $distance, $temps, $lieu, $description); 
