@@ -27,8 +27,6 @@
         require ("SousPages/sqlfunctions.php");
 
         $id = $_COOKIE['id_utilisateur'];
-        
-        echo "<h2> Mes informations </h2>";
 
         $result = get_informations($connexion, $id);
 
@@ -39,10 +37,20 @@
         $date_actuelle = new DateTime();
         $age = $date->diff($date_actuelle);
 
+        $max = 128;
+        list($width, $height, $type, $attr) = getimagesize($row["avatar"]);
+
+        include("SousPages/calcul_image_size.php");
+
 
         /* =============================================================
         =================== Informations Utilisateur ===================
         ============================================================= */
+
+        echo "<h2> Mes informations </h2>";
+
+        echo "<img src='".$row["avatar"]."' class=avatar height='".$height."' width='".$width."' >";        
+
         echo "<p> Nom : ".$row['nom']."</p>
             <p> Prénom : ".$row['prenom']."</p>
             <p> Email : ".$row['email']."</p>

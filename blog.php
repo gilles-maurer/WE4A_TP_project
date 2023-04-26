@@ -101,7 +101,14 @@
 
                 $titre = $titre->fetch();
 
+                $max = 128;
+                list($width, $height, $type, $attr) = getimagesize($titre["avatar"]);
+
+                include("SousPages/calcul_image_size.php");
+
+                echo "<img src='".$titre["avatar"]."' class=avatar height='".$height."' width='".$width."' >";
                 echo "<h1> Blog de ".$titre['prenom']." ".$titre['nom']."</h1>";
+
 
                 // Si l'utilisateur est connecté :
                 if (isset($_COOKIE["id_utilisateur"])) {

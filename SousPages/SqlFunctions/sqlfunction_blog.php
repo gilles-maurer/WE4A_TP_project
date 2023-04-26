@@ -100,7 +100,8 @@ function select_titre_blog($connexion, $blog) {
 
     $sql = "SELECT
                 utilisateur.nom as nom,
-                utilisateur.prenom as prenom         
+                utilisateur.prenom as prenom,
+                utilisateur.avatar as avatar      
             FROM
                 utilisateur
             WHERE

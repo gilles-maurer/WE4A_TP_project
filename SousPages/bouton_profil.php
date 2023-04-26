@@ -33,23 +33,13 @@ classements:
 $max = 64;
 list($width, $height, $type, $attr) = getimagesize($row["avatar"]);
 
-if ($width > $height) {
-    /*
-    Si la largeur est la plus grande dimension,
-    on resize pour ne pas dépasser $max
-    */
-    $height = $height * $max / $width;
-    $width = $max;
-} else {
-    $width = $width * $max / $height;
-    $height = $max;
-}
+include("calcul_image_size.php");
 
 echo "
     <form action='blog.php'>
         <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
         <button type='submit'>
-            <img src='".$row["avatar"]."' height='".$height."' width='".$width."'>
+            <img src='".$row["avatar"]."' height='".$height."' width='".$width."' class='avatar'>
             ".$row['nom']." ".$row['prenom']."
         </button>
     </form>
