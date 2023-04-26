@@ -1,6 +1,11 @@
 <?php 
+
+$date = date_create($row['date']);
+$date = date_format($date, 'd/m/Y');
+
+
 echo "
-<p class='location'>Le ".$row['date'].", à ".$row['lieu']."</p><br><br>";
+<p class='location'>Le ".$date.", à ".$row['lieu']."</p><br><br>";
 
 if(!($row['description']=="")){
     echo "<p class='box'>".$row['description']."</p>";
