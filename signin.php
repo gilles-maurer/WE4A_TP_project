@@ -40,7 +40,7 @@
         include('SousPages/uploadImage.php');
         
 
-        require('SousPages/check_signin.php');
+        require('SousPages/sqlfunctions.php');
         require('SousPages/connexionbdd.php');
         $connexion = connect_db();
 
@@ -57,7 +57,7 @@
             $confirm = "";
         } else {
             //Si tout est bon
-            save_informations($connexion); 
+            save_informations($connexion, $filePath); 
             set_id_session($connexion);
 
             setcookie("creation_compte", "true", time() + 24*3600); // on crée un cookie pour afficher une notification

@@ -45,8 +45,19 @@ function get_abonnement($connexion, $id) {
 
 function delete_account($connexion, $id) {
 
-    $sql = "DELETE FROM utilisateur WHERE id_utilisateur = '".$id."';";
+    $sql = "DELETE FROM abonne WHERE id_suiveur = '".$id."' OR id_suivie = '".$id."';";
+    $connexion->query($sql);
 
+    $sql = "DELETE FROM post WHERE id_utilisateur = '".$id."';";
+    $connexion->query($sql);
+
+    $sql = "DELETE FROM commentaire WHERE id_utilisateur = '".$id."';";
+    $connexion->query($sql);
+
+    $sql = "DELETE FROM liker WHERE id_utilisateur = '".$id."';";
+    $connexion->query($sql);
+
+    $sql = "DELETE FROM utilisateur WHERE id_utilisateur = '".$id."';";
     $connexion->query($sql);
 }
 
