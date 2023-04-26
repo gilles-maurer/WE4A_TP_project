@@ -97,17 +97,24 @@
 
             } else {
             
+                // On récupère les infos de la personne à qui appartient le blog
                 $titre = select_titre_blog($connexion, $blog);
-
                 $titre = $titre->fetch();
 
+
+                // on calcule la taille de l'avatar
                 $max = 128;
                 list($width, $height, $type, $attr) = getimagesize($titre["avatar"]);
-
                 include("SousPages/calcul_image_size.php");
 
-                echo "<img src='".$titre["avatar"]."' class=avatar height='".$height."' width='".$width."' >";
+
+                // on affiche l'avatar et le nom de la personne
+                echo "<div><br>";
+                echo "<img src='".$titre["avatar"]."' class='avatar' height='".$height."' width='".$width."' >";
+                echo "</div>";
+
                 echo "<h1> Blog de ".$titre['prenom']." ".$titre['nom']."</h1>";
+                
 
 
                 // Si l'utilisateur est connecté :
@@ -116,11 +123,11 @@
                     //Si l'utilisateur est sur son propre blog, il peut créer un post.
                     if ($_COOKIE["id_utilisateur"] == $blog) {
 
-                        echo "<hr><form method='post' action='post.php'>
+                        echo "<hr><form class='right' method='post' action='post.php'>
                             <input type='submit' value='Ajouter un post'>
                         </form>";
 
-                    // S'il est sur le blog de quelqu'un d'autre :
+                    // S'il est sur le blog de quelqu'un d'autre, il peut s'abonner ou se désabonner
                     } else {
 
                         $result = is_follow_by($connexion, $blog, $_COOKIE["id_utilisateur"]);
@@ -146,8 +153,8 @@
                     
                 }
 
-                // Affichage des stats du blog que l'on soit connecté ou non
 
+                // Affichage des stats du blog que l'on soit connecté ou non
                 $id_stats = $blog;
                 include('SousPages/show_stats.php');
 
@@ -182,12 +189,12 @@
                             <div class='right'>
                                 <form method='post' action='post.php'>
                                     <input type='hidden' name='id_post_modif' value='<?php echo $row['id_post'];?>'>
-                                    <input type='submit' value='Modifier'>
+                                    <input type='submit' value='Modifier le post'>
                                 </form>
 
                                 <form action="SousPages/delete_post.php" onsubmit="return confirm('Etes-vous sur de vouloir effacer?')" method='post'>
                                     <input type='hidden' name='id_post' value='<?php echo $row['id_post'];?>'>
-                                    <input type='submit' value='Supprimer'>
+                                    <input type='submit' value='Supprimer le post'>
                                 </form>
                             </div>
                             <?php
@@ -197,6 +204,7 @@
                     echo "<br><hr><br>";
                 }
 
+                // En bas de page, on a la possibilité de voir tous les posts 
                 if ($nb_post != "no_limit" && $nombre_total_de_courses > 10) {
                     ?>
                     <form method='get' action='blog.php'>
@@ -211,6 +219,7 @@
         ?>
 
     </div> <!-- Fin de column-main -->
+
 
     <!-- Onglet de recherche -->
     <div class="column-side">
@@ -228,6 +237,7 @@
 
         ?>
 
+        <!-- Affichage dynamique des comptes avec AJAX -->
         <div> 
             <?php include("AJAX/recherche_blog.php"); ?> 
         </div>

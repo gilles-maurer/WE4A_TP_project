@@ -341,6 +341,44 @@ input{
     border-radius: 10px;
 }
 
+input[type=submit]{
+
+    font-family: var(--font);
+    font-size: 18px;
+
+    margin: 10px auto 10px auto;
+    padding: 12px;
+
+    background-color: hsl(15, 70%, 20%);
+    color:hsl(50, 60%, 85%);
+
+    display: inline-block;
+
+    border-radius: 5px;
+    border-color: hsla(15, 70%, 30%, 70%);
+    border-style: groove;
+    border-width: 3px;
+
+    align-items: center;
+
+}
+
+input[type=submit]:hover{
+
+    background-color: hsl(15, 70%, 30%);
+    color:hsl(50, 60%, 85%);
+
+}
+
+input[type=image]:hover{
+
+    background-color: hsl(15, 70%, 30%);
+    color:hsl(50, 60%, 85%);
+    border-color: hsla(15, 70%, 30%, 70%);
+    border-style: groove;
+
+}
+
 button{
 
     font-family: var(--font);
@@ -363,6 +401,12 @@ button{
 
 }
 
+button:hover{
+
+    background-color: hsl(15, 70%, 30%);
+    color:hsl(50, 60%, 85%);
+
+}
 
 /*=======================================================
 ========================= NAVBAR ========================
@@ -484,12 +528,8 @@ button{
 
 .avatar{
     border-radius: 50%;
-
-    /* centre l'élément horizontalement */
-    margin: auto;
-
-
 }
+
 
 
 

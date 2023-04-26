@@ -51,12 +51,13 @@
 
     echo "<img src='".$row["avatar"]."' class=avatar height='".$height."' width='".$width."' >";        
 
-    echo "<p> Nom : ".$row['nom']."</p>
-        <p> Prénom : ".$row['prenom']."</p>
-        <p> Email : ".$row['email']."</p>
-        <p> Date de naissance : ".$row['date_naissance']."</p>
-        <p> Age : ".$age->y."</p>
-        <p> Date d'inscription : ".$row['date_inscription']."</p>";
+    echo "
+        <p><strong> Nom : </strong> ".$row['nom']."</p>
+        <p><strong> Prénom : </strong> ".$row['prenom']."</p>
+        <p><strong> Email : </strong> ".$row['email']."</p>
+        <p><strong> Date de naissance : </strong> ".$row['date_naissance']."</p>
+        <p><strong> Age : </strong> ".$age->y."</p>
+        <p><strong> Date d'inscription : </strong> ".$row['date_inscription']."</p>";
 
 
 
