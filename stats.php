@@ -22,7 +22,7 @@
     <?php
     //Pour la déconnexion : setcookie sans durée (supprime le cookie).
     if(isset($_POST['deconnexion'])) {
-        setcookie('id_utilisateur');
+        setcookie("id_utilisateur");
         header('Location: ./index.php');
     }
 

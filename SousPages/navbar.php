@@ -2,7 +2,7 @@
 <?php 
 
 // check si il y a des cookies 
-if (!isset($_COOKIE['id_utilisateur'])) {
+if (!isset($_COOKIE['id_utilisateur']) || $_COOKIE['id_utilisateur'] == "") {
     // si il n'y a pas de cookies, on affiche le bandeau sans log
     ?> 
         <div class="navbar">
@@ -14,6 +14,8 @@ if (!isset($_COOKIE['id_utilisateur'])) {
         </div>
         <br><br><br>
     <?php
+
+
 } else {
     // si il y a des cookies, on affiche le bandeau avec log
     ?> 
@@ -23,11 +25,11 @@ if (!isset($_COOKIE['id_utilisateur'])) {
             <a href="./classement.php">Classement</a>
             <a href="./post.php">Poster</a>
             <a href="./stats.php">Profil</a>
-
         </div>
         <br><br><br>
 
     <?php
+
 }
 
 ?>

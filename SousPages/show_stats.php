@@ -13,6 +13,10 @@
     $temps_minute = floor(($result['temps'] - $temps_heure*3600)/60);
     $temps_seconde = $result['temps'] - $temps_heure*3600 - $temps_minute*60;
 
+    if (!isset($result["distance"])) { // si la personne n'a pas couru
+        $result["distance"] = 0;
+    }
+
     echo "<hr><p><strong>Distance parcourue :</strong> ".$result["distance"]." km</p>";
 
     if ($temps_heure == 0) {

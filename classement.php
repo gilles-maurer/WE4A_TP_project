@@ -48,7 +48,7 @@
 
     $i = 0; 
 
-    while($row = $result->fetch() && $i <= 10) {
+    while(($row = $result->fetch()) && ($i <= 10)) {
 
         $i = $i + 1;
         echo "<hr><div class='box-invisible'>"; //Division pour pouvoir centrer la position
@@ -90,7 +90,7 @@
 
     $i = 0;
 
-    while($row = $result->fetch() && $i <= 10) {
+    while(($row = $result->fetch()) && ($i <= 10)) {
 
         $i = $i + 1;
         echo "<hr><div class='box-invisible'>";
@@ -131,7 +131,7 @@
 
     $i = 0;
 
-    while($row = $result->fetch() && $i <= 10) {
+    while(($row = $result->fetch()) && ($i <= 10)) {
 
         $i = $i + 1;
         echo "<hr><div class='box-invisible'>";
