@@ -1,5 +1,6 @@
 <?php 
 
+date_default_timezone_set("Europe/Paris"); //Ligne à inclure, sinon erreur dans la ligne suivante.
 $date = date_create($row['date']);
 $date = date_format($date, 'd/m/Y');
 
