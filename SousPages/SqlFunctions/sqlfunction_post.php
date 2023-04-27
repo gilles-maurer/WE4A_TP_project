@@ -46,12 +46,17 @@ function insert_post($connexion, $id_utilisateur, $date, $distance, $temps, $lie
 }
 
 
-// supprime un post en fonction de son id
+// supprime un post, ses likes et ses commentaires en fonction de son id
 
 function delete_post($connexion, $id_post) {
 
-    $sql = "DELETE FROM post WHERE id_post = '".$id_post."';";
+    $sql = "DELETE FROM liker WHERE id_post = '".$id_post."';";
+    $connexion->query($sql);
 
+    $sql = "DELETE FROM commentaire WHERE id_post = '".$id_post."';";
+    $connexion->query($sql);
+
+    $sql = "DELETE FROM post WHERE id_post = '".$id_post."';";
     $connexion->query($sql);
 
 }

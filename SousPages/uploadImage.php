@@ -80,14 +80,14 @@ function SaveFileAsNew() {
 $result_isFileAdequate = IsFileAdequate();
 
 
-if ($result_isFileAdequate['no_file']) {
+if ($result_isFileAdequate['no_file']) { // si l'utilisateur n'a pas choisi d'image
     
     $errorText = ""; 
     $uploadSuccessful = true;
     $filePath = "./Icones/Avatars/default.png";
 
 
-} else if ($result_isFileAdequate['file_adequate']) {
+} else if ($result_isFileAdequate['file_adequate']) { // si l'image est valide
     
     $result_SaveFile = SaveFileAsNew();
         
@@ -95,7 +95,7 @@ if ($result_isFileAdequate['no_file']) {
     $uploadSuccessful = $result_SaveFile['upload_successful'];
     $filePath = $result_SaveFile['file_path'];
 
-} else {
+} else { // si l'image n'est pas valide
     $errorText = $result_isFileAdequate['errorText'];
     $uploadSuccessful = false;
     $filePath = "";

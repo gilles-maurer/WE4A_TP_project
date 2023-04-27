@@ -38,3 +38,12 @@ Dans notre fichier de connexion, on utilise en tant que mot de passe soit **`roo
 
 ## Sécurisation SQL
 Chaque texte que l'utilisateur peut entrer est sécurisé en remplaçant chaque **`'`** par **`\'`**. De cette manière, il est stocké avec l'antislash dans la base de donné, et ne permet donc pas l'injection SQL.
+
+<br>
+
+## Test 
+Pour simplifier la phase de test vous pouver utiliser le compte suivant : 
+    email : gilles.maurer@utbm.fr
+    mdp : gilles 
+Ces identifiants vous permettrons d'accéder à un compte contenant déjà plusieurs post et abonnements.
+
