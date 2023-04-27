@@ -3,6 +3,16 @@
 $date = date_create($row['date']);
 $date = date_format($date, 'd/m/Y');
 
+/**
+ *  Affiche :
+ *   - La date et le lieu
+ *   - La distance, le temps, et la vitesse moyenne
+ *   - Le nombre de likes
+ *   - Les commentaires
+ * 
+ * Likes et commentaires sont définis dans
+ * like_comment.php (toujours include après cet include-ci).
+ * */ 
 
 echo "
 <p class='location'>Le ".$date.", à ".$row['lieu']."</p><br><br>";

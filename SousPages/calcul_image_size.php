@@ -7,6 +7,7 @@ if ($width > $height) {
     */
     $height = $height * $max / $width;
     $width = $max;
+    //$max est défini dans bouton_profil.php (où ce ficher est utilisé)
 } else {
     $width = $width * $max / $height;
     $height = $max;

@@ -1,40 +1,14 @@
 <?php
 
-/*
-
-ajax/load recherche:
-    <form action='blog.php'>
-        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-    </form>";
-
-index:
-    <form action='blog.php'>
-        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-    </form>";
-
-stats (profil -> abonnements):
-    <form action='blog.php'>
-        <input type='hidden' name='blog' value='".$row['ID_suiveur']."'>
-        <button type='submit'>".$row2['nom']." ".$row2['prenom']."</button>
-    </form><br>
-
-    -> DIFFERENCES
-
-
-classements:
-    <form action='blog.php'>
-        <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>
-        <button type='submit'>".$row['nom']." ".$row['prenom']."</button>
-    </form>
-*/
-
 $max = 64;
 list($width, $height, $type, $attr) = getimagesize($row["avatar"]);
 
 include("calcul_image_size.php");
 
+/*
+Quand on a la possibilité d'accéder à un profil (via un bouton),
+on affiche la photo de profil et le nom, alignés.
+*/
 echo "
     <form action='blog.php'>
         <input type='hidden' name='blog' value='".$row['id_utilisateur']."'>

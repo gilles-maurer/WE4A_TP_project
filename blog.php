@@ -8,6 +8,17 @@
 
 <body>
 
+<!--
+    Cette page est là où s'affichent les blogs
+    des personnes (contrairement à l'accueil où
+    les posts sont affichés par date).
+
+    De base, on affiche le blog de l'utilisateur
+    (s'il est connecté),
+    mais il peut rechercher un autre utilisateur et
+    consulter son blog.
+-->
+
 <?php include("SousPages/navbar.php");?>
 
 

@@ -6,16 +6,23 @@
 <title>Log-in</title>
 </head>
 
+<!--
+    Cette page est la page de connexion 
+    (lorsque l'utilisateur a déjà un compte).
+-->
+
 <script> 
 
+    //Cette fonction permet de cacher/afficher le mot de passe.
     function ShowHidePassword(icone){
+
 		var field = document.getElementById("mot_de_passe");
 		
-        if (field.type == "password"){ // Si le type est password, on change en text
+        if (field.type == "password"){ // Si le type est password, on change en text.
 			icone.src="./Icones/password_show.png";
 			field.type="text";
 		}
-		else { // Sinon, on change en password
+		else { // Sinon, on change en password.
 			icone.src="./Icones/password_hide.png";
 			field.type="password";
 		}
@@ -31,13 +38,15 @@
 <div id="MainContainer">
 <h1>Connexion :</h1>
 
-<?php $email = "";
+<?php 
+$email = "";
 $mdp = "";
 
 if (isset($_POST["email"])){
 
     $email = $_POST["email"];
     $email = str_replace("'", "\'", $email); 
+    //On sécurise pour éviter une injection SQL (on utilise ' dans les requêtes).
 
 
     $mdp = $_POST["mot_de_passe"];
@@ -46,24 +55,26 @@ if (isset($_POST["email"])){
 
     require('SousPages/connexionbdd.php');
     $connexion = connect_db();
-
     require('SousPages/sqlfunctions.php');
-    $result = check_login($connexion, $email);
 
+    $result = check_login($connexion, $email);
     $res = $result->fetch();
 
     if ($result->rowCount() != 0){
-        //Si l'adresse mail et le mot de passe correspondent
+
+        //Si l'adresse mail et le mot de passe correspondent :
         if ($email == $res["email"] && $mdp_5 == $res["mot_de_passe"]){
 
             setcookie("id_utilisateur", $res["ID_utilisateur"], time() + 24*3600);
             header('Location: ./blog.php');
             
-
+        //Sinon :
         } else {
             ?><p class="warning">Le mot de passe et l'email ne correspondent pas.</p><?php
             $mdp = "";
         }
+
+    //Si la requête SQL n'a rien trouvé avec l'adresse mail entrée
     } else {
         ?><p class="warning">L'email n'existe pas.</p><?php
         $mdp = "";
@@ -75,14 +86,15 @@ if (isset($_POST["email"])){
 
     <form action="#" method="post">
 
-        <!-- Afin de centrer l'icône pour cacher le mot de passe,
-        il faut ajouter ces divisions. Comme ça, tout est au même niveau. -->
         <div class='box-left'>
             <div class='boxtext'>
                 <label for="email">E-Mail :</label>
                 <input type="email" name="email" id="email" placeholder="email@addresse.fr" value="<?php echo $email;?>" required>
             </div>
         </div>
+
+        <!-- Afin de centrer l'icône pour cacher le mot de passe,
+        il faut ajouter ces divisions. Comme ça, tout est au même niveau. -->
         <div class='box-left'>
             <div class='boxtext'>
                 <label for="mot_de_passe">Mot de passe :</label>
@@ -90,7 +102,7 @@ if (isset($_POST["email"])){
             </div>
             <div class='boximage'>
                 <img id="passHide" onclick="ShowHidePassword(this)"
-                    src="./Icones/password_hide.png" alt="Hide/Show password">
+                    src="./Icones/password_hide.png" alt="Montrer/Cacher le mot de passe">
             </div>
         </div>
 

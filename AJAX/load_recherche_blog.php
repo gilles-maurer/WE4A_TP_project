@@ -1,5 +1,7 @@
 <?php
 
+    //Recherche dynamique via ajax (selon ce qu'on a déjà écrit)
+
     require("../SousPages/connexionbdd.php");
     $connexion = connect_db();
 

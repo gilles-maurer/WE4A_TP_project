@@ -1,22 +1,27 @@
 /*
 
-Setting informations for clarity:
+Ordre des informations (à peu près) pour s'y retrouver:
 
-    - [Text setting]
-    - Margin, padding, other size information
-    - Colours
-    - Border & border colour
-    - Else
+    - Settings de texte
+    - Margin, padding, et autres informations de taille
+    - Couleurs
+    - Border & border-colour
+    - Le reste
+
+Les couleurs sont définies en hsl pour pouvoir 
+leur donner la même teinte et changer la nuance
+(rgb aurait fait changer toutes les valeurs pour une teinte similaire),
+et quelques fois en hsla pour leur donner un effet adouci via transparence.
 
 */
 
 /*=======================================================
-================= VARIABLE DEFINITIONS ==================
+================ DÉFINITION DE VARIABLES ================
 =======================================================*/
 
 /*
-This is to set up some variables used multiple times
-throughout the document, such as colours, fonts, etc 
+Quelques éléments sont utilisés un peu partout dans le document,
+donc on fait des variables pour harmoniser les éléments plus facilement.
 */
 
 :root{
@@ -24,6 +29,7 @@ throughout the document, such as colours, fonts, etc
     --font: verdana, sans-serif;
     --white: hsl(50, 60%, 92%);
     --red-white: hsl(15, 30%, 92%);
+    --light-yellow: hsl(50, 60%, 85%)
 
 }
 
@@ -43,11 +49,12 @@ body{
 
 #MainContainer {
 
-	margin: 50px auto auto auto;
+	margin: 50px auto auto auto; 
+    /* ^ Pour laisser de la place pour navbar */
 	padding: 30px;
 	width: 80%;
 
-	background-color:hsl(50, 60%, 85%);
+	background-color: var(--light-yellow);
 
 	border-width: 6px 6px; 
 	border-style: groove; 
@@ -58,10 +65,10 @@ body{
 
 
 /*=======================================================
-================ LES HEADERS H1, H2, ETC ================
+======================== Hx et HR =======================
 =======================================================*/
 
-h1,h2,h3,h4,h5,h6{
+h1, h2{
 
 	font-family: var(--font);
 	color:hsl(15, 70%, 20%);
@@ -70,6 +77,10 @@ h1,h2,h3,h4,h5,h6{
 
 }
 
+
+/*
+Grand bandeau
+*/
 h1{
 
     font-size: 45px;
@@ -89,6 +100,9 @@ h1{
 
 }
 
+/*
+Rappelle plus les labels dans la forme
+*/
 h2{
 
     margin: auto;
@@ -102,6 +116,24 @@ h2{
     border-color: hsla(15, 50%, 40%, 80%);
 
 }
+
+/*
+Fine séparation mais séparation quand-même
+*/
+hr{
+    height: 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    color: hsl(15, 50%, 50%);
+    background-color: hsla(15, 50%, 70%, 50%);
+
+    border-width: 2px;
+    border-color: hsla(15, 30%, 50%, 40%);
+    border-radius: 4px;
+    border-style: groove;
+}
+
 
 /*=======================================================
 ================= P ET AUTRES FORMATAGES ================
@@ -189,6 +221,7 @@ Utilisés pour les commentaires
 ========================== FLEX =========================
 =======================================================*/
 
+
 .box{
 
     display: flex;
@@ -240,6 +273,10 @@ img{
 
 }
 
+/*
+Pour les boutons de supression/modification de posts
+(qui restent sur la droite de la colonne)
+*/
 .right{
 
     position:relative;
@@ -254,23 +291,83 @@ img{
 
 }
 
-/*=======================================================
-=================== HEADER, FOOTER, HR ==================
-=======================================================*/
 
-hr{
-    height: 5px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+/*
+Les classes du dessous sont pour l'affichage en colonnes,
+tandis que celles du dessus sont pour aligner des éléments.
+*/
 
-    color: hsl(15, 50%, 50%);
-    background-color: hsla(15, 50%, 70%, 50%);
-
-    border-width: 2px;
-    border-color: hsla(15, 30%, 50%, 40%);
-    border-radius: 4px;
-    border-style: groove;
+.row{
+    display: flex;
 }
+
+/*
+On ne peut pas utiliser MainContainer pour un affichage en colonnes
+puisque le padding prend trop de place.
+On recopie donc le code CSS de MainContainer en modifiant le padding.
+*/
+.column-main{
+
+    flex: 60%;
+    padding: 0px 2% 0px 2%;
+
+    margin: 25px auto auto auto;
+	width: 90%;
+
+	background-color: var(--light-yellow);
+
+	border-width: 6px 6px; 
+	border-style: groove; 
+	border-color: hsla(25, 70%, 25%, 50%);
+    border-radius: 60px;
+
+}
+
+/*
+Ceci est utilisé aux côtés de column-main pour afficher des informations supplémentaires.
+*/
+.column-side{
+
+    flex: 30%;
+    padding: 0px 2% 0px 2%;
+
+    margin-top: 45px;
+
+}
+
+/*
+Ceci est utilisé dans blog.php pour un affichage en 3 colonnes, basé sur cplumn main.
+*/
+.column-third{
+
+    flex: 28%;
+    padding: 1%;
+
+    margin: 25px 1% auto 2%;
+	width: 85%;
+
+	background-color: var(--light-yellow);
+
+	border-width: 6px 6px; 
+	border-style: groove; 
+	border-color: hsla(25, 70%, 25%, 50%);
+    border-radius: 60px;
+
+}
+
+/*
+Comme column-third, mais sans le fond de main container
+(pour un affichage déjà dans un container).
+*/
+
+.column-third-no-bg{
+
+    flex: 28%;
+    padding: 1%;
+
+}
+
+
 
 /*=======================================================
 =========================== A ===========================
@@ -350,7 +447,7 @@ input[type=submit]{
     padding: 12px;
 
     background-color: hsl(15, 70%, 20%);
-    color:hsl(50, 60%, 85%);
+    color: var(--light-yellow);
 
     display: inline-block;
 
@@ -366,14 +463,14 @@ input[type=submit]{
 input[type=submit]:hover{
 
     background-color: hsl(15, 70%, 30%);
-    color:hsl(50, 60%, 85%);
+    color: var(--light-yellow);
 
 }
 
 input[type=image]:hover{
 
     background-color: hsl(15, 70%, 30%);
-    color:hsl(50, 60%, 85%);
+    color: var(--light-yellow);
     border-color: hsla(15, 70%, 30%, 70%);
     border-style: groove;
 
@@ -388,7 +485,7 @@ button{
     padding: 12px;
 
     background-color: hsl(15, 70%, 20%);
-    color:hsl(50, 60%, 85%);
+    color: var(--light-yellow);
 
     display: inline-block;
 
@@ -404,7 +501,7 @@ button{
 button:hover{
 
     background-color: hsl(15, 70%, 30%);
-    color:hsl(50, 60%, 85%);
+    color: var(--light-yellow);
 
 }
 
@@ -418,6 +515,13 @@ button:hover{
     
     position: fixed;
     z-index: 2;
+    /*
+    On fixe z pour s'assurer que les boutons de
+    modification ou suppression de blog (seule classe
+    qui a une position notée) ne passent pas par
+    dessus la navbar
+    */
+
     top: 0;
     width: 130%;
     margin-left: -20px;
@@ -454,6 +558,11 @@ button:hover{
 /*=======================================================
 ======================= CLASSEMENT ======================
 =======================================================*/
+
+/*
+Ces classes permettent de donner de la couleur à la page classement.php,
+pour générer les "icônes" des positions sans utiliser d'images.
+*/
 
 .firstplace{
 
@@ -526,83 +635,10 @@ button:hover{
 =======================================================*/
 
 
+/*
+Pour rendre les photos de profil rondes
+*/
 .avatar{
     border-radius: 50%;
-}
-
-
-
-
-/*=======================================================
-========================= AUTRES ========================
-=======================================================*/
-
-.row{
-    display: flex;
-}
-
-/*
-On ne peut pas utiliser MainContainer pour un affichage en colonnes
-puisque le padding prend trop de place.
-On recopie donc le code CSS de MainContainer en modifiant le padding.
-*/
-.column-main{
-
-    flex: 60%;
-    padding: 0px 2% 0px 2%;
-
-    margin: 25px auto auto auto;
-	width: 90%;
-
-	background-color:hsl(50, 60%, 85%);
-
-	border-width: 6px 6px; 
-	border-style: groove; 
-	border-color: hsla(25, 70%, 25%, 50%);
-    border-radius: 60px;
-
-}
-
-/*
-Ceci est utilisé aux côtés de column-main pour afficher des informations supplémentaires.
-*/
-.column-side{
-
-    flex: 30%;
-    padding: 0px 2% 0px 2%;
-
-    margin-top: 45px;
-
-}
-
-/*
-Ceci est utilisé dans blog.php pour un affichage en 3 colonnes, basé sur main container
-*/
-.column-third{
-
-    flex: 28%;
-    padding: 1%;
-
-    margin: 25px 1% auto 2%;
-	width: 85%;
-
-	background-color:hsl(50, 60%, 85%);
-
-	border-width: 6px 6px; 
-	border-style: groove; 
-	border-color: hsla(25, 70%, 25%, 50%);
-    border-radius: 60px;
-
-}
-
-/*
-Comme column-third, mais sans le fond de main container (pour un affichage dans un container)
-*/
-
-.column-third-no-bg{
-
-    flex: 28%;
-    padding: 1%;
-
 }
 
