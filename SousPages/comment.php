@@ -1,5 +1,7 @@
 <?php
 
+    //Include pour enregistrer le commentaire écrit
+
     require('connexionbdd.php');
     $connexion = connect_db();
 

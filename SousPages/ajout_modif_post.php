@@ -1,5 +1,6 @@
 <?php 
 
+    //Cette page permet d'enregistrer les données de post.php
 
     require('sqlfunctions.php');
     require('connexionbdd.php');
@@ -14,19 +15,21 @@
     $lieu = $_POST["lieu"];
     $description = $_POST["description"];
 
-     $lieu = str_replace("'", "\'", $lieu);
-     $description = str_replace("'", "\'", $description);
+    //On sécurise les apostrophes :
+    $lieu = str_replace("'", "\'", $lieu);
+    $description = str_replace("'", "\'", $description);
 
-     
-   if($modif) {
+    //S'il s'agit d'une modification :
+    if($modif) {
 
         update_post($connexion, $id_post, $id_utilisateur, $date, $distance, $temps, $lieu, $description); 
 
-   } else { 
+    //S'il s'agit d'une création :
+    } else { 
 
         insert_post($connexion, $id_utilisateur, $date, $distance, $temps, $lieu, $description);
 
-   }
+    }
 
     header("Location: ../blog.php?blog=".$id_utilisateur);
 

@@ -8,15 +8,26 @@
 
 <body>
 
+<!--
+    Cette page est la page où
+    l'utilisateur crée son compte.
+-->
+
 <?php include("SousPages/navbar.php");?>
 
 <div id="MainContainer">
 
     <?php 
 
-    //Puisque tous les champs sont en required, l'existence d'un suffit à prouver l'existence des autres.
+    /*
+    Puisque tous les champs sont en required,
+    l'existence d'un suffit à prouver l'existence des autres.
+    Ils existent si on a eu une erreur
+    (manque de champs, mot de passe pas confirmé, etc.)
+    */
     $condition = (isset($_POST['nom']));
     
+    //On initialise les champs
     $nom = "";
     $prenom = "";
     $email = "";
@@ -28,7 +39,9 @@
     $verif_mdp = false;
     $verif_image = false;
 
+
     if($condition){
+
         $nom = $_POST["nom"];
         $prenom = $_POST["prenom"];
         $email = $_POST["email"];
@@ -36,9 +49,7 @@
         $confirm = $_POST["confirm"];
         $date_naissance = $_POST["date_naissance"];
 
-
         include('SousPages/uploadImage.php');
-        
 
         require('SousPages/sqlfunctions.php');
         require('SousPages/connexionbdd.php');
@@ -47,14 +58,17 @@
         if (check_existing_email($connexion)) {
             //Si l'email est déjà pris
             $verif_email = true;
+
         } else if (!$uploadSuccessful) {
             //Si l'image n'est pas valide
             $verif_image = true;
+
         } else if(check_informations()) {
             //Si mdp et confirm ne correspondent pas
             $verif_mdp = true;
             $mot_de_passe = "";
             $confirm = "";
+            
         } else {
             //Si tout est bon
             save_informations($connexion, $filePath); 
@@ -140,8 +154,6 @@
 
     <p class="pcenter">Vous avez déjà un compte ? <a href="./login.php">Connectez-vous ici</a>.</p>
             
-        
-    <!--nom, prenom, email, mot_de_passe, date_naissance-->
 </div>
 
 </body>

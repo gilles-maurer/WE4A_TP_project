@@ -8,13 +8,18 @@
 
         $dsn = "mysql:dbname=".BASE.";host=".SERVER; 
 
-        try{ // essaye de se connecter à la base de données avec les identifiants ci-dessus
+        // On essaye de se connecter à la base de données avec les identifiants ci-dessus (UwAmp).
+        try{ 
             $conn = new PDO($dsn, USER, PASSWD);
         }
-        catch(PDOException $e){ // si ça ne marche pas, on essaye de se connecter sans mot de passe
+
+        // Si ça ne marche pas, on essaye de se connecter sans mot de passe (XAMPP).
+        catch(PDOException $e){ 
             try{
                 $conn = new PDO($dsn, USER, "");
             }
+
+            //Sinon, c'est qu'il y a une erreur.
             catch(PDOException $e){
                 printf("Echec de connexion : %s\n", $e->getMessage());
                 exit(); 
